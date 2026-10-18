@@ -17,11 +17,10 @@ Studio LampKeep（蒼灯機関）の公式ポータルサイトです。GitHub P
    - **特徴**: 1988年伝説的アーケードゲームの物理挙動＆FM音源風オリジナルチップチューン完全再現。3分スコアアタック「CYBER BURST」モード搭載、6大サイバー背景、完全無料・オフライン・広告なし。
    - **ポリシー**: [blockdrop-privacy.html](blockdrop-privacy.html)
 
-3. **なろう小説AI朗読 ― 複数声優オート配役プレイヤー ― (Novel AI Reader)**
+3. **青空文庫＆文書AI朗読 (Aozora & Document AI Reader)**
    - **ジャンル**: AI読書・朗読アクセシビリティツール (Android / Windows PWA)
-   - **特徴**: アプリ内包LLM・Geminiによるリアルタイム登場人物判別＆声分け自動配役、Edge-TTS / VOICEVOX連携、バックグラウンド再生・オフラインキャッシュ、なろう公式API完全連携。
-   - **ポリシー**: [novel-ai-reader/privacy.html](novel-ai-reader/privacy.html)
-   - **利用規約**: [novel-ai-reader/terms.html](novel-ai-reader/terms.html)
+   - **特徴**: アプリ内包LLM・Geminiによるリアルタイム登場人物判別＆声分け自動配役、Edge-TTS / VOICEVOX連携、青空文庫（57マスター作品プリセット＋18,000作品検索）＆PDF・テキスト文書流し込み対応、バックグラウンド再生・オフラインキャッシュ。
+   - **ポリシー**: [privacy.html](privacy.html)
 
 ---
 

@@ -71,36 +71,36 @@ const APP_DATA = {
     ]
   },
   novelreader: {
-    title: 'なろう小説AI朗読 - 複数声優オート配役',
-    subtitle: 'Novel AI Reader ― Web小説をドラマCDのように楽しむ次世代プレイヤー',
-    category: 'AIアクセシビリティ / オーディオブック',
+    title: '青空文庫＆文書AI朗読',
+    subtitle: 'Aozora & Document AI Reader ― 名作文学や所持文書を声優ドラマのように朗読',
+    category: 'AI読書・アクセシビリティ / オーディオブック',
     tag: 'Android / Windows PWA',
-    platform: 'Android (PWA対応) / Windows 10/11',
+    platform: 'Android 8.0+ / Windows 10/11 (Web PWA)',
     price: '完全無料（オープン＆アクセシビリティ指向）',
-    packageId: 'com.lampkeep.novelreader',
-    distribution: 'Windowsインストーラー / Web PWA',
-    description: `「小説家になろう」や「青空文庫」の作品本文をリアルタイムAI解析し、ナレーション（地の文）と登場人物の会話を自動で配役・マルチボイス（声分け）しながら臨場感たっぷりに朗読するWeb & PWAアプリケーションです。
-アプリ内包の軽量LLM（設定不要・完全ローカル動作）をはじめ、Google Gemini API、Google Pixel内蔵Gemini Nano、Ollama/LM Studio等の外部サーバー接続など、多彩なAIエンジンを選択可能。
-漢字ルビ（ふりがな）の自動展開、ユーザー辞書、バックグラウンド再生＆オフラインキャッシュ、ダークモードなど、読書支援・アクセシビリティに特化した充実の機能を誇ります。`,
+    packageId: 'com.surei.naroureader',
+    distribution: 'Google Play 公開準備中 / Windows・Web PWA',
+    description: `名作文学やお手持ちの文書を、アプリ内包の軽量LLMやGemini、Pixel内蔵Gemini Nanoがリアルタイム解析！
+ナレーション（地の文）と登場人物の会話を自動で判別・配役し、マルチボイス（声分け）でまるで本格オーディオドラマのように臨場感豊かに朗読する次世代読書アクセシビリティアプリです。
+太宰治、芥川龍之介、夏目漱石、宮沢賢治などの「青空文庫」名作文学（厳選プリセット57作品＋18,000作品検索）をはじめ、PDFやテキストファイルなどのユーザー所持文書のスマート流し込みに対応。
+ルビ（ふりがな）の自動展開、ユーザー辞書、画面オフ（スリープ）バックグラウンド再生、オフラインキャッシュなど、快適な読書・リスニング体験を提供します。`,
     features: [
       'アプリ内包LLM（設定・APIキー不要）による完全ローカル登場人物自動判別＆声分け朗読',
-      'Google Gemini、Pixel内蔵Gemini Nano、Ollama等への自在なエンジン切り替え',
+      'Google Gemini、Pixel内蔵Gemini Nano、Ollama等への自在なAIエンジン切り替え',
+      '青空文庫の名作文学（厳選57作品プリセット＋1万8千作品インデックス検索）を標準サポート',
+      'お手持ちのPDF・テキストファイル・自作原稿のスマート流し込み朗読対応',
       'Edge-TTS（高品質ニューラル音声）＆ VOICEVOX（ずんだもん等）連携対応',
-      '「小説家になろう」公式API完全連携（詳細検索・ジャンル絞り込み・ルビ展開）',
-      '太宰治・芥川龍之介など「青空文庫」名作文学の標準収録＆オフライン朗読',
       '画面オフ（スリープ）バックグラウンド再生・Media Session API（イヤホン操作）対応',
-      '成人向け（R18）完全遮断＆通報・ローカルブロック機能による徹底した安全設計'
+      '完全プライバシー保護：外部サーバーへの個人情報送信なし・安心のローカル完結設計'
     ],
     gallery: [
-      { src: 'assets/img/novelreader/feature_graphic.png', caption: 'キービジュアル：複数声優オート配役プレイヤー' },
+      { src: 'assets/img/novelreader/feature_graphic.png', caption: 'キービジュアル：青空文庫＆文書AI朗読' },
       { src: 'assets/img/novelreader/01_screenshot.png', caption: 'プレイヤー画面：登場人物ごとにリアルタイム声分け' },
-      { src: 'assets/img/novelreader/02_screenshot.png', caption: '詳細検索画面：なろう公式API連携・多彩なフィルター' },
+      { src: 'assets/img/novelreader/02_screenshot.png', caption: 'ライブラリ画面：青空文庫の名作文学・所持文書の選択' },
       { src: 'assets/img/novelreader/03_player.png', caption: 'スマートフォンUI：片手で快適な朗読コントロール' },
       { src: 'assets/img/novelreader/04_settings.png', caption: '設定画面：AIエンジン切り替え・ボイスカスタマイズ' }
     ],
     links: [
-      { text: 'プライバシーポリシー', url: 'novel-ai-reader/privacy.html', isExternal: false },
-      { text: '利用規約', url: 'novel-ai-reader/terms.html', isExternal: false }
+      { text: 'プライバシーポリシー', url: 'privacy.html', isExternal: false }
     ]
   }
 };
