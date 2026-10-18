@@ -82,14 +82,14 @@ Studio LampKeepの代表作『Prince of Chaos ― 混沌迷宮と呪いの公子
       'FM音源風オリジナルチップチューン（Flow Music共作）＆全国ハイスコアオンラインランキング'
     ],
     gallery: [
-      { src: 'assets/img/blockdrop/01_title_video.png', caption: 'タイトル画面：Google Flow動画背景（B1F Azure Crypt）× 揺らぎ蒼炎ロゴ ＆ プレミアムパス解禁' },
-      { src: 'assets/img/blockdrop/02_gameplay_12x20.png', caption: 'プレイ画面（実機）：12×20拡大盤面・神聖十字架（★RARE）・Google Flow動画ループ背景' },
-      { src: 'assets/img/blockdrop/03_gameplay_loop.png', caption: '実機動画連動：立ち込める霧と松明の炎がプレイ中リアルタイムに呼吸' },
-      { src: 'assets/img/blockdrop/lampdrop_stacked.png', caption: '盤面：美しく結束するランタンクラスタと4ライン消去MEGA CLEAR' },
-      { src: 'assets/img/blockdrop/05_pause.png', caption: 'ポーズ画面・背景透過度（20%/40%/60%/80%/0%）即時切替' }
+      { src: 'assets/img/blockdrop/battle_title.png', caption: 'タイトル画面：魔導ランプ連結×リアルタイム背景バトル『LampDrop』' },
+      { src: 'assets/img/blockdrop/battle_gameplay.png', caption: 'プレイ画面：真鍮フレーム・リアルタイム背景バトル・連なる魔導ランプ' },
+      { src: 'assets/img/blockdrop/card_crescent_slash.png', caption: '戦闘演出：ライン消去と連動してリュカの三日月斬りが炸裂' },
+      { src: 'assets/img/blockdrop/card_battle_b1f.png', caption: '迷宮バトル：深淵の怪異・スケルトンナイトとの激闘' },
+      { src: 'assets/img/blockdrop/lampdrop_stacked.png', caption: '盤面：美しく結束するランタンクラスタと4ライン消去MEGA CLEAR' }
     ],
     links: [
-      { text: 'LampDrop 単体特集サイト', url: 'https://lampkeeper2026.github.io/block-drop-1988/', isExternal: true },
+      { text: 'LampDrop 特設公式サイト', url: 'lampdrop/index.html', isExternal: false },
       { text: 'プライバシーポリシー', url: 'lampdrop-privacy.html', isExternal: false, isSecondary: true }
     ]
   },

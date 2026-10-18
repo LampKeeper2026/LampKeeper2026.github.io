@@ -14,7 +14,8 @@ Studio LampKeep（蒼灯機関）の公式ポータルサイトです。GitHub P
 
 2. **LampDrop：混沌迷宮の蒼き灯火 (LampDrop: Chaos Labyrinth)**
    - **ジャンル**: ゴシック・レトロアーケード落下ブロックパズル (Android / Web / Desktop)
-   - **特徴**: 『Prince of Chaos』の美学を継ぐ「繋がる魔導ランプ（ランタンクラスタ）」、1988年伝説的アーケードゲームの物理挙動＆FM音源風オリジナルチップチューン完全再現。3分スコアアタック「CHAOS BURST」モード搭載、深層6大迷宮背景、Bluetoothゲームパッド対応。
+   - **特徴**: 『Prince of Chaos』の美学を継ぐ「繋がる魔導ランプ（ランタンクラスタ）」、リアルタイム背景バトル演出、フルボーカル主題歌3分MV、1988年伝説的アーケードゲームの物理挙動完全再現。
+   - **個別特設ページ**: [https://lampkeeper2026.github.io/lampdrop/](https://lampkeeper2026.github.io/lampdrop/)
    - **ポリシー**: [lampdrop-privacy.html](lampdrop-privacy.html)
 
 3. **青空文庫＆文書AI朗読 (Aozora & Document AI Reader)**
@@ -29,7 +30,13 @@ Studio LampKeep（蒼灯機関）の公式ポータルサイトです。GitHub P
 ```
 .
 ├── index.html                  # 総合ポータルトップページ
+├── lampdrop/                   # LampDrop 特設公式サイト一式
+│   ├── index.html              # LampDrop 特設サイトトップ
+│   ├── img/                    # 高画質ゲーム画面・バトル演出画像
+│   ├── video/                  # シネマティック動画・エンディングMV
+│   └── audio/                  # サウンドトラック・BGM
 ├── blockdrop-privacy.html       # ブロックドロップ1988 プライバシーポリシー
+├── lampdrop-privacy.html        # LampDrop プライバシーポリシー
 ├── privacy.html                # 青空文庫＆文書AI朗読 プライバシーポリシー
 ├── app-ads.txt                 # Google AdMob 認証用必須ファイル
 ├── favicon.png                 # ファビコン
@@ -41,7 +48,7 @@ Studio LampKeep（蒼灯機関）の公式ポータルサイトです。GitHub P
 │   └── img/
 │       ├── brand/              # ロゴ・ブランドアイコン
 │       ├── poc/                # Prince of Chaos 画像・スクリーンショット
-│       ├── blockdrop/          # ブロックドロップ1988 スクリーンショット・アイコン
+│       ├── blockdrop/          # LampDrop スクリーンショット・アイコン
 │       └── novelreader/        # 小説AI朗読 スクリーンショット・アイコン
 └── novel-ai-reader/            # 小説AI朗読用 規約・ポリシーディレクトリ
 ```

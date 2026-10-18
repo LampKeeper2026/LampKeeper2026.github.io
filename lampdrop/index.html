@@ -1,0 +1,2678 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LampDrop (ランプドロップ) - 混沌迷宮の蒼き灯火 | Studio LampKeep 公式サイト</title>
+    <meta name="description" content="Studio LampKeepが贈る、ダークファンタジー×レトロアーケードパズル『LampDrop（ランプドロップ）』公式サイト。魔法ランプ連結ギミック、リアルタイム背景バトル演出、60fps完全ネイティブ動作。">
+    <meta name="keywords" content="LampDrop, ランプドロップ, Studio LampKeep, テトリスライク, パズルゲーム, Android, Prince of Chaos">
+    
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LampDrop - 混沌迷宮の蒼き灯火 | Studio LampKeep">
+    <meta property="og:description" content="魔導ランプを繋ぎ、深淵の怪異を斬り伏せろ！1988年アーケードの魂を宿したダークファンタジー・パズル。">
+    <meta property="og:image" content="img/battle_title.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #050811;
+            --bg-surface: rgba(13, 20, 36, 0.75);
+            --border-glow: rgba(0, 210, 255, 0.3);
+            --accent-cyan: #00d2ff;
+            --accent-glow: #38bdf8;
+            --accent-gold: #fbbf24;
+            --accent-crimson: #f43f5e;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --max-w: 1120px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Ambient Canvas Embers */
+        #embersCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(5, 8, 17, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.15);
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: #ffffff;
+            letter-spacing: 0.1em;
+        }
+
+        .brand-studio {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-left: 24px;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 90px 24px 70px;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 210, 255, 0.12);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.6rem;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            text-shadow: 0 0 40px rgba(0, 210, 255, 0.35);
+        }
+
+        .hero-subtitle {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 0.08em;
+            margin-bottom: 24px;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(2, 132, 199, 0.45);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(2, 132, 199, 0.65);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--accent-cyan);
+        }
+
+        .hero-preview {
+            position: relative;
+        }
+
+        .preview-frame {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 210, 255, 0.25);
+            border: 2px solid rgba(0, 210, 255, 0.35);
+            transform: perspective(1000px) rotateY(-4deg);
+            transition: transform 0.3s ease;
+        }
+
+        .preview-frame:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        }
+
+        .preview-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Lore & Story Section */
+        .section {
+            padding: 80px 24px;
+            max-width: var(--max-w);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.4rem;
+            color: #ffffff;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+        }
+
+        .story-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 40px 48px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-text h3 {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin-bottom: 18px;
+        }
+
+        .story-text p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            margin-bottom: 16px;
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 36px;
+        }
+
+        .char-card {
+            background: rgba(8, 14, 26, 0.9);
+            border: 1px solid rgba(0, 210, 255, 0.25);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .char-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 16px 36px rgba(0, 210, 255, 0.3);
+        }
+
+        .char-media {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .char-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .char-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .char-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+
+        .char-title {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.25rem;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .char-subtitle {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .char-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 14px;
+            flex-grow: 1;
+        }
+
+        .char-skill {
+            background: rgba(0, 210, 255, 0.08);
+            border-left: 3px solid var(--accent-cyan);
+            padding: 8px 12px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.82rem;
+            color: #e2e8f0;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-surface);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px 24px;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.2);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(0, 210, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .feature-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 210, 255, 0.25);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+            transition: transform 0.25s ease;
+            background: #000;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-cyan);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 12px 16px;
+            background: rgba(13, 20, 36, 0.95);
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Living Dungeon Stages Section */
+        .stage-showcase {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .stage-video-wrapper {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 210, 255, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 210, 255, 0.25);
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
+        .stage-video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .stage-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .stage-btn {
+            background: rgba(13, 20, 36, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 14px 18px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--text-primary);
+        }
+
+        .stage-btn:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(4px);
+            background: rgba(0, 210, 255, 0.1);
+        }
+
+        .stage-btn.active {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(90deg, rgba(0, 210, 255, 0.2) 0%, rgba(13, 20, 36, 0.95) 100%);
+            box-shadow: 0 4px 16px rgba(0, 210, 255, 0.25);
+        }
+
+        .stage-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            white-space: nowrap;
+        }
+
+        .stage-info {
+            flex-grow: 1;
+        }
+
+        .stage-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .stage-sub {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        /* Soundtrack Section */
+        .soundtrack-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .soundtrack-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .soundtrack-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .soundtrack-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .track-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .track-item {
+            background: rgba(8, 14, 26, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .track-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(4px);
+            background: rgba(0, 210, 255, 0.1);
+        }
+
+        .track-item.active {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(90deg, rgba(0, 210, 255, 0.18) 0%, rgba(8, 14, 26, 0.95) 100%);
+        }
+
+        .track-play-icon {
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+        }
+
+        .track-meta strong {
+            display: block;
+            color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .track-meta small {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .soundtrack-player-box {
+            background: rgba(8, 14, 26, 0.95);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Specs Section */
+        .specs-table-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specs-table th, .specs-table td {
+            padding: 16px 24px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .specs-table th {
+            width: 32%;
+            background: rgba(0, 210, 255, 0.05);
+            color: var(--accent-cyan);
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .specs-table td {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(0, 210, 255, 0.15);
+            background: #03050a;
+            padding: 48px 24px 32px;
+            margin-top: 60px;
+        }
+
+        .footer-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .copyright {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        /* ===================================================
+           Dual Combat Cards Section Styles
+           =================================================== */
+        .cards-overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .card-system-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-system-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), transparent);
+        }
+
+        .card-system-box.boss-side::before {
+            background: linear-gradient(90deg, var(--accent-crimson), transparent);
+        }
+
+        .card-side-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .tag-hero {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 210, 255, 0.35);
+        }
+
+        .tag-boss {
+            background: rgba(244, 63, 94, 0.15);
+            color: var(--accent-crimson);
+            border: 1px solid rgba(244, 63, 94, 0.35);
+        }
+
+        .card-box-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .card-box-desc {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .evolution-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .evolution-item {
+            background: rgba(8, 14, 26, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .evolution-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(4px);
+            background: rgba(0, 210, 255, 0.08);
+        }
+
+        .card-system-box.boss-side .evolution-item:hover {
+            border-color: var(--accent-crimson);
+            background: rgba(244, 63, 94, 0.08);
+        }
+
+        .evo-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .evo-badge.cyan {
+            background: rgba(0, 210, 255, 0.18);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+        }
+
+        .evo-badge.crimson {
+            background: rgba(244, 63, 94, 0.18);
+            color: var(--accent-crimson);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+        }
+
+        .evo-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .evo-note {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+
+        /* Card Mechanics Showcase (Pinch & Slash) */
+        .card-mechanics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .mechanic-card {
+            background: rgba(13, 20, 36, 0.9);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mechanic-card.alert-card {
+            border-color: rgba(244, 63, 94, 0.35);
+        }
+
+        .mechanic-media {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .mechanic-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .mechanic-card:hover .mechanic-media img {
+            transform: scale(1.03);
+        }
+
+        .mechanic-body {
+            padding: 22px;
+            flex-grow: 1;
+        }
+
+        .mechanic-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mechanic-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* Real Device Battle Showcase Grid */
+        .battle-screen-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .battle-screen-item {
+            background: rgba(8, 14, 26, 0.95);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .battle-screen-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 16px 36px rgba(0, 210, 255, 0.25);
+        }
+
+        .battle-screen-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .battle-screen-caption {
+            padding: 12px 14px;
+            background: rgba(13, 20, 36, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .battle-screen-caption strong {
+            display: block;
+            color: #ffffff;
+            font-size: 0.88rem;
+            margin-bottom: 2px;
+        }
+
+        .battle-screen-caption span {
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+        }
+
+        /* ===================================================
+           Living Flame Animation Section Styles
+           =================================================== */
+        .flame-hero-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            margin-bottom: 36px;
+        }
+
+        .flame-strip-box {
+            background: rgba(5, 8, 17, 0.95);
+            border: 1px solid rgba(0, 210, 255, 0.35);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            margin: 24px 0;
+            box-shadow: inset 0 0 30px rgba(0, 210, 255, 0.08);
+        }
+
+        .flame-strip-box img {
+            max-width: 100%;
+            height: auto;
+            image-rendering: pixelated;
+            border-radius: 8px;
+            box-shadow: 0 0 24px rgba(0, 210, 255, 0.3);
+        }
+
+        .flame-cycle-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .flame-step-card {
+            background: rgba(8, 14, 26, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+
+        .flame-step-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            background: rgba(0, 210, 255, 0.12);
+        }
+
+        .flame-step-card.peak {
+            border-color: var(--accent-gold);
+            background: rgba(251, 191, 36, 0.1);
+            box-shadow: 0 0 16px rgba(251, 191, 36, 0.2);
+        }
+
+        .flame-step-num {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 4px;
+        }
+
+        .flame-step-card.peak .flame-step-num {
+            color: var(--accent-gold);
+        }
+
+        .flame-step-name {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .flame-step-desc {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .flame-features-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .flame-tech-card {
+            background: rgba(8, 14, 26, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .flame-tech-card h4 {
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flame-tech-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 40px;
+                text-align: center;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .cta-group {
+                justify-content: center;
+            }
+            .preview-frame {
+                transform: none;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .story-card {
+                grid-template-columns: 1fr;
+                padding: 32px 24px;
+            }
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+            .cards-overview-grid {
+                grid-template-columns: 1fr;
+            }
+            .card-mechanics-grid {
+                grid-template-columns: 1fr;
+            }
+            .battle-screen-grid {
+                grid-template-columns: 1fr;
+            }
+            .flame-cycle-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .flame-features-row {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .stage-showcase {
+                grid-template-columns: 1fr;
+                padding: 24px 16px;
+            }
+            .soundtrack-card {
+                grid-template-columns: 1fr;
+                padding: 24px 16px;
+            }
+            .leaderboard-header-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .leaderboard-cta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Online Leaderboard */
+        .leaderboard-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .leaderboard-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 16px;
+        }
+
+        .leaderboard-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lead-tab-btn {
+            background: rgba(13, 20, 36, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-secondary);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .lead-tab-btn.active {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
+        }
+
+        .lead-refresh-btn {
+            background: transparent;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            color: var(--accent-gold);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .lead-refresh-btn:hover {
+            background: rgba(251, 191, 36, 0.15);
+            border-color: var(--accent-gold);
+        }
+
+        .lead-table-wrap {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(8, 12, 22, 0.6);
+        }
+
+        .lead-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .lead-table th {
+            background: rgba(16, 24, 40, 0.9);
+            color: var(--accent-cyan);
+            padding: 14px 18px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-align: left;
+            border-bottom: 2px solid rgba(0, 210, 255, 0.3);
+            white-space: nowrap;
+        }
+
+        .lead-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .lead-table tr:hover td {
+            background: rgba(0, 210, 255, 0.06);
+        }
+
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+        }
+
+        .rank-gold {
+            background: linear-gradient(135deg, #ffd700, #b8860b);
+            color: #000;
+            box-shadow: 0 0 14px rgba(255, 215, 0, 0.5);
+        }
+
+        .rank-silver {
+            background: linear-gradient(135deg, #e6e6e6, #8c8c8c);
+            color: #000;
+            box-shadow: 0 0 10px rgba(200, 200, 200, 0.4);
+        }
+
+        .rank-bronze {
+            background: linear-gradient(135deg, #cd7f32, #8b4513);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(205, 127, 50, 0.4);
+        }
+
+        .rank-other {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+        }
+
+        .score-val {
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.05em;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+        }
+
+        .level-badge.ex {
+            background: rgba(255, 64, 255, 0.2);
+            color: #ff64ff;
+            border-color: rgba(255, 64, 255, 0.5);
+            box-shadow: 0 0 8px rgba(255, 64, 255, 0.3);
+        }
+
+        .leaderboard-cta {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: linear-gradient(90deg, rgba(0, 210, 255, 0.12) 0%, rgba(13, 20, 36, 0.9) 100%);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* Boss Curses & Difficulty Section */
+        .curses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .curse-card {
+            background: linear-gradient(145deg, rgba(20, 10, 30, 0.85), rgba(10, 15, 28, 0.95));
+            border: 1px solid rgba(244, 63, 94, 0.35);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curse-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(244, 63, 94, 0.75);
+            box-shadow: 0 12px 36px rgba(244, 63, 94, 0.25);
+        }
+
+        .curse-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f43f5e, #a855f7);
+        }
+
+        .curse-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .curse-title {
+            font-family: 'Cinzel', 'Noto Sans JP', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fca5a5;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .curse-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* Ending MV Showcase */
+        .vocal-mv-box {
+            background: linear-gradient(135deg, rgba(12, 18, 36, 0.95), rgba(8, 12, 24, 0.98));
+            border: 2px solid rgba(0, 210, 255, 0.4);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 210, 255, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .vocal-mv-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .vocal-mv-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .vocal-mv-video-wrap {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            background: #000;
+        }
+
+        .vocal-mv-video-wrap video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .lyrics-card {
+            background: rgba(5, 10, 20, 0.8);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+        }
+
+        .lyrics-verse {
+            font-size: 0.92rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .lyrics-chorus {
+            font-size: 0.98rem;
+            line-height: 1.9;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="embersCanvas"></canvas>
+
+<div class="content-layer">
+    <!-- Header -->
+    <header>
+        <div class="nav-inner">
+            <a href="index.html" class="brand-logo">
+                <img src="img/icon.png" alt="LampDrop Icon">
+                <div>
+                    <div class="brand-title">LampDrop</div>
+                    <div class="brand-studio">Studio LampKeep</div>
+                </div>
+            </a>
+            <nav>
+                <a href="https://lampkeeper2026.github.io/" target="_blank" rel="noopener" style="color: var(--accent-gold); font-weight: 600;">✦ 公式ポータル</a>
+                <a href="#vocal-mv" style="color: var(--accent-cyan); font-weight: 700;">🎵 歌姫ボーカルMV</a>
+                <a href="#curses" style="color: var(--accent-crimson); font-weight: 700;">💀 ボス呪い・難易度</a>
+                <a href="#premium" style="color: var(--accent-gold); font-weight: 700;">★ プレミアムパス (作業用MV)</a>
+                <a href="#story">世界観</a>
+                <a href="#cards">左右戦闘カード</a>
+                <a href="#flame-anim">生ける蒼炎</a>
+                <a href="#features">特徴</a>
+                <a href="#gallery">画面写真</a>
+                <a href="#dungeons">動画背景 (Flow)</a>
+                <a href="#soundtrack">BGM試聴</a>
+                <a href="#leaderboard" style="color: var(--accent-gold); font-weight: 700;">🏆 全国ランキング</a>
+                <a href="#specs">スペック</a>
+                <a href="https://lampkeeper2026.github.io/lampdrop-privacy.html" style="color: var(--accent-cyan); font-weight: 600;">プライバシーポリシー</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">
+                <span>✦</span> 2026 NEW RELEASE | NATIVE 60FPS
+            </div>
+            <h1 class="hero-title" style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
+                <img src="img/title_logo_anim.gif" alt="LAMP DROP" style="max-width: 380px; width: 100%; height: auto; filter: drop-shadow(0 0 28px rgba(0, 210, 255, 0.75)); margin-bottom: 4px;">
+                <span style="font-size: 2.2rem; font-weight: 900; letter-spacing: 0.1em; background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LAMP DROP</span>
+            </h1>
+            <div class="hero-subtitle">混沌迷宮の蒼き灯火 — CHAOS LABYRINTH 1988 —</div>
+            <p class="hero-desc">
+                魔導ランプを繋ぎ、深淵の怪異を斬り伏せろ！<br>
+                1988年アーケード直系の剃刀のような操作性と、中世ゴシック・ダークファンタジー世界が融合した新世代ブロックパズル。<br>
+                <strong>Google Flow生成のシネマティック動画が60fpsで蠢く迷宮</strong>を舞台に、<strong>12×20の拡大戦場</strong>と<strong>神聖十字架レリック</strong>が降臨。
+            </p>
+            <div class="cta-group">
+                <a href="https://github.com/LampKeeper2026/block-drop-1988" target="_blank" rel="noopener" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    GitHub リポジトリ
+                </a>
+                <a href="https://lampkeeper2026.github.io/lampdrop-privacy.html" class="btn-secondary">
+                    プライバシーポリシー
+                </a>
+            </div>
+        </div>
+        <div class="hero-preview">
+            <div class="preview-frame">
+                <video id="heroVideo" autoplay loop muted playsinline src="video/opening_mixed.mp4" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+                <div class="preview-badge" style="position: absolute; bottom: 14px; left: 14px; background: rgba(5, 8, 17, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 8px; padding: 6px 14px; font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
+                    <span>✦</span> 起動オープニング (Flow × Flow Music)
+                </div>
+                <button id="heroSoundBtn" onclick="toggleHeroSound()" style="position: absolute; bottom: 14px; right: 14px; background: rgba(5, 8, 17, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; color: var(--accent-gold); font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); transition: all 0.2s ease;">
+                    🔊 音声ON
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story & Characters -->
+    <section class="section" id="story">
+        <div class="section-header">
+            <div class="section-tag">STORY & LORE</div>
+            <h2 class="section-title">混沌の迷宮と蒼炎の剣士</h2>
+        </div>
+        <div class="story-card">
+            <div class="story-text">
+                <h3>深淵に沈みし王国を照らせ</h3>
+                <p>
+                    古の儀式によって闇の底へと没した「混沌の迷宮（Prince of Chaos）」。
+                    迷宮の奥底には、世界を蝕む異形の魔物たちが蠢いていた。
+                </p>
+                <p>
+                    亡国の第三王子<strong>リュカ</strong>は、相棒の黒猫<strong>クロ</strong>と共に、
+                    魔導の光を放つ古代のランプを手に深淵へと踏み込む。
+                </p>
+                <p>
+                    光を繋ぎ、闇の回廊を封鎖して一筋の活路を切り拓け——。
+                </p>
+            </div>
+        </div>
+
+        <div class="characters-grid">
+            <!-- Lucas -->
+            <div class="char-card">
+                <div class="char-media">
+                    <video autoplay loop muted playsinline src="video/char_lucas.mp4"></video>
+                </div>
+                <div class="char-body">
+                    <div class="char-tag">Protagonist</div>
+                    <h3 class="char-title">リュカ (Lucas)</h3>
+                    <div class="char-subtitle">第三王子 / 蒼炎剣士</div>
+                    <p class="char-desc">
+                        滅びし王国の第三王子。古代の魔導ランプから引き出された蒼炎を剣に宿し、迷宮の闇を切り裂く。
+                    </p>
+                    <div class="char-skill">
+                        <strong>固有戦技「蒼炎一閃」</strong><br>
+                        ライン消去時に鋭い居合い斬りを放ち、敵モンスターのHPを削る。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kuro -->
+            <div class="char-card">
+                <div class="char-media">
+                    <video autoplay loop muted playsinline src="video/char_kuro.mp4"></video>
+                </div>
+                <div class="char-body">
+                    <div class="char-tag">Familiar</div>
+                    <h3 class="char-title">クロ (Kuro)</h3>
+                    <div class="char-subtitle">相棒 / 金眼の使い魔黒猫</div>
+                    <p class="char-desc">
+                        王子の足元に寄り添う謎多き黒猫。暗闇で黄金に光る瞳で魔導フィラメントの結節点を感知する。
+                    </p>
+                    <div class="char-skill">
+                        <strong>魔力共鳴「フィラメント感知」</strong><br>
+                        ブロック設置時にマナの火花を散らし、隣接ランプとの連結をサポート。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skeleton Knight -->
+            <div class="char-card">
+                <div class="char-media">
+                    <video autoplay loop muted playsinline src="video/char_skeleton_knight.mp4"></video>
+                </div>
+                <div class="char-body">
+                    <div class="char-tag">Labyrinth Boss</div>
+                    <h3 class="char-title">骸骨騎士 (Skeleton Knight)</h3>
+                    <div class="char-subtitle">納骨回廊の守護者 / B1Fボス</div>
+                    <p class="char-desc">
+                        古の黒鉄甲冑を纏い、蒼き怨嗟の炎を眼窩に灯した不死戦士。巨大な処刑剣で侵入者を阻む。
+                    </p>
+                    <div class="char-skill">
+                        <strong>怨嗟の一撃「重装斬撃」</strong><br>
+                        プレイヤーの積みが高くなると威圧感が増し、落下速度にプレッシャーを与える。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dual Combat Cards Section -->
+    <section class="section" id="cards">
+        <div class="section-header">
+            <div class="section-tag">DUAL COMBAT CARDS & BOSS PROGRESSION</div>
+            <h2 class="section-title">左右戦闘カードシステム & 階層ボス進化</h2>
+            <p style="color: var(--text-secondary); max-width: 720px; margin: 12px auto 0; font-size: 0.95rem;">
+                パズル盤面の両サイドに配置されたリアルタイム戦闘カードが、ライン消去やブロックの積み状況と完全同期。10レベルごとに迷宮深層へと進軍し、敵味方の進化と極限の死闘が展開します。
+            </p>
+        </div>
+
+        <!-- 2 Columns: Lucas Progression vs Floor Boss Progression -->
+        <div class="cards-overview-grid">
+            <!-- Left: Lucas Progression -->
+            <div class="card-system-box">
+                <div class="card-side-tag tag-hero">
+                    <span>⚔️</span> LEFT HUD ・ HERO
+                </div>
+                <h3 class="card-box-title">リュカ (Lucas) 階層進化と覚醒</h3>
+                <p class="card-box-desc">
+                    プレイヤーの分身である蒼炎剣士リュカ。深層（10レベル毎）へと進むにつれ、より強力で神々しい甲冑と魔導オーラを纏う6形態へと進化を遂げます。
+                </p>
+                <div class="evolution-list">
+                    <div class="evolution-item">
+                        <span class="evo-badge cyan">B1F</span>
+                        <span class="evo-name">新米剣士 (Novice Swordsman)</span>
+                        <span class="evo-note">初期装備と蒼き灯火の剣</span>
+                    </div>
+                    <div class="evolution-item">
+                        <span class="evo-badge cyan">B2F</span>
+                        <span class="evo-name">歴戦の戦士 (Hardened Warrior)</span>
+                        <span class="evo-note">鍛鉄甲冑と安定した剣技</span>
+                    </div>
+                    <div class="evolution-item">
+                        <span class="evo-badge cyan">B3F</span>
+                        <span class="evo-name">聖堂ルーンナイト (Rune Knight)</span>
+                        <span class="evo-note">古代ルーン文字を刻印した銀甲</span>
+                    </div>
+                    <div class="evolution-item">
+                        <span class="evo-badge cyan">B4F</span>
+                        <span class="evo-name">鋼鉄の先陣 (Iron Vanguard)</span>
+                        <span class="evo-note">地下炉の蒸気熱に耐える重装甲</span>
+                    </div>
+                    <div class="evolution-item">
+                        <span class="evo-badge cyan">B5F</span>
+                        <span class="evo-name">光輝のアルコン (Radiant Archon)</span>
+                        <span class="evo-note">虚空を照らす蒼光のマントと双翼</span>
+                    </div>
+                    <div class="evolution-item" style="border-color: rgba(251, 191, 36, 0.4); background: rgba(251, 191, 36, 0.08);">
+                        <span class="evo-badge" style="background: rgba(251, 191, 36, 0.2); color: var(--accent-gold); border: 1px solid rgba(251, 191, 36, 0.5);">FINAL</span>
+                        <span class="evo-name" style="color: var(--accent-gold);">神話の救世主 (Mythic Champion)</span>
+                        <span class="evo-note">混沌を討滅する究極の蒼炎体</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Labyrinth Bosses & Chaos Deity -->
+            <div class="card-system-box boss-side">
+                <div class="card-side-tag tag-boss">
+                    <span>💀</span> RIGHT HUD ・ BOSSES
+                </div>
+                <h3 class="card-box-title">各階層2段ボス ＆ 混沌神5段形態変化</h3>
+                <p class="card-box-desc">
+                    B1F〜B5Fは各階層「中ボス(Lv1-7)」「強ボス(Lv8-10)」の2段構え。そして最深層FINAL FLOORでは、元凶たる「混沌の神」がLv上昇に伴い5段階の恐るべき形態変化を現出させます。
+                </p>
+                <div class="evolution-list">
+                    <div class="evolution-item">
+                        <span class="evo-badge crimson">B1F</span>
+                        <span class="evo-name">スケルトンスカウト ➔ 骸骨騎士</span>
+                        <span class="evo-note">Lv1-7 中ボス / Lv8-10 強ボス</span>
+                    </div>
+                    <div class="evolution-item">
+                        <span class="evo-badge crimson">B2F</span>
+                        <span class="evo-name">ポイズンスライム ➔ 深淵のゴルゴン</span>
+                        <span class="evo-note">Lv1-7 中ボス / Lv8-10 強ボス</span>
+                    </div>
+                    <div class="evolution-item">
+                        <span class="evo-badge crimson">B3F</span>
+                        <span class="evo-name">幽鬼スペクター ➔ 納骨堂リッチキング</span>
+                        <span class="evo-note">Lv1-7 中ボス / Lv8-10 強ボス</span>
+                    </div>
+                    <div class="evolution-item">
+                        <span class="evo-badge crimson">B4F</span>
+                        <span class="evo-name">機巧オートマタ ➔ 溶鉱炉ゴーレム</span>
+                        <span class="evo-note">Lv1-7 中ボス / Lv8-10 強ボス</span>
+                    </div>
+                    <div class="evolution-item">
+                        <span class="evo-badge crimson">B5F</span>
+                        <span class="evo-name">ナイトストーカー ➔ 虚空の吸血鬼卿</span>
+                        <span class="evo-note">Lv1-7 中ボス / Lv8-10 強ボス</span>
+                    </div>
+                    <div class="evolution-item" style="border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.1);">
+                        <span class="evo-badge crimson">FINAL</span>
+                        <span class="evo-name" style="color: #fca5a5;">混沌の神 (5段階連続形態変化)</span>
+                        <span class="evo-note">封印の核 ➔ 覚醒 ➔ 暗黒竜 ➔ 魔王 ➔ 真・混沌神</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mechanics: Line Clear Slash FX & Pinch Warning State -->
+        <div class="card-mechanics-grid">
+            <!-- Slash Damage Reaction -->
+            <div class="mechanic-card">
+                <div class="mechanic-media">
+                    <img src="img/card_battle_slash.png" alt="ライン消去 蒼炎居合い斬りエフェクト">
+                </div>
+                <div class="mechanic-body">
+                    <div class="mechanic-title">
+                        <span style="color: var(--accent-cyan);">✦</span> ライン消去連動：蒼炎一閃＆ダメージ数値
+                    </div>
+                    <p class="mechanic-desc">
+                        ラインを消すと即座に敵カード上に鋭い蒼炎の太刀筋エフェクトが走り、敵カードが被弾ショックで激しく振動。「CRITICAL 1000!」などのダメージ数字が舞い上がり、ボスのHPバーを削り取ります。テトリス（4ライン同時消去）時は特大の閃光とクリティカルが発生！
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pinch Warning State -->
+            <div class="mechanic-card alert-card">
+                <div class="mechanic-media">
+                    <img src="img/card_battle_pinch.png" alt="ピンチ状態 赤枠警告＆苦悶表情">
+                </div>
+                <div class="mechanic-body">
+                    <div class="mechanic-title">
+                        <span style="color: var(--accent-crimson);">⚠️</span> 積み上がりピンチ：苦悶の表情＆深紅警告オーラ
+                    </div>
+                    <p class="mechanic-desc">
+                        ブロックが危険域（12段以上）まで積み上がると、左側のリュカカードが通常から「苦痛に耐え、息を呑む苦悶の表情」へとリアルタイムに急変！カード外周が深紅の警告パルスで激しく発光し、プレイヤーに直感的な危機感と緊迫感を与えます。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real Device Card Battle Showcase -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase;">REAL-DEVICE BATTLE MOMENTS</div>
+            <h3 style="font-size: 1.3rem; color: #ffffff; font-weight: 700;">実機で繰り広げられる階層死闘の瞬間</h3>
+        </div>
+        <div class="battle-screen-grid">
+            <div class="battle-screen-item">
+                <img src="img/card_battle_b1f.png" alt="B1F 探索開始">
+                <div class="battle-screen-caption">
+                    <strong>B1F 納骨回廊：探索開始</strong>
+                    <span>初期リュカ vs スケルトンスカウト (Lv1)</span>
+                </div>
+            </div>
+            <div class="battle-screen-item">
+                <img src="img/card_battle_strong.png" alt="B1F 強ボス 骸骨騎士">
+                <div class="battle-screen-caption">
+                    <strong>B1F 強ボス：重装骸骨騎士</strong>
+                    <span>Lv7-10で出現する黒鉄の大剣士</span>
+                </div>
+            </div>
+            <div class="battle-screen-item">
+                <img src="img/card_battle_knight.png" alt="B3F ルーンナイト進化">
+                <div class="battle-screen-caption">
+                    <strong>B3F 聖堂：ルーンナイト進化</strong>
+                    <span>銀甲を纏うリュカ vs 機巧オートマタ</span>
+                </div>
+            </div>
+            <div class="battle-screen-item">
+                <img src="img/card_battle_drake.png" alt="B5F 光輝アルコン進化">
+                <div class="battle-screen-caption">
+                    <strong>B5F 逆さ塔：光輝のアルコン</strong>
+                    <span>虚空の翼を得たリュカ vs アストラルドレイク</span>
+                </div>
+            </div>
+            <div class="battle-screen-item">
+                <img src="img/card_battle_chaos1.png" alt="FINAL 混沌神 第1形態">
+                <div class="battle-screen-caption">
+                    <strong>FINAL FLOOR：混沌神 第1形態</strong>
+                    <span>封印の核（Sealed Core）覚醒前夜</span>
+                </div>
+            </div>
+            <div class="battle-screen-item">
+                <img src="img/card_battle_chaos5.png" alt="FINAL 混沌神 第5形態">
+                <div class="battle-screen-caption">
+                    <strong>FINAL FLOOR：真・混沌神 最終決戦</strong>
+                    <span>深淵の神話を打ち砕く第5形態との死闘</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Living Flame Animation Section -->
+    <section class="section" id="flame-anim">
+        <div class="section-header">
+            <div class="section-tag">LIVING FLAME ENGINE</div>
+            <h2 class="section-title">生ける蒼炎 6コマ有機アニメーション</h2>
+            <p style="color: var(--text-secondary); max-width: 720px; margin: 12px auto 0; font-size: 0.95rem;">
+                Nano Banana 2が描く超高精細魔導ランプ。ブロック内部で燃ゆる蒼き灯火は、ただの静止画ではなく6コマの有機サイクルで絶え間なく呼吸し、妖しく開花（ひらかる）を繰り返します。
+            </p>
+        </div>
+
+        <div class="flame-hero-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+                <div>
+                    <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); letter-spacing: 0.1em; text-transform: uppercase;">✦ 6-Frame Flame Cycle Strip</span>
+                    <h3 style="font-size: 1.35rem; color: #ffffff; font-weight: 800; margin-top: 4px;">蒼炎と碧炎の呼吸・揺らぎ・開花コマ展開</h3>
+                </div>
+                <div style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 600; background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.3); padding: 4px 12px; border-radius: 999px;">
+                    60FPS / 6フレーム周期ループ
+                </div>
+            </div>
+
+            <!-- Frame Strip Image Preview -->
+            <div class="flame-strip-box">
+                <img src="img/flame_multi_preview.png" alt="生ける蒼炎 6コマアニメーション展開プレビュー">
+                <div style="display: flex; justify-content: space-around; max-width: 600px; margin: 12px auto 0; font-size: 0.78rem; color: var(--text-secondary);">
+                    <span>Frame 0 (休止)</span>
+                    <span>Frame 1 (微動)</span>
+                    <span>Frame 2 (膨張)</span>
+                    <span style="color: var(--accent-gold); font-weight: 700;">Frame 3 (最大開花)</span>
+                    <span>Frame 4 (揺らぎ)</span>
+                    <span>Frame 5 (収束)</span>
+                </div>
+            </div>
+
+            <!-- 6 Frame Steps Grid -->
+            <div class="flame-cycle-grid">
+                <div class="flame-step-card">
+                    <div class="flame-step-num">FRAME 0</div>
+                    <div class="flame-step-name">休止</div>
+                    <div class="flame-step-desc">基底状態。マナ結晶の核に光を蓄え静かに灯る</div>
+                </div>
+                <div class="flame-step-card">
+                    <div class="flame-step-num">FRAME 1</div>
+                    <div class="flame-step-name">微動</div>
+                    <div class="flame-step-desc">右へ2px横揺れ。炎の輝度が10%上昇し揺らぎ開始</div>
+                </div>
+                <div class="flame-step-card">
+                    <div class="flame-step-num">FRAME 2</div>
+                    <div class="flame-step-name">開花兆候</div>
+                    <div class="flame-step-desc">炎の火尖が放射状に広がりスケールが12%拡大</div>
+                </div>
+                <div class="flame-step-card peak">
+                    <div class="flame-step-num">FRAME 3</div>
+                    <div class="flame-step-name">最大開花 (ひらかる)</div>
+                    <div class="flame-step-desc">コアが白熱し、+22%放射状に花開く。輝度+38%</div>
+                </div>
+                <div class="flame-step-card">
+                    <div class="flame-step-num">FRAME 4</div>
+                    <div class="flame-step-name">余韻・揺らぎ</div>
+                    <div class="flame-step-desc">左へ大きくたなびき、残光のオーラを揺らす</div>
+                </div>
+                <div class="flame-step-card">
+                    <div class="flame-step-num">FRAME 5</div>
+                    <div class="flame-step-name">収束</div>
+                    <div class="flame-step-desc">穏やかに中心へ収束し、再びFRAME 0へと巡る</div>
+                </div>
+            </div>
+
+            <!-- Technical Architecture Highlights -->
+            <div class="flame-features-row">
+                <div class="flame-tech-card">
+                    <h4><span>🔒</span> 完全外枠ロック設計</h4>
+                    <p>重厚な鍛鉄フレームと真鍮連結パイプは1ピクセルの狂いもなく100%固定。テトロミノとして隣接ランプと連結した際の美しいパイプ結合美を崩さず、内部の炎のみが有機的に躍動します。</p>
+                </div>
+                <div class="flame-tech-card">
+                    <h4><span>⚡</span> ゼロ・アロケーション描画</h4>
+                    <p>全7色 × 16接続マスク × 6コマ ＝ 計672パターンの高精細ビットマップを起動時にメモリ先読み展開（合計約11MB）。実行時の描画コストは0.02msのポインタ参照のみで、GCフリー60fpsを死守。</p>
+                </div>
+                <div class="flame-tech-card">
+                    <h4><span>👁️</span> 盤面・落下・NEXT完全同期</h4>
+                    <p>フィールド内に固定された積みブロックだけでなく、操作中の落下ピース、右側HUDのNEXT予告枠内のランプも全て共通のグローバルタイマーで美しく同期して呼吸します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boss Curses & Difficulty System Section -->
+    <section class="section" id="curses">
+        <div class="section-header">
+            <div class="section-tag" style="background: rgba(244, 63, 94, 0.15); border-color: rgba(244, 63, 94, 0.5); color: #fca5a5;">NEW FEATURE ・ BOSS ATTACK & DIFFICULTY</div>
+            <h2 class="section-title">深淵ボスの暗黒呪縛システム ＆ 難易度解放</h2>
+            <p style="color: var(--text-secondary); max-width: 720px; margin: 12px auto 0; font-size: 1rem;">
+                迷宮の守護者たちは静かに討たれるのを待たない——。<br>
+                階層が深まるにつれ、プレイヤーの視界や操作を狂わせる「4大暗黒呪縛」と「極限カタクリズム」が襲来。<br>
+                さらに、迷宮を一度でも制覇した者のみが挑める「難易度解放システム」を実装！
+            </p>
+        </div>
+
+        <!-- 4 Great Curses Grid -->
+        <div class="curses-grid">
+            <div class="curse-card">
+                <div class="curse-icon">🌫️</div>
+                <div class="curse-title">
+                    <span>霧の帳</span>
+                    <small style="color: var(--accent-cyan); font-size: 0.75rem;">(ABYSSAL MIST)</small>
+                </div>
+                <p class="curse-desc">
+                    盤面中央に渦巻く漆黒の霧が立ち込め、落下中のミノや底面のブロックの視界を遮断。記憶力と直感の配置が試されます。
+                </p>
+            </div>
+
+            <div class="curse-card">
+                <div class="curse-icon">⏳</div>
+                <div class="curse-title">
+                    <span>時間断層</span>
+                    <small style="color: var(--accent-gold); font-size: 0.75rem;">(CHRONO WARP)</small>
+                </div>
+                <p class="curse-desc">
+                    重力法則が崩壊。ミノの落下速度が超スローから急激な超音速落下へとランダムに乱高下し、リズムを強制撹乱します。
+                </p>
+            </div>
+
+            <div class="curse-card">
+                <div class="curse-icon">👁️‍🗨️</div>
+                <div class="curse-title">
+                    <span>眼封じの印</span>
+                    <small style="color: #c084fc; font-size: 0.75rem;">(DEMONIC BLINDFOLD)</small>
+                </div>
+                <p class="curse-desc">
+                    右上の「NEXTブロック予告枠」が禍々しい封印呪層で覆われ、次のミノの形状が「SEALED ?」として完全不可視化！
+                </p>
+            </div>
+
+            <div class="curse-card">
+                <div class="curse-icon">⛓️</div>
+                <div class="curse-title">
+                    <span>破滅の封鎖</span>
+                    <small style="color: var(--accent-crimson); font-size: 0.75rem;">(SEALED ROW)</small>
+                </div>
+                <p class="curse-desc">
+                    指定された段が怨嗟の鎖で縛られ、ブロックを一列揃えても消去不能に！解除カウントを待つか神聖破呪で断ち切れ！
+                </p>
+            </div>
+        </div>
+
+        <!-- Counterplay & Difficulty Unlock -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+            <!-- Holy Purge Mechanic -->
+            <div style="background: rgba(13, 20, 36, 0.85); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 16px; padding: 28px;">
+                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 210, 255, 0.15); border: 1px solid rgba(0, 210, 255, 0.4); padding: 4px 12px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 14px;">
+                    ✦ カウンタープレイ
+                </div>
+                <h3 style="font-family: 'Cinzel', 'Noto Sans JP', serif; font-size: 1.25rem; color: #ffffff; margin-bottom: 10px;">
+                    ライン消去連動「破呪（Holy Purge）」
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 14px;">
+                    敵の攻撃をただ耐えるだけではありません。1〜2ライン消去で呪縛の持続時間を劇的に短縮。そして<strong>4ライン同時消去（TETRIS）</strong>を叩き込むと、神聖な閃光とともに<strong>【破呪 (HOLY PURGE)】</strong>が発動し、盤面全体のすべての呪いが一瞬で吹き飛びます！
+                </p>
+                <div style="display: flex; gap: 10px; font-size: 0.82rem; color: var(--accent-cyan); font-weight: 600;">
+                    <span>✨ 1ライン消去: -1.0秒</span>
+                    <span>✨ 2ライン消去: -2.5秒</span>
+                    <span>⚡ TETRIS消去: 即時完全解呪</span>
+                </div>
+            </div>
+
+            <!-- 1-Clear Locked Difficulty Selector -->
+            <div style="background: rgba(13, 20, 36, 0.85); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 16px; padding: 28px;">
+                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.4); padding: 4px 12px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; color: var(--accent-gold); margin-bottom: 14px;">
+                    👑 クリア者限定解放
+                </div>
+                <h3 style="font-family: 'Cinzel', 'Noto Sans JP', serif; font-size: 1.25rem; color: #ffffff; margin-bottom: 10px;">
+                    1回クリア必須・難易度選択システム
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 14px;">
+                    初回プレイ時は理不尽な死を防ぐため<strong>「初級（EASY）」に完全固定</strong>（タップすると警告振動と案内トーストを表示）。迷宮を一度でも完全制覇（1-Clear）した真の勇者のみに、手応え十分の<strong>「中級 (NORMAL)」</strong>および地獄の複合呪縛が乱れ飛ぶ<strong>「混沌 (CHAOS)」</strong>が解禁されます。
+                </p>
+                <div style="display: flex; gap: 10px; font-size: 0.82rem; font-weight: 700;">
+                    <span style="color: #4ade80;">✦ 初級 (EASY)</span>
+                    <span style="color: var(--accent-gold);">✦ 中級 (NORMAL)</span>
+                    <span style="color: var(--accent-crimson);">✦ 混沌 (CHAOS)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="section" id="features">
+        <div class="section-header">
+            <div class="section-tag">KEY FEATURES</div>
+            <h2 class="section-title">革新的なゲームプレイ要素</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(13, 20, 36, 0.95), rgba(8, 14, 26, 0.95)); border: 1px solid rgba(0, 210, 255, 0.4);">
+                <div style="margin-bottom: 16px;">
+                    <div style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px;">✦ Nano Banana 2 High-Precision AI Visuals</div>
+                    <h3 class="feature-title" style="margin-bottom: 6px;">超高精細ゴシック・魔導ランプブロック全面刷新</h3>
+                    <p class="feature-desc" style="margin-bottom: 0;">
+                        最新生成AIモデル「Nano Banana 2」によって全7種のブロック意匠を完全再生成。重厚な鍛鉄フィリグリー、古のルーン刻印、内部で妖しく脈動するマナ結晶核、そして隣接ランプと直結する真鍮魔導パイプを極限のディテールで実装。さらにブロック内部の炎は6コマ有機アニメーションで絶え間なく呼吸し開花します。
+                    </p>
+                </div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(0, 210, 255, 0.25); background: rgba(5, 8, 17, 0.9); padding: 14px; text-align: center;">
+                    <img src="img/preview_all_7_blocks.png" alt="Nano Banana 2 Blocks 7 Colors" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0, 210, 255, 0.3);">
+                    <div style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 10px;">
+                        全7色（蒼灯 / 緋楔 / 聖緑 / 秘術藍 / 硝子琥珀 / 混沌紫 / 暁光金）のNano Banana 2生成マスターレリック
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(8, 20, 42, 0.95), rgba(5, 12, 28, 0.95)); border: 1px solid rgba(0, 210, 255, 0.5); box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);">
+                <div style="margin-bottom: 6px;">
+                    <div style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px;">✦ Google Flow Cinematic Engine</div>
+                    <h3 class="feature-title" style="margin-bottom: 6px;">Google Flow生成 6大迷宮シネマティック動画背景（完全シームレスループ）</h3>
+                    <p class="feature-desc" style="margin-bottom: 0;">
+                        ゲーム中の背景は静止画ではなく、Google Flowによって生成された超高精細シネマティック動画が常時ループ。Android TextureView ＋ MediaCodecハードウェアデコーダによる60fps完全描画により、盤面の背後で青き灯火が揺らめき、石柱の間を漂う霧がリアルタイムに息づきます。階層進行（B1F〜B6F）に伴い異なる神話迷宮の映像へとシームレスに推移します。
+                    </p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚔️</div>
+                <h3 class="feature-title">左右戦闘カード＆ダメージ連動</h3>
+                <p class="feature-desc">
+                    両サイドのHUDに戦闘カードを常時展開。ライン消去時に蒼炎一閃の太刀筋が敵カードを切り裂き、被弾ショック＆クリティカル数字が舞い上がります。
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3 class="feature-title">生ける蒼炎 6コマ有機サイクル</h3>
+                <p class="feature-desc">
+                    ブロック内の炎が休止・微動・膨張・「最大開花（ひらかる）」・揺らぎ・収束の6段階で脈動。外枠パイプを100%固定しつつ炎のみが呼吸。
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3 class="feature-title">魔法ランプ連結ギミック</h3>
+                <p class="feature-desc">
+                    落下ブロックは単なる単体マスではなく、上下左右に隣接するランプ同士が鍛鉄パイプとマナフィラメントでダイナミックに結びつきます。
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👑</div>
+                <h3 class="feature-title">全10階層制覇＆混沌神5形態</h3>
+                <p class="feature-desc">
+                    10レベルごとに深層へ。各層の中ボス(Lv1-7)・強ボス(Lv8-10)に加え、最深層では混沌の神がLv上昇に伴い5つの形態へと変貌します。
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">60FPS 完全ネイティブ</h3>
+                <p class="feature-desc">
+                    GC（ガベージコレクション）によるカクツキを完全根絶する「ゼロ・アロケーション設計」。672パターンの事前常駐で極限の滑らかさを実現。
+                </p>
+            </div>
+            <div class="feature-card" style="border: 1px solid rgba(255, 215, 0, 0.4); background: linear-gradient(135deg, rgba(20, 26, 46, 0.95), rgba(10, 16, 32, 0.95));">
+                <div class="feature-icon">✨</div>
+                <h3 class="feature-title" style="color: var(--accent-gold);">12×20 拡大戦場 ＆ 神聖十字架（著作権完全クリア）</h3>
+                <p class="feature-desc">
+                    プレイフィールドを標準の10列から<strong>12列×20行</strong>のワイド盤面へと拡大。横幅拡張による広大な戦略性と20:9スマホ全画面への黄金比レイアウトを実現。さらに5マスのオリジナルピース『聖十字架（Holy Cross）』が低確率（5%）で出現する神聖レリックシステム、テトリス標準から完全分離した独自宝石カラーパレットにより、法的なLook&Feelリスクを完全根絶しています。
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3 class="feature-title">全国オンラインランキング</h3>
+                <p class="feature-desc">
+                    Google Apps Script (GAS) リアルタイム集計。全国の猛者とスコアを競い、アプリ内でも自順位がダイレクトに同期表示されます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Pass & Ambient Loop MV -->
+    <section class="section" id="premium">
+        <div class="section-header">
+            <div class="section-tag">PREMIUM PASS</div>
+            <h2 class="section-title">買い切りプレミアムパス ＆ 作業用ループMV</h2>
+            <p style="color: var(--text-secondary); max-width: 680px; margin: 12px auto 0; font-size: 1rem;">
+                開発者純利益500円（Google Play 15%手数料差引後）の良心的価格設定【¥600 税込・買い切り】。<br>
+                一度の購入で全広告が永久非表示となり、高品質Flow映像による作業用ループMVプレイヤーが全開放されます。
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 40px; align-items: stretch;">
+            <!-- Left: Ambient MV Player Feature -->
+            <div style="background: var(--bg-surface); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 20px; padding: 36px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); display: flex; flex-direction: column;">
+                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 210, 255, 0.15); border: 1px solid rgba(0, 210, 255, 0.4); padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); width: fit-content; margin-bottom: 18px;">
+                    <span>✦</span> 特典 1
+                </div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #ffffff; margin-bottom: 12px;">作業用ループMVプレイヤー全開放</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+                    勉強・デスクワーク・睡眠時のアンビエント環境映像として、Flow生成のシネマティック映像を常時ループ再生。Androidの画面自動消灯を自動抑止（KEEP_SCREEN_ON）し、作業デスクのインテリアとして機能します。
+                </p>
+                <div style="border-radius: 12px; overflow: hidden; margin-bottom: 20px; border: 1px solid rgba(0, 210, 255, 0.25);">
+                    <img src="img/screen_ambient_scene1.png" alt="作業用ループMV 凱旋の夜明け" style="width: 100%; height: auto; display: block;">
+                </div>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: auto;">
+                    <li style="font-size: 0.88rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--accent-cyan);">✦</span> <strong>全5シーン収録</strong>：凱旋の夜明け / 蒼炎の騎士リュカ / 金眼のクロ / 骸骨騎士 / 混沌の迷宮
+                    </li>
+                    <li style="font-size: 0.88rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--accent-cyan);">✦</span> <strong>ハードウェアシームレスループ</strong>：途切れのない永遠の環境映像再生
+                    </li>
+                    <li style="font-size: 0.88rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--accent-cyan);">✦</span> <strong>オートハイドUI</strong>：画面タッチで前後シーン切替・3.5秒で自動フェードアウト
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Right: Ad-Free & Playfield Transparency -->
+            <div style="background: var(--bg-surface); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 20px; padding: 36px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); display: flex; flex-direction: column;">
+                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.4); padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); width: fit-content; margin-bottom: 18px;">
+                    <span>🛡️</span> 特典 2 & 3
+                </div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #ffffff; margin-bottom: 12px;">完全広告非表示 ＆ 背景半透明カスタマイズ</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+                    下部バナー広告およびゲームオーバー時の全画面広告を永久に完全撤去。さらに落下エリアの黒背景がデフォルト20%半透明となり、深淵迷宮の背景アートが透ける没入演出を解禁します。
+                </p>
+                <div style="border-radius: 12px; overflow: hidden; margin-bottom: 20px; border: 1px solid rgba(251, 191, 36, 0.25);">
+                    <img src="img/screen_gameplay_transparent.png" alt="背景20%透過プレイフィールド" style="width: 100%; height: auto; display: block;">
+                </div>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: auto;">
+                    <li style="font-size: 0.88rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--accent-gold);">★</span> <strong>完全広告ゼロ</strong>：タイトル画面バナー＆インタースティシャル完全停止
+                    </li>
+                    <li style="font-size: 0.88rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--accent-gold);">★</span> <strong>背景透過度リアルタイム調整</strong>：ポーズメニューで20% / 40% / 60% / 80% / 0%を切替
+                    </li>
+                    <li style="font-size: 0.88rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--accent-gold);">★</span> <strong>安心の買い切り設計</strong>：月額課金なし・機種変更時の「購入の復元」対応
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Gallery -->
+    <section class="section" id="gallery">
+        <div class="section-header">
+            <div class="section-tag">GALLERY</div>
+            <h2 class="section-title">実機スクリーンショット</h2>
+            <p style="color: var(--accent-cyan); font-weight: 600; max-width: 760px; margin: 10px auto 0; font-size: 0.95rem;">
+                実機（COLOR 8 / Android 14）にて完全ネイティブ60fps動作確認済みの最新キャプチャです。
+            </p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
+                <img src="img/device_video_test1.png" alt="タイトル画面 Google Flow動画背景と揺らぎ蒼炎ロゴ">
+                <div class="gallery-caption">タイトル画面（実機）：Google Flow動画背景（B1F Azure Crypt）× 揺らぎ蒼炎ロゴ ＆ プレミアムパス解禁</div>
+            </div>
+            <div class="gallery-item" style="border: 1px solid rgba(251, 191, 36, 0.45); box-shadow: 0 4px 24px rgba(251, 191, 36, 0.25);">
+                <img src="img/device_video_gameplay2.png" alt="実機プレイ画面 12x20拡大盤面とGoogle Flow動画ループ背景">
+                <div class="gallery-caption">プレイ画面（実機）：12×20拡大盤面・神聖十字架（★RARE）・Google Flow動画ループ背景</div>
+            </div>
+            <div class="gallery-item" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
+                <img src="img/device_video_gameplay3.png" alt="背景動画リアルタイム連動">
+                <div class="gallery-caption">背景動画連動（実機）：立ち込める霧と松明の炎がプレイ中リアルタイムに呼吸</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/screen_holy_cross.png" alt="神聖十字架（5マスレア出現）と独自パレット">
+                <div class="gallery-caption">神聖レリック：NEXT枠に降臨した5マス『聖十字架（★RARE）』＆独自パレット</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/screen_logo_opening.png" alt="Studio LampKeep オープニング動画">
+                <div class="gallery-caption">起動時：Studio LampKeep 神聖ランタン点火シネマティック</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/screen_gameplay_transparent.png" alt="プレイフィールド背景20%半透明">
+                <div class="gallery-caption">プレイ画面：背景20%透過で背後の迷宮映像が透ける新演出</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/screen_pause_menu.png" alt="ポーズ画面 背景透過度調整">
+                <div class="gallery-caption">ポーズメニュー：背景透過度を即時切替（20%/40%/60%/80%/0%）</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/screen_ambient_scene1.png" alt="作業用ループMV 凱旋の夜明け">
+                <div class="gallery-caption">作業用ループMV：凱旋の夜明け（画面消灯なし無限環境再生）</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/screen_purchase_dialog.png" alt="プレミアムパス購入ダイアログ">
+                <div class="gallery-caption">買い切りプレミアムパス：純利益500円設定（¥600 税込）</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/card_battle_b1f.png" alt="B1F 納骨回廊 探索開始">
+                <div class="gallery-caption">B1F 納骨回廊：新米剣士リュカ vs スケルトンスカウト</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/card_battle_slash.png" alt="ライン消去 蒼炎一閃＆クリティカル">
+                <div class="gallery-caption">ライン消去：蒼炎居合い斬り被弾＆CRITICAL 1000!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/card_battle_pinch.png" alt="ピンチ状態 赤枠警告＆苦悶表情">
+                <div class="gallery-caption">12段積み上がり：苦悶の表情＆深紅の警告オーラ</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/card_battle_strong.png" alt="B1F 強ボス 骸骨騎士">
+                <div class="gallery-caption">B1F 強ボス：処刑大剣を構える重装骸骨騎士</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/card_battle_knight.png" alt="B3F ルーンナイト進化">
+                <div class="gallery-caption">B3F 聖堂：銀甲ルーンナイトリュカ vs 機巧オートマタ</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/card_battle_chaos5.png" alt="FINAL 真・混沌神 最終形態">
+                <div class="gallery-caption">最深層：真・混沌神 第5形態との極限決戦</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Living Dungeon Stages Section -->
+    <section class="section" id="dungeons">
+        <div class="section-header">
+            <div class="section-tag">GOOGLE FLOW CINEMATICS</div>
+            <h2 class="section-title">Google Flow生成 6大迷宮シネマティック動画背景</h2>
+            <p style="color: var(--accent-cyan); font-weight: 700; max-width: 760px; margin: 12px auto 0; font-size: 0.95rem;">
+                【ゲーム内背景に完全実装】静止画ではなく、Google Flowで生成した60fps超高精細シネマティック動画が、ゲームプレイ中およびタイトル画面の背景として完全シームレスにループ再生されます。
+            </p>
+        </div>
+        <div class="stage-showcase">
+            <div class="stage-video-wrapper">
+                <video id="stageVideo" autoplay loop muted playsinline src="video/b1f_azure_crypt.mp4"></video>
+                <button id="stageSoundBtn" onclick="toggleStageSound()" style="position: absolute; bottom: 14px; right: 14px; background: rgba(5, 8, 17, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; color: var(--accent-gold); font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); transition: all 0.2s ease; z-index: 5;">
+                    🔊 音声ON
+                </button>
+            </div>
+            <div class="stage-selector">
+                <button class="stage-btn active" onclick="switchStage(0)">
+                    <span class="stage-badge">B1F</span>
+                    <div class="stage-info">
+                        <div class="stage-name">納骨回廊 (Azure Crypt)</div>
+                        <div class="stage-sub">蒼き青銅ランプが揺れる古の地下墓所</div>
+                    </div>
+                </button>
+                <button class="stage-btn" onclick="switchStage(1)">
+                    <span class="stage-badge">B2F</span>
+                    <div class="stage-info">
+                        <div class="stage-name">緋の地下水路 (Scarlet Aqueduct)</div>
+                        <div class="stage-sub">篝火と血の滴る暗渠水路</div>
+                    </div>
+                </button>
+                <button class="stage-btn" onclick="switchStage(2)">
+                    <span class="stage-badge">B3F</span>
+                    <div class="stage-info">
+                        <div class="stage-name">砕かれし聖堂 (Shattered Sanctuary)</div>
+                        <div class="stage-sub">蒼白の月光と巨大ゴシックアーチ</div>
+                    </div>
+                </button>
+                <button class="stage-btn" onclick="switchStage(3)">
+                    <span class="stage-badge">B4F</span>
+                    <div class="stage-info">
+                        <div class="stage-name">機巧の地下炉 (Glass Furnace)</div>
+                        <div class="stage-sub">脈打つ真鍮歯車と琥珀の溶鉱炉</div>
+                    </div>
+                </button>
+                <button class="stage-btn" onclick="switchStage(4)">
+                    <span class="stage-badge">B5F</span>
+                    <div class="stage-info">
+                        <div class="stage-name">宙吊りの逆さ塔 (Inverted Tower)</div>
+                        <div class="stage-sub">星辰の虚空に浮遊する逆さ尖塔群</div>
+                    </div>
+                </button>
+                <button class="stage-btn" onclick="switchStage(5)">
+                    <span class="stage-badge">FINAL</span>
+                    <div class="stage-info">
+                        <div class="stage-name">混沌の祭壇 (Throne of Chaos)</div>
+                        <div class="stage-sub">深紅と深紫の混沌渦動が脈動する黒鉄の間</div>
+                    </div>
+                </button>
+                <button class="stage-btn" onclick="switchStage(6)">
+                    <span class="stage-badge" style="border-color: rgba(251, 191, 36, 0.6); color: var(--accent-gold);">EPILOGUE</span>
+                    <div class="stage-info">
+                        <div class="stage-name">祝祭の夜明け (Dawn of Valor)</div>
+                        <div class="stage-sub">迷宮崩壊と朝光の救済、空へと昇る蒼き灯火</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vocal Ending MV Section -->
+    <section class="section" id="vocal-mv">
+        <div class="section-header">
+            <div class="section-tag" style="background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.5); color: var(--accent-cyan);">OFFICIAL VOCAL ENDING MV</div>
+            <h2 class="section-title">公式エンディングMV「Out of Darkness」</h2>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--accent-gold); margin-top: 6px; letter-spacing: 0.08em;">
+                VOCAL: AOKA UTA (PRICE OF CHAOS 歌姫・蒼歌 詠) • PRODUCED WITH GOOGLE FLOW & FLOW MUSIC
+            </div>
+            <p style="color: var(--text-secondary); max-width: 720px; margin: 12px auto 0; font-size: 1rem;">
+                深淵の迷宮を制覇せし者へ贈る、全13章・約3分間の超大作シネマティックMV。<br>
+                Google Flow 1080pアップスケール映像と、Flow Musicで生成されたダークゴシック・オペラソプラノの歌声が完全同期。
+            </p>
+        </div>
+
+        <div class="vocal-mv-box">
+            <div class="vocal-mv-grid">
+                <div class="vocal-mv-video-wrap">
+                    <video controls playsinline preload="metadata" poster="img/mv_vocal_prologue.jpg" src="video/ending_mixed.mp4" style="width: 100%; border-radius: 12px;"></video>
+                </div>
+                <div class="lyrics-card">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                        <span style="font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--accent-gold); letter-spacing: 0.15em; font-weight: 700;">SONG LYRICS & THEME</span>
+                        <span style="font-size: 0.8rem; background: rgba(0, 210, 255, 0.2); color: var(--accent-cyan); padding: 3px 10px; border-radius: 999px; font-weight: 600;">85 BPM CLIMAX</span>
+                    </div>
+                    <h3 style="font-size: 1.35rem; color: #ffffff; margin-bottom: 16px; font-weight: 700;">
+                        Out of Darkness — 救済の歌
+                    </h3>
+                    <div class="lyrics-verse">
+                        <strong style="color: var(--accent-cyan); display: block; margin-bottom: 4px;">【Verse: 迷宮の帳】</strong>
+                        深き迷宮の果て　解き放たれし蒼き灯火<br>
+                        永き闇を貫く　折れぬ剣の誓い…
+                    </div>
+                    <div class="lyrics-chorus">
+                        <strong style="color: var(--accent-gold); display: block; margin-bottom: 4px;">【Chorus: 歓喜の飛翔】</strong>
+                        混沌の夜を越え　光射す約束の空へ<br>
+                        祈りは永久に　歓喜の歌となれ！
+                    </div>
+                    <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6;">
+                        ✦ <strong>全13章構成</strong>：プロローグ ➔ B6F〜B1F逆走 ➔ 3英雄の凱旋 ➔ 歓喜のクライマックス ➔ スタッフクレジット
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soundtrack Section -->
+    <section class="section" id="soundtrack">
+        <div class="section-header">
+            <div class="section-tag">ARCADE SOUNDTRACK</div>
+            <h2 class="section-title">Flow Music 生成 1988 アーケードBGM</h2>
+        </div>
+        <div class="soundtrack-card">
+            <div class="soundtrack-info">
+                <div class="soundtrack-badge">AI Co-Produced with Flow Music</div>
+                <h3 class="soundtrack-title">Dungeon Crawler 1988 (混沌迷宮の進軍)</h3>
+                <p class="soundtrack-desc">
+                    荘厳なゴシックパイプオルガンと疾走する16ビットFMシンセベース、ダークオーケストラ弦楽が織りなす1988年アーケードパズル黄金期の熱狂サウンドトラック。
+                </p>
+                <div class="track-list">
+                    <div class="track-item active" onclick="playBgm(0)">
+                        <span class="track-play-icon">▶</span>
+                        <div class="track-meta">
+                            <strong>Game Opening: Dark Fantasy Arcade Prelude</strong>
+                            <small>Studio WAV ・ 130 BPM ・ 鐘の音・荘厳パイプオルガン・ファンファーレ</small>
+                        </div>
+                    </div>
+                    <div class="track-item" onclick="playBgm(1)">
+                        <span class="track-play-icon">▶</span>
+                        <div class="track-meta">
+                            <strong>BGM 1: Dungeon Crawler 1988 (Original Mix)</strong>
+                            <small>2:41 ・ 138 BPM ・ Gothic Organ & Synth Bass</small>
+                        </div>
+                    </div>
+                    <div class="track-item" onclick="playBgm(2)">
+                        <span class="track-play-icon">▶</span>
+                        <div class="track-meta">
+                            <strong>BGM 2: Dungeon Crawler 1988 (Arranged Take)</strong>
+                            <small>2:55 ・ 138 BPM ・ Driving Percussion & Dark Strings</small>
+                        </div>
+                    </div>
+                    <div class="track-item" onclick="playBgm(3)">
+                        <span class="track-play-icon">▶</span>
+                        <div class="track-meta">
+                            <strong>Game Ending: Dawn of Valor (凱旋の夜明け)</strong>
+                            <small>2:58 ・ Studio WAV ・ 96 BPM ・ 郷愁オルゴール・壮麗ストリングス・凱旋ファンファーレ</small>
+                        </div>
+                    </div>
+                    <div class="track-item" onclick="playBgm(4)">
+                        <span class="track-play-icon">▶</span>
+                        <div class="track-meta">
+                            <strong style="color: var(--accent-gold);">Game Ending Vocal: Out of Darkness (Price of Chaos 歌姫 蒼歌 詠)</strong>
+                            <small>2:40 ・ Studio WAV ・ 85 BPM ・ オペラソプラノ独唱・聖歌隊合唱・荘厳パイプオルガン</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="soundtrack-player-box">
+                <div style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.1em;">NOW PLAYING</div>
+                <div id="nowPlayingTitle" style="color: #ffffff; font-weight: 700; font-size: 1.1rem; margin-bottom: 16px;">Game Opening: Dark Fantasy Arcade Prelude</div>
+                <audio id="bgmAudio" controls src="audio/bgm_opening_prelude.wav" style="width: 100%; border-radius: 8px; outline: none;"></audio>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Leaderboard Section -->
+    <section class="section" id="leaderboard">
+        <div class="section-header">
+            <div class="section-tag">ONLINE LEADERBOARD</div>
+            <h2 class="section-title">全国ハイスコアランキング (Hall of Valor)</h2>
+            <p class="section-desc" style="color: var(--text-secondary); max-width: 650px; margin: 12px auto 0;">
+                Google Apps Script (GAS) リアルタイム集計。全国のプレイヤーとスコアを競い合い、混沌の深淵の頂点を目指せ！
+            </p>
+        </div>
+
+        <div class="leaderboard-card">
+            <!-- Tabs & Controls -->
+            <div class="leaderboard-header-bar">
+                <div class="leaderboard-tabs">
+                    <button class="lead-tab-btn active" id="tabClassic" onclick="switchLeaderboardMode('classic')">CLASSIC 迷宮モード</button>
+                    <button class="lead-tab-btn" id="tabBurst" onclick="switchLeaderboardMode('burst')">CHAOS BURST (3分)</button>
+                </div>
+                <button class="lead-refresh-btn" onclick="fetchLiveLeaderboard()">
+                    <span id="refreshIcon">🔄</span> 最新順位を更新
+                </button>
+            </div>
+
+            <!-- Leaderboard Table -->
+            <div class="lead-table-wrap">
+                <table class="lead-table" id="leadTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">順位</th>
+                            <th style="width: 25%;">プレイヤー</th>
+                            <th style="width: 25%; text-align: right;">スコア</th>
+                            <th style="width: 15%; text-align: center;">到達層</th>
+                            <th style="width: 20%; text-align: right;">記録日時</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leadTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- In-App Challenge CTA -->
+            <div class="leaderboard-cta">
+                <div>
+                    <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 4px;">🏆 アプリ内で自分のリアルタイム全国順位を確認可能！</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem;">ゲームオーバー時に順位と次順位までの必要点数が即座に表示されます。何度も挑んで王座を目指そう！</p>
+                </div>
+                <a href="#hero" class="btn btn-primary" style="white-space: nowrap;">アプリで挑戦</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs Table -->
+    <section class="section" id="specs">
+        <div class="section-header">
+            <div class="section-tag">PRODUCT DETAILS</div>
+            <h2 class="section-title">仕様・動作環境</h2>
+        </div>
+        <div class="specs-table-wrap">
+            <table class="specs-table">
+                <tr>
+                    <th>ゲームタイトル</th>
+                    <td>LampDrop（ランプドロップ：混沌迷宮の蒼き灯火）</td>
+                </tr>
+                <tr>
+                    <th>ジャンル</th>
+                    <td>ダークファンタジー・レトロアーケードパズル</td>
+                </tr>
+                <tr>
+                    <th>対応プラットフォーム</th>
+                    <td>Android 8.0 以上（Android 14 / Google Pixel 8a 実機検証済）</td>
+                </tr>
+                <tr>
+                    <th>開発・著作権</th>
+                    <td>Studio LampKeep</td>
+                </tr>
+                <tr>
+                    <th>盤面仕様</th>
+                    <td>12列 × 20行 戦略的ワイドフィールド（独自比率・神聖十字架★RAREレリック対応）</td>
+                </tr>
+                <tr>
+                    <th>背景描画エンジン</th>
+                    <td>Google Flow 生成 6大迷宮シネマティック動画（60fps 完全シームレスループ・ハードウェアアクセラレーション）</td>
+                </tr>
+                <tr>
+                    <th>収益モデル</th>
+                    <td>基本プレイ無料（非侵入型広告） / 買い切りプレミアムパス（¥600・完全広告排除＋作業用ループMV開放）</td>
+                </tr>
+                <tr>
+                    <th>プライバシー</th>
+                    <td>個人情報収集ゼロ・位置情報/連絡先権限要求なし</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <strong style="color: #ffffff; font-family: 'Cinzel', serif;">LampDrop</strong>
+                <span style="color: var(--text-secondary); margin-left: 8px;">by Studio LampKeep</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://lampkeeper2026.github.io/" target="_blank" rel="noopener">Studio LampKeep 公式ポータル</a>
+                <a href="https://lampkeeper2026.github.io/lampdrop-privacy.html">プライバシーポリシー</a>
+                <a href="https://github.com/LampKeeper2026/block-drop-1988" target="_blank" rel="noopener">GitHub リポジトリ</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Studio LampKeep. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Ambient floating embers & mana particles
+    const canvas = document.getElementById('embersCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    const particles = [];
+    const NUM_PARTICLES = 45;
+
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    for (let i = 0; i < NUM_PARTICLES; i++) {
+        particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 2.2 + 0.8,
+            speedY: Math.random() * 0.7 + 0.3,
+            speedX: (Math.random() - 0.5) * 0.4,
+            alpha: Math.random() * 0.6 + 0.2,
+            isCyan: Math.random() > 0.35
+        });
+    }
+
+    function render() {
+        ctx.clearRect(0, 0, width, height);
+        for (let p of particles) {
+            p.y -= p.speedY;
+            p.x += p.speedX;
+            if (p.y < -10) {
+                p.y = height + 10;
+                p.x = Math.random() * width;
+            }
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = p.isCyan 
+                ? `rgba(0, 210, 255, ${p.alpha})` 
+                : `rgba(251, 191, 36, ${p.alpha * 0.8})`;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = p.isCyan ? '#00d2ff' : '#fbbf24';
+            ctx.fill();
+        }
+        requestAnimationFrame(render);
+    }
+    render();
+
+    // Audio controls for Hero & Stage videos
+    function toggleHeroSound() {
+        const v = document.getElementById('heroVideo');
+        const btn = document.getElementById('heroSoundBtn');
+        if (v.muted) {
+            v.muted = false;
+            btn.textContent = '🔇 音声OFF';
+            btn.style.color = '#38bdf8';
+        } else {
+            v.muted = true;
+            btn.textContent = '🔊 音声ON';
+            btn.style.color = 'var(--accent-gold)';
+        }
+    }
+
+    function toggleStageSound() {
+        const v = document.getElementById('stageVideo');
+        const btn = document.getElementById('stageSoundBtn');
+        if (v.muted) {
+            v.muted = false;
+            btn.textContent = '🔇 音声OFF';
+            btn.style.color = '#38bdf8';
+        } else {
+            v.muted = true;
+            btn.textContent = '🔊 音声ON';
+            btn.style.color = 'var(--accent-gold)';
+        }
+    }
+
+    // Stage Video Switcher
+    const stages = [
+        "video/b1f_azure_crypt.mp4",
+        "video/b2f_scarlet_aqueduct.mp4",
+        "video/b3f_shattered_sanctuary.mp4",
+        "video/b4f_glass_furnace.mp4",
+        "video/b5f_inverted_tower.mp4",
+        "video/b6f_chaos_throne.mp4",
+        "video/ending_mixed.mp4"
+    ];
+
+    function switchStage(idx) {
+        const v = document.getElementById('stageVideo');
+        const btns = document.querySelectorAll('.stage-btn');
+        btns.forEach((b, i) => b.classList.toggle('active', i === idx));
+        v.style.opacity = '0';
+        setTimeout(() => {
+            v.src = stages[idx];
+            v.load();
+            v.play().catch(e => console.log('Autoplay handled:', e));
+            v.style.opacity = '1';
+        }, 150);
+    }
+
+    // Soundtrack Player
+    const bgmTracks = [
+        { title: "Game Opening: Dark Fantasy Arcade Prelude", src: "audio/bgm_opening_prelude.wav" },
+        { title: "BGM 1: Dungeon Crawler 1988 (Original Mix)", src: "audio/bgm_dungeon_crawler_1988.mp3" },
+        { title: "BGM 2: Dungeon Crawler 1988 (Arranged Take)", src: "audio/bgm_dungeon_crawler_1988_take2.mp3" },
+        { title: "Game Ending: Dawn of Valor (凱旋の夜明け)", src: "audio/bgm_ending_triumph.wav" },
+        { title: "Game Ending Vocal: Out of Darkness (Price of Chaos 歌姫 蒼歌 詠)", src: "audio/bgm_ending_vocal.mp3" }
+    ];
+
+    function playBgm(idx) {
+        const audio = document.getElementById('bgmAudio');
+        const titleEl = document.getElementById('nowPlayingTitle');
+        const items = document.querySelectorAll('.track-item');
+        items.forEach((item, i) => item.classList.toggle('active', i === idx));
+        titleEl.textContent = bgmTracks[idx].title;
+        audio.src = bgmTracks[idx].src;
+        audio.play().catch(e => console.log('Playback handled:', e));
+    }
+
+    // Online Leaderboard (GAS API + Fallback)
+    const GAS_LEADERBOARD_URL = "https://script.google.com/macros/s/AKfycbwYOUR_GAS_DEPLOYMENT_ID/exec";
+    let curLeaderboardMode = 'classic';
+
+    const defaultHallOfFame = {
+        classic: [
+            { rank: 1, playerName: "LUCAS", score: 158000, level: 18, date: "2026/10/18 13:40" },
+            { rank: 2, playerName: "KURO",  score: 134500, level: 16, date: "2026/10/18 12:20" },
+            { rank: 3, playerName: "VALOR", score: 112000, level: 15, date: "2026/10/18 11:15" },
+            { rank: 4, playerName: "CHAOS", score: 98400,  level: 14, date: "2026/10/18 09:30" },
+            { rank: 5, playerName: "GOTH",  score: 82000,  level: 12, date: "2026/10/17 22:45" },
+            { rank: 6, playerName: "ALICE", score: 67500,  level: 10, date: "2026/10/17 19:10" },
+            { rank: 7, playerName: "1988",  score: 54000,  level: 8,  date: "2026/10/17 17:05" },
+            { rank: 8, playerName: "AZURE", score: 42000,  level: 6,  date: "2026/10/17 15:40" },
+            { rank: 9, playerName: "LANTR", score: 31000,  level: 4,  date: "2026/10/17 14:10" },
+            { rank: 10, playerName: "START",score: 20000,  level: 2,  date: "2026/10/17 11:00" }
+        ],
+        burst: [
+            { rank: 1, playerName: "LUCAS", score: 98500,  level: 12, date: "2026/10/18 13:30" },
+            { rank: 2, playerName: "BURST", score: 84200,  level: 10, date: "2026/10/18 12:50" },
+            { rank: 3, playerName: "SPEED", score: 71000,  level: 9,  date: "2026/10/18 11:20" },
+            { rank: 4, playerName: "COMBO", score: 59400,  level: 8,  date: "2026/10/18 10:05" },
+            { rank: 5, playerName: "CYBER", score: 48000,  level: 6,  date: "2026/10/17 21:15" },
+            { rank: 6, playerName: "FLASH", score: 38500,  level: 5,  date: "2026/10/17 18:30" },
+            { rank: 7, playerName: "NEON",  score: 29000,  level: 4,  date: "2026/10/17 16:45" },
+            { rank: 8, playerName: "BLAZE", score: 21500,  level: 3,  date: "2026/10/17 14:00" }
+        ]
+    };
+
+    function switchLeaderboardMode(mode) {
+        curLeaderboardMode = mode;
+        document.getElementById('tabClassic').classList.toggle('active', mode === 'classic');
+        document.getElementById('tabBurst').classList.toggle('active', mode === 'burst');
+        renderLeaderboard(defaultHallOfFame[mode]);
+        fetchLiveLeaderboard();
+    }
+
+    function renderLeaderboard(list) {
+        const tbody = document.getElementById('leadTableBody');
+        tbody.innerHTML = '';
+        list.forEach(item => {
+            const tr = document.createElement('tr');
+            let badgeClass = 'rank-other';
+            let rankText = '#' + item.rank;
+            if (item.rank === 1) { badgeClass = 'rank-gold'; rankText = '🥇 1'; }
+            else if (item.rank === 2) { badgeClass = 'rank-silver'; rankText = '🥈 2'; }
+            else if (item.rank === 3) { badgeClass = 'rank-bronze'; rankText = '🥉 3'; }
+
+            const isEx = item.level >= 16;
+            const levelLabel = isEx ? `EX-${item.level - 15}` : `B${item.level}F`;
+
+            tr.innerHTML = `
+                <td><span class="rank-badge ${badgeClass}">${rankText}</span></td>
+                <td><strong style="color: #ffffff; letter-spacing: 0.05em;">${item.playerName}</strong></td>
+                <td style="text-align: right;"><span class="score-val">${item.score.toLocaleString()}</span> pts</td>
+                <td style="text-align: center;"><span class="level-badge ${isEx ? 'ex' : ''}">${levelLabel}</span></td>
+                <td style="text-align: right; color: var(--text-secondary); font-size: 0.85rem;">${item.date}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function fetchLiveLeaderboard() {
+        const icon = document.getElementById('refreshIcon');
+        icon.style.display = 'inline-block';
+        icon.style.transform = 'rotate(180deg)';
+        icon.style.transition = 'transform 0.4s ease';
+        setTimeout(() => icon.style.transform = 'rotate(0deg)', 400);
+
+        if (!GAS_LEADERBOARD_URL.includes("YOUR_GAS_DEPLOYMENT_ID")) {
+            fetch(`${GAS_LEADERBOARD_URL}?action=top&limit=50&mode=${curLeaderboardMode}`)
+                .then(r => r.json())
+                .then(data => {
+                    if (data && data.ranking && data.ranking.length > 0) {
+                        renderLeaderboard(data.ranking);
+                    }
+                })
+                .catch(err => console.log('Live fetch handled, using cached:', err));
+        }
+    }
+
+    // Initialize leaderboard on load
+    renderLeaderboard(defaultHallOfFame.classic);
+</script>
+
+</body>
+</html>
