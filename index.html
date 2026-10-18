@@ -1,2 +1,488 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"><title>Lampkeep</title><meta http-equiv="refresh" content="0; url=https://lampkeeper2026.github.io/prince-of-chaos/"><link rel="canonical" href="https://lampkeeper2026.github.io/prince-of-chaos/"></head><body><p><a href="https://lampkeeper2026.github.io/prince-of-chaos/">Prince of Chaos</a></p></body></html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio LampKeep (蒼灯機関) - 公式Webサイト | インディーゲーム＆アプリ開発</title>
+  
+  <meta name="description" content="Studio LampKeep (蒼灯機関) の公式ポータルサイト。『Prince of Chaos (混沌迷宮と呪いの公子)』『ブロックドロップ 1988：レトロパズル』『なろう小説AI朗読』をはじめとする独自の世界観と手触りにこだわったゲーム・アプリを開発・公開しています。">
+  <meta name="keywords" content="Studio LampKeep, 蒼灯機関, Prince of Chaos, ブロックドロップ1988, なろう小説AI朗読, インディーゲーム, Androidゲーム, レトロゲーム">
+  
+  <!-- OGP -->
+  <meta property="og:title" content="Studio LampKeep (蒼灯機関) - 公式Webサイト">
+  <meta property="og:description" content="灯火が照らす、独自の迷宮と熱狂の世界へ。こだわり抜いたゲーム＆スマートツールをお届けします。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lampkeeper2026.github.io/">
+  <meta property="og:image" content="https://lampkeeper2026.github.io/assets/img/poc/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/brand/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <div class="brand-icon-wrapper">
+          <img src="assets/img/brand/logo.png" alt="Studio LampKeep Logo">
+        </div>
+        <div class="brand-name">Studio LampKeep <span>(蒼灯機関)</span></div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#works" class="nav-link">作品一覧 (Works)</a></li>
+          <li><a href="#about" class="nav-link">スタジオ紹介 (About)</a></li>
+          <li><a href="#policies" class="nav-link">プライバシー・規約</a></li>
+          <li><a href="#contact" class="nav-btn">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-glow-blob cyan"></div>
+    <div class="hero-glow-blob purple"></div>
+
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span>✦</span> STUDIO LAMPKEEP OFFICIAL PORTAL
+      </div>
+      <h1 class="hero-title">
+        灯火が照らす、独自の迷宮と<br>
+        <span class="gradient-text">熱狂の世界へ</span>
+      </h1>
+      <p class="hero-lead">
+        1980年代アーケードの魂を宿した本格パズル、112場面の会話劇と一人称地下迷宮を往くダークファンタジーRPG、そしてAI技術で物語に命を吹き込む朗読プレイヤー。<br>
+        手触りの良さとオリジナリティに妥協しない、Studio LampKeep の世界へようこそ。
+      </p>
+
+      <div class="hero-actions">
+        <a href="#works" class="btn-primary">
+          <span>🎮</span> 公開作品を見る
+        </a>
+        <a href="#about" class="btn-secondary">
+          <span>🕯️</span> スタジオについて
+        </a>
+      </div>
+
+      <div class="hero-stats-bar">
+        <div class="stat-item">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Active Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">32+</div>
+          <div class="stat-label">Original Soundtracks</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Original Assets & Code</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Works Showcase Section -->
+  <section id="works" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Featured Works</span>
+        <h2 class="section-title">制作・公開タイトル</h2>
+        <p class="section-desc">
+          スマートフォンからブラウザ、PCまで。それぞれのプラットフォームで最高の体験をお届けするために開発されたStudio LampKeepのタイトルラインナップです。
+        </p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">すべて表示</button>
+        <button class="filter-btn" data-filter="game">ゲーム (Games)</button>
+        <button class="filter-btn" data-filter="app">ツール・AI (Apps)</button>
+      </div>
+
+      <div class="works-list">
+
+        <!-- Project 1: Prince of Chaos -->
+        <article class="work-card theme-gold" data-category="game">
+          <div class="work-visual">
+            <img src="assets/img/poc/hero.jpg" alt="Prince of Chaos" class="work-visual-main">
+            <div class="work-visual-overlay"></div>
+            <div class="work-visual-badges">
+              <span class="badge-tag platform-android">Android 専用</span>
+              <span class="badge-tag">本格3DダンジョンRPG</span>
+              <span class="badge-tag">全32曲完全内蔵</span>
+            </div>
+            <div class="work-visual-thumbs">
+              <img src="assets/img/poc/hero.jpg" alt="Hero Art" data-src="assets/img/poc/hero.jpg">
+              <img src="assets/img/poc/01_title.jpg" alt="Title" data-src="assets/img/poc/01_title.jpg">
+              <img src="assets/img/poc/05_maze.jpg" alt="Dungeon" data-src="assets/img/poc/05_maze.jpg">
+              <img src="assets/img/poc/07_battle.jpg" alt="Battle" data-src="assets/img/poc/07_battle.jpg">
+              <img src="assets/img/poc/04_status.jpg" alt="Status" data-src="assets/img/poc/04_status.jpg">
+            </div>
+          </div>
+
+          <div class="work-info">
+            <div>
+              <div class="work-category gold">✦ 3DダンジョンRPG × ノベル</div>
+              <div class="work-title-group">
+                <img src="assets/img/poc/icon.png" alt="Prince of Chaos Icon" class="work-app-icon">
+                <h3 class="work-title">Prince of Chaos</h3>
+              </div>
+              <p class="work-subtitle">― 混沌迷宮と呪いの公子 ―</p>
+              <p class="work-description">
+                紙芝居と地下迷宮。呪いの公子と呼ばれるリュカと黒猫クロが、楔を集めて逆さ塔へ向かう。
+                台詞は吹き出しでテンポよく展開する全112場面のシナリオ。地下10階＋深淵回廊の探索、連携技バトル、付加効果・ユニーク装備、そして6つの結末。迷宮・文章・絵・音のすべてがアプリに入った完全独自制作のAndroid大作RPG。
+              </p>
+
+              <ul class="work-features">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>112場面の会話劇と6つの結末</strong>：選択と絆によって紡がれるマルチエンディング</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>技と気力・連携技</strong>：最大6人隊列による戦術コマンドバトル＆精鋭モンスター</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>32曲のオリジナルBGM</strong>：外部データ・ROM不要で完全オフライン完結</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="work-footer">
+              <button class="btn-card-action btn-card-primary" data-open-modal="poc">
+                詳細仕様・ギャラリーを見る
+              </button>
+              <a href="https://lampkeeper2026.github.io/prince-of-chaos/" target="_blank" rel="noopener" class="btn-card-action btn-card-secondary">
+                公式サイト ↗
+              </a>
+              <a href="https://lampkeeper2026.github.io/prince-of-chaos-privacy/" target="_blank" rel="noopener" class="btn-card-ghost">
+                プライバシーポリシー
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Block Drop 1988 -->
+        <article class="work-card reverse theme-pink" data-category="game">
+          <div class="work-visual">
+            <img src="assets/img/blockdrop/02_gameplay.png" alt="Block Drop 1988" class="work-visual-main">
+            <div class="work-visual-overlay"></div>
+            <div class="work-visual-badges">
+              <span class="badge-tag platform-android">Android</span>
+              <span class="badge-tag platform-web">Web / JavaFX</span>
+              <span class="badge-tag">完全オフライン・広告なし</span>
+            </div>
+            <div class="work-visual-thumbs">
+              <img src="assets/img/blockdrop/01_title.png" alt="Title" data-src="assets/img/blockdrop/01_title.png">
+              <img src="assets/img/blockdrop/02_gameplay.png" alt="Gameplay" data-src="assets/img/blockdrop/02_gameplay.png">
+              <img src="assets/img/blockdrop/03_cyber_title.png" alt="Cyber Title" data-src="assets/img/blockdrop/03_cyber_title.png">
+              <img src="assets/img/blockdrop/04_cyber_gameplay.png" alt="Cyber Burst" data-src="assets/img/blockdrop/04_cyber_gameplay.png">
+              <img src="assets/img/blockdrop/05_pause.png" alt="Pause" data-src="assets/img/blockdrop/05_pause.png">
+            </div>
+          </div>
+
+          <div class="work-info">
+            <div>
+              <div class="work-category pink">✦ ネオ・レトロアーケードパズル</div>
+              <div class="work-title-group">
+                <img src="assets/img/blockdrop/icon.png" alt="Block Drop 1988 Icon" class="work-app-icon">
+                <h3 class="work-title">ブロックドロップ 1988</h3>
+              </div>
+              <p class="work-subtitle">― レトロパズル (Block Drop 1988: Retro Fall) ―</p>
+              <p class="work-description">
+                1988年の伝説的アーケードゲームの操作感とグルーヴを完全再現！
+                左回転のみ（Sega Rotation）、接地遅延30F、出現ディレイ30F、線形合同法（LCG）乱数テーブルなど、実機の挙動をミリ秒単位で追求。さらに、3分間の連続ライン消去で倍率が跳ね上がるStudio LampKeepオリジナルモード「CYBER BURST」を搭載！
+              </p>
+
+              <ul class="work-features">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>1988年アーケード完全再現</strong>：60fpsネイティブ物理・FM音源風オリジナルチップチューン</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>CYBER BURST モード</strong>：電脳都市2088や深宇宙星雲など6大サイバー背景×3分スコアアタック</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>安心の完全無料・外部コントローラー対応</strong>：広告ゼロ・課金ゼロ・Bluetoothゲームパッド対応</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="work-footer">
+              <button class="btn-card-action btn-card-primary" data-open-modal="blockdrop">
+                詳細仕様・ギャラリーを見る
+              </button>
+              <a href="blockdrop-privacy.html" class="btn-card-action btn-card-secondary">
+                プライバシーポリシー
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Novel AI Reader -->
+        <article class="work-card theme-purple" data-category="app">
+          <div class="work-visual">
+            <img src="assets/img/novelreader/feature_graphic.png" alt="Novel AI Reader" class="work-visual-main">
+            <div class="work-visual-overlay"></div>
+            <div class="work-visual-badges">
+              <span class="badge-tag platform-windows">Windows PWA</span>
+              <span class="badge-tag platform-android">Android</span>
+              <span class="badge-tag">AI自動配役・マルチボイス</span>
+            </div>
+            <div class="work-visual-thumbs">
+              <img src="assets/img/novelreader/feature_graphic.png" alt="Feature" data-src="assets/img/novelreader/feature_graphic.png">
+              <img src="assets/img/novelreader/01_screenshot.png" alt="Reader" data-src="assets/img/novelreader/01_screenshot.png">
+              <img src="assets/img/novelreader/02_screenshot.png" alt="Search" data-src="assets/img/novelreader/02_screenshot.png">
+              <img src="assets/img/novelreader/03_player.png" alt="Player" data-src="assets/img/novelreader/03_player.png">
+              <img src="assets/img/novelreader/04_settings.png" alt="Settings" data-src="assets/img/novelreader/04_settings.png">
+            </div>
+          </div>
+
+          <div class="work-info">
+            <div>
+              <div class="work-category purple">✦ AI読書アクセシビリティツール</div>
+              <div class="work-title-group">
+                <img src="assets/img/novelreader/icon.png" alt="Novel AI Reader Icon" class="work-app-icon">
+                <h3 class="work-title">なろう小説AI朗読</h3>
+              </div>
+              <p class="work-subtitle">― 複数声優オート配役プレイヤー (Novel AI Reader) ―</p>
+              <p class="work-description">
+                「小説家になろう」や「青空文庫」の作品を、アプリ内包の軽量LLMやGemini、Pixel内蔵AIがリアルタイム解析。地の文と台詞を判別し、登場人物ごとに最適な音声を自動配役してドラマCDのように臨場感豊かに朗読する次世代アクセシビリティアプリです。
+              </p>
+
+              <ul class="work-features">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>アプリ内包LLM（設定不要）</strong>：環境構築・APIキー不要で即座にオフライン声分け解析</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>Edge-TTS ＆ VOICEVOX 連携</strong>：ずんだもん等のキャラボイスや高品質ニューラル音声に対応</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>バックグラウンド＆オフライン再生</strong>：画面オフスリープ再生、ルビ読み分け、安心のR18遮断</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="work-footer">
+              <button class="btn-card-action btn-card-primary" data-open-modal="novelreader">
+                詳細仕様・ギャラリーを見る
+              </button>
+              <a href="novel-ai-reader/privacy.html" class="btn-card-action btn-card-secondary">
+                プライバシーポリシー
+              </a>
+              <a href="novel-ai-reader/terms.html" class="btn-card-ghost">
+                利用規約
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-tag">About Us</span>
+          <h2 class="section-title">Studio LampKeep (蒼灯機関)</h2>
+          <p>
+            Studio LampKeep（スタジオ・ランプキープ / 蒼灯機関）は、インディーゲームおよびスマートアプリケーションの企画・開発・運営を行う個人開発スタジオです。
+          </p>
+          <p>
+            「手触りの心地よさ」「独自の物語と世界観」、そして「最先端テクノロジーによるユーザー体験の拡張」を三本柱として、妥協のないモノづくりを追求しています。
+          </p>
+          <p>
+            クラシックゲームが持つ純粋な熱気やグルーヴへの深いリスペクトを忘れず、現代のモバイル・Web環境に最適化された新しい感動を届けます。
+          </p>
+        </div>
+
+        <div class="about-features">
+          <div class="about-feature-box">
+            <div class="about-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            </div>
+            <div class="about-feature-info">
+              <h4>手触りとリズムの徹底追求</h4>
+              <p>60fpsのスムーズな描画、遅延のないレスポンス、触覚フィードバック（ハプティクス）など、指先から伝わる心地よさを何よりも重視しています。</p>
+            </div>
+          </div>
+
+          <div class="about-feature-box">
+            <div class="about-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <div class="about-feature-info">
+              <h4>完全自作のアセットと世界観</h4>
+              <p>シナリオ、グラフィック、そしてゲーム内で流れる数十曲のBGMに至るまで、可能な限り独自に構築。外部データや権利侵害のないクリーンで永続的な作品作りを行います。</p>
+            </div>
+          </div>
+
+          <div class="about-feature-box">
+            <div class="about-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div class="about-feature-info">
+              <h4>プライバシー第一の安心設計</h4>
+              <p>不必要な個人情報の収集・外部送信は行いません。完全オフライン動作やGoogle Playポリシーに厳格に準拠した透明性の高い開発を徹底しています。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Policies & Trust Section -->
+  <section id="policies" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Trust & Compliance</span>
+        <h2 class="section-title">プライバシーポリシー・規約ハブ</h2>
+        <p class="section-desc">
+          Google Play デベロッパープログラムポリシーおよび関連法令に準拠し、ユーザーのプライバシー保護を最優先としています。各アプリの規約・ポリシーは以下からご確認いただけます。
+        </p>
+      </div>
+
+      <div class="policy-cards">
+        <!-- Policy Card 1 -->
+        <div class="policy-card">
+          <div class="policy-card-top">
+            <span class="policy-badge">Google Play / Android</span>
+            <h3>Prince of Chaos</h3>
+            <p>
+              『Prince of Chaos ― 混沌迷宮と呪いの公子 ―』における個人情報保護方針、Google AdMob広告配信、Play Billing課金の取り扱いについて明記しています。
+            </p>
+          </div>
+          <a href="https://lampkeeper2026.github.io/prince-of-chaos-privacy/" target="_blank" rel="noopener" class="policy-link-btn">
+            プライバシーポリシーを開く ↗
+          </a>
+        </div>
+
+        <!-- Policy Card 2 -->
+        <div class="policy-card">
+          <div class="policy-card-top">
+            <span class="policy-badge">Google Play / Android</span>
+            <h3>ブロックドロップ 1988</h3>
+            <p>
+              『ブロックドロップ 1988：レトロパズル』のプライバシーポリシーです。個人情報の非収集、オフライン動作、広告SDKの利用指針を規定しています。
+            </p>
+          </div>
+          <a href="blockdrop-privacy.html" class="policy-link-btn">
+            プライバシーポリシーを開く ↗
+          </a>
+        </div>
+
+        <!-- Policy Card 3 -->
+        <div class="policy-card">
+          <div class="policy-card-top">
+            <span class="policy-badge">Android / Windows</span>
+            <h3>なろう小説AI朗読</h3>
+            <p>
+              『なろう小説AI朗読プレイヤー』のプライバシーポリシーおよび利用規約です。UGCコンテンツの安全対策、通報・非表示機能、著作権法の遵守方針を明記しています。
+            </p>
+          </div>
+          <div style="display:flex; gap:16px;">
+            <a href="novel-ai-reader/privacy.html" class="policy-link-btn">
+              プライバシーポリシー ↗
+            </a>
+            <a href="novel-ai-reader/terms.html" class="policy-link-btn">
+              利用規約 ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-box">
+        <div class="contact-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </div>
+        <h3>お問い合わせ・サポート</h3>
+        <p>
+          作品に関するご感想・不具合報告・タイアップのご相談など、下記サポート窓口までお気軽にお問い合わせください。
+        </p>
+
+        <div class="contact-mail-pill">
+          <span>✉️ hosokawamamoru.mh@gmail.com</span>
+          <button class="copy-btn" data-copy-target="hosokawamamoru.mh@gmail.com">アドレスをコピー</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom:8px;">
+            <div class="brand-icon-wrapper" style="width:32px; height:32px;">
+              <img src="assets/img/brand/logo.png" alt="Logo">
+            </div>
+            <div class="brand-name" style="font-size:1.1rem;">Studio LampKeep</div>
+          </div>
+          <p>Indie Game & Smart Application Development Studio</p>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#works">Works</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#policies">Policies</a></li>
+          <li><a href="https://github.com/LampKeeper2026" target="_blank" rel="noopener">GitHub ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Studio LampKeep (蒼灯機関). All rights reserved.</p>
+        <p style="margin-top:6px; font-size:0.75rem; color:#475569;">
+          ※各掲載作品は独立して制作されたオリジナルソフトウェアです。各社商標はそれぞれの権利者に帰属します。
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Details Dialog -->
+  <div id="details-modal" class="modal-backdrop">
+    <div class="modal-container">
+      <button class="modal-close-btn" aria-label="Close dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="modal-content-area" class="modal-body">
+        <!-- Content injected dynamically via main.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
