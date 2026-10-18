@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Studio LampKeep (蒼灯機関) - 公式Webサイト | インディーゲーム＆アプリ開発</title>
   
   <meta name="description" content="Studio LampKeep (蒼灯機関) の公式ポータルサイト。『Prince of Chaos (混沌迷宮と呪いの公子)』『LampDrop：混沌迷宮の蒼き灯火』『青空文庫＆文書AI朗読』をはじめとする独自の世界観と手触りにこだわったゲーム・アプリを開発・公開しています。">
@@ -19,14 +19,20 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="assets/img/brand/logo.png">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Cinzel (Gothic Monumental) + Shippori Mincho (Literary Gothic) + Space Grotesk + Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Shippori+Mincho:wght@500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- Ambient Particle Canvas Engine -->
+  <div class="lantern-particle-wrapper" aria-hidden="true">
+    <canvas id="lantern-canvas"></canvas>
+    <div class="lantern-vignette"></div>
+  </div>
 
   <!-- Site Header -->
   <header class="site-header">
@@ -55,49 +61,95 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Split Floating Showcase Deck -->
   <section class="hero-section">
-    <div class="hero-glow-blob cyan"></div>
-    <div class="hero-glow-blob purple"></div>
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Left: Copy & Actions -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>✦</span> STUDIO LAMPKEEP OFFICIAL PORTAL
+          </div>
+          <h1 class="hero-title">
+            灯火が照らす、独自の迷宮と<br>
+            <span class="gradient-text">熱狂の世界へ</span>
+          </h1>
+          <p class="hero-lead">
+            1988年アーケードの魂を受け継ぐゴシック落下パズル、112場面の会話劇と地下迷宮を往くダークファンタジーRPG、そしてAI技術で名作文学に命を吹き込む朗読プレイヤー。<br>
+            手触りの良さと唯一無二の世界観に妥協しない、Studio LampKeep の世界へようこそ。
+          </p>
 
-    <div class="container hero-content">
-      <div class="hero-badge">
-        <span>✦</span> STUDIO LAMPKEEP OFFICIAL PORTAL
-      </div>
-      <h1 class="hero-title">
-        灯火が照らす、独自の迷宮と<br>
-        <span class="gradient-text">熱狂の世界へ</span>
-      </h1>
-      <p class="hero-lead">
-        1980年代アーケードの魂を宿した本格パズル、112場面の会話劇と一人称地下迷宮を往くダークファンタジーRPG、そしてAI技術で物語に命を吹き込む朗読プレイヤー。<br>
-        手触りの良さとオリジナリティに妥協しない、Studio LampKeep の世界へようこそ。
-      </p>
+          <div class="hero-actions">
+            <a href="#works" class="btn-primary">
+              <span>🎮</span> 公開作品を見る
+            </a>
+            <a href="#about" class="btn-secondary">
+              <span>🕯️</span> スタジオの理念
+            </a>
+          </div>
 
-      <div class="hero-actions">
-        <a href="#works" class="btn-primary">
-          <span>🎮</span> 公開作品を見る
-        </a>
-        <a href="#about" class="btn-secondary">
-          <span>🕯️</span> スタジオについて
-        </a>
-      </div>
+          <div class="hero-stats-bar">
+            <div class="stat-item">
+              <div class="stat-number">3+</div>
+              <div class="stat-label">Active Works</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">32+</div>
+              <div class="stat-label">Original Music</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Tactile & Offline</div>
+            </div>
+          </div>
+        </div>
 
-      <div class="hero-stats-bar">
-        <div class="stat-item">
-          <div class="stat-number">3+</div>
-          <div class="stat-label">Active Projects</div>
+        <!-- Right: Floating Interactive Showcase Deck -->
+        <div class="hero-deck-wrapper" aria-hidden="true">
+          <div class="deck-glow-ambient"></div>
+
+          <!-- Mini Card 1: PoC -->
+          <a href="#works" class="deck-card card-poc" data-open-modal="poc">
+            <img src="assets/img/poc/hero.jpg" alt="Prince of Chaos" class="deck-thumb">
+            <div class="deck-meta">
+              <span class="deck-tag" style="color:var(--poc-gold); border-color:var(--poc-gold);">3D Dungeon RPG</span>
+              <span class="deck-platform">Android</span>
+            </div>
+            <div class="deck-title">Prince of Chaos</div>
+          </a>
+
+          <!-- Mini Card 2: LampDrop -->
+          <a href="#works" class="deck-card card-lampdrop" data-open-modal="blockdrop">
+            <img src="assets/img/blockdrop/lampdrop_title.png" alt="LampDrop" class="deck-thumb">
+            <div class="deck-meta">
+              <span class="deck-tag" style="color:var(--lampdrop-rose); border-color:var(--lampdrop-rose);">Gothic Puzzle</span>
+              <span class="deck-platform">Android / Web</span>
+            </div>
+            <div class="deck-title">LampDrop：混沌迷宮の蒼き灯火</div>
+          </a>
+
+          <!-- Mini Card 3: Reader -->
+          <a href="#works" class="deck-card card-reader" data-open-modal="novelreader">
+            <img src="assets/img/novelreader/feature_graphic.png" alt="青空文庫＆文書AI朗読" class="deck-thumb">
+            <div class="deck-meta">
+              <span class="deck-tag" style="color:var(--reader-violet); border-color:var(--reader-violet);">AI Audiobook</span>
+              <span class="deck-platform">Android / PWA</span>
+            </div>
+            <div class="deck-title">青空文庫＆文書AI朗読</div>
+          </a>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">32+</div>
-          <div class="stat-label">Original Soundtracks</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Original Assets & Code</div>
-        </div>
+
       </div>
     </div>
   </section>
+
+  <!-- Alchemical Divider -->
+  <div class="alchemical-divider">
+    <span class="divider-line"></span>
+    <span class="divider-gem">✦</span>
+    <span class="divider-line"></span>
+  </div>
 
   <!-- Works Showcase Section -->
   <section id="works" class="section">
@@ -106,7 +158,7 @@
         <span class="section-tag">Featured Works</span>
         <h2 class="section-title">制作・公開タイトル</h2>
         <p class="section-desc">
-          スマートフォンからブラウザ、PCまで。それぞれのプラットフォームで最高の体験をお届けするために開発されたStudio LampKeepのタイトルラインナップです。
+          スマートフォンからブラウザ、PCまで。それぞれのプラットフォームで最高の手触りと没入感をお届けするために開発されたStudio LampKeepのタイトルラインナップです。
         </p>
       </div>
 
@@ -130,7 +182,7 @@
               <span class="badge-tag">全32曲完全内蔵</span>
             </div>
             <div class="work-visual-thumbs">
-              <img src="assets/img/poc/hero.jpg" alt="Hero Art" data-src="assets/img/poc/hero.jpg">
+              <img src="assets/img/poc/hero.jpg" alt="Hero Art" data-src="assets/img/poc/hero.jpg" class="active">
               <img src="assets/img/poc/01_title.jpg" alt="Title" data-src="assets/img/poc/01_title.jpg">
               <img src="assets/img/poc/05_maze.jpg" alt="Dungeon" data-src="assets/img/poc/05_maze.jpg">
               <img src="assets/img/poc/07_battle.jpg" alt="Battle" data-src="assets/img/poc/07_battle.jpg">
@@ -158,7 +210,7 @@
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>技と気力・連携技</strong>：最大6人隊列による戦術コマンドバトル＆精鋭モンスター</span>
+                  <span><strong>技と気力・連携技</strong>：最大6人隊列による戦術コマンドバトル＆精鋭魔獣</span>
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -194,7 +246,7 @@
             </div>
             <div class="work-visual-thumbs">
               <img src="assets/img/blockdrop/lampdrop_title.png" alt="LampDrop Title" data-src="assets/img/blockdrop/lampdrop_title.png">
-              <img src="assets/img/blockdrop/lampdrop_gameplay.png" alt="LampDrop Gameplay" data-src="assets/img/blockdrop/lampdrop_gameplay.png">
+              <img src="assets/img/blockdrop/lampdrop_gameplay.png" alt="LampDrop Gameplay" data-src="assets/img/blockdrop/lampdrop_gameplay.png" class="active">
               <img src="assets/img/blockdrop/lampdrop_stacked.png" alt="LampDrop Stacked" data-src="assets/img/blockdrop/lampdrop_stacked.png">
               <img src="assets/img/blockdrop/02_gameplay.png" alt="Chassis Gameplay" data-src="assets/img/blockdrop/02_gameplay.png">
               <img src="assets/img/blockdrop/05_pause.png" alt="Pause" data-src="assets/img/blockdrop/05_pause.png">
@@ -245,7 +297,7 @@
         <!-- Project 3: Novel AI Reader -->
         <article class="work-card theme-purple" data-category="app">
           <div class="work-visual">
-            <img src="assets/img/novelreader/feature_graphic.png" alt="Novel AI Reader" class="work-visual-main">
+            <img src="assets/img/novelreader/feature_graphic.png" alt="青空文庫＆文書AI朗読" class="work-visual-main">
             <div class="work-visual-overlay"></div>
             <div class="work-visual-badges">
               <span class="badge-tag platform-windows">Windows PWA</span>
@@ -253,7 +305,7 @@
               <span class="badge-tag">AI自動配役・マルチボイス</span>
             </div>
             <div class="work-visual-thumbs">
-              <img src="assets/img/novelreader/feature_graphic.png" alt="Feature" data-src="assets/img/novelreader/feature_graphic.png">
+              <img src="assets/img/novelreader/feature_graphic.png" alt="Feature" data-src="assets/img/novelreader/feature_graphic.png" class="active">
               <img src="assets/img/novelreader/01_screenshot.png" alt="Reader" data-src="assets/img/novelreader/01_screenshot.png">
               <img src="assets/img/novelreader/02_screenshot.png" alt="Search" data-src="assets/img/novelreader/02_screenshot.png">
               <img src="assets/img/novelreader/03_player.png" alt="Player" data-src="assets/img/novelreader/03_player.png">
@@ -303,6 +355,13 @@
       </div>
     </div>
   </section>
+
+  <!-- Alchemical Divider -->
+  <div class="alchemical-divider">
+    <span class="divider-line"></span>
+    <span class="divider-gem">✦</span>
+    <span class="divider-line"></span>
+  </div>
 
   <!-- About Section -->
   <section id="about" class="section">
@@ -442,10 +501,10 @@
       <div class="footer-content">
         <div class="footer-brand">
           <div class="brand-logo" style="margin-bottom:8px;">
-            <div class="brand-icon-wrapper" style="width:32px; height:32px;">
+            <div class="brand-icon-wrapper" style="width:36px; height:36px;">
               <img src="assets/img/brand/logo.png" alt="Logo">
             </div>
-            <div class="brand-name" style="font-size:1.1rem;">Studio LampKeep</div>
+            <div class="brand-name" style="font-size:1.15rem;">Studio LampKeep</div>
           </div>
           <p>Indie Game & Smart Application Development Studio</p>
         </div>
@@ -460,24 +519,44 @@
 
       <div class="footer-bottom">
         <p>© 2026 Studio LampKeep (蒼灯機関). All rights reserved.</p>
-        <p style="margin-top:6px; font-size:0.75rem; color:#475569;">
+        <p style="margin-top:6px; font-size:0.78rem; color:#64748b;">
           ※各掲載作品は独立して制作されたオリジナルソフトウェアです。各社商標はそれぞれの権利者に帰属します。
         </p>
       </div>
     </div>
   </footer>
 
-  <!-- Modal Details Dialog -->
+  <!-- Modal Details Dialog (Enhanced Lightbox) -->
   <div id="details-modal" class="modal-backdrop">
     <div class="modal-container">
       <button class="modal-close-btn" aria-label="Close dialog">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
       <div id="modal-content-area" class="modal-body">
         <!-- Content injected dynamically via main.js -->
       </div>
     </div>
   </div>
+
+  <!-- Mobile Bottom Navigation Bar (片手操作フレンドリー) -->
+  <nav class="mobile-bottom-bar" aria-label="Mobile Navigation">
+    <a href="#works" class="mobile-bottom-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+      <span>Works</span>
+    </a>
+    <a href="#about" class="mobile-bottom-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+      <span>About</span>
+    </a>
+    <a href="#policies" class="mobile-bottom-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      <span>Policy</span>
+    </a>
+    <a href="#contact" class="mobile-bottom-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      <span>Contact</span>
+    </a>
+  </nav>
 
   <script src="js/main.js"></script>
 </body>
