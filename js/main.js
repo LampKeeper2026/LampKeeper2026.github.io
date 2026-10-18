@@ -7,20 +7,22 @@
 const APP_DATA = {
   poc: {
     title: 'Prince of Chaos',
-    subtitle: '混沌迷宮と呪いの公子 ― 紙芝居×一人称地下迷宮RPG',
-    category: 'ダンジョンRPG / ノベルアドベンチャー',
-    tag: 'Android 専用',
-    platform: 'Android 8.0 以降',
-    price: '基本プレイ無料（広告非表示 500円）',
+    subtitle: '― 混沌迷宮と呪いの公子 ―',
+    category: '本格3DダンジョンRPG × 紙芝居会話劇',
+    tag: 'Android 8.0+ 専用',
+    platform: 'Android 8.0+ 専用',
+    price: '基本プレイ無料（広告消し 500円）',
     packageId: 'com.lampkeep.princeofchaos',
-    distribution: 'Google Play 公開中',
+    distribution: 'Google Play クローズドテスト / 公開準備中',
     specs: [
-      { label: 'プラットフォーム', value: 'Android 8.0+' },
-      { label: '料金体系', value: '無料（広告消し 500円）' },
-      { label: 'ネットワーク', value: '完全オフライン動作' },
+      { label: '日本語正式名称', value: 'Prince of Chaos ― 混沌迷宮と呪いの公子 ―' },
+      { label: 'プラットフォーム', value: 'Android 8.0+ 専用' },
+      { label: '価格方針', value: '基本プレイ無料（広告消し 500円）' },
+      { label: 'パッケージID', value: 'com.lampkeep.princeofchaos' },
+      { label: 'ネットワーク', value: '完全オフライン動作（通信なし）' },
       { label: 'サウンド', value: '全32曲 完全オリジナル内包' },
-      { label: '操作対応', value: '画面タッチ / ゲームパッド' },
-      { label: 'パッケージID', value: 'com.lampkeep.princeofchaos' }
+      { label: '操作対応', value: 'タッチスライド見渡し / 十字キー / ゲームパッド' },
+      { label: 'シナリオ規模', value: '全112場面 / 6大マルチエンディング' }
     ],
     description: `呪いの公子と呼ばれるリュカと、言葉を話す黒猫クロが、楔を集めて逆さ塔を目指すダークファンタジーRPG。
 吹き出しによるテンポ良い紙芝居会話劇（全112場面、6つのマルチエンディング）と、一人称視点の重厚な地下迷宮探索が融合。
@@ -29,22 +31,25 @@ const APP_DATA = {
     features: [
       '吹き出しでテンポよく進む112場面の会話劇＆6つの結末（マルチエンディング）',
       '最大6人編成の隊列、技と気力、パートナーとの強力な連携技システム',
-      '地下10階の踏破、その先に待ち受ける果てなき「深淵回廊」',
+      '地下10階の踏破、その先に待ち受ける果てなき「深淵回廊」と精鋭魔獣',
       '武具の付加効果（Affixes）、ユニーク装備、セット効果、ナギの鍛冶屋での強化',
       '全32曲に及ぶ Studio LampKeep 完全オリジナル楽曲を内包',
-      '縦向き・横向き・画面反転・ゲームパッド（Bluetooth/USB）完全対応'
+      'タッチスライド見渡し・画面反転・Bluetooth/USBゲームパッド完全対応'
     ],
     gallery: [
-      { src: 'assets/img/poc/hero.jpg', caption: 'キービジュアル：深淵の塔とリュカ' },
-      { src: 'assets/img/poc/01_title.jpg', caption: 'タイトル画面：混沌迷宮と呪いの公子' },
-      { src: 'assets/img/poc/05_maze.jpg', caption: '地下迷宮探索画面（3Dダンジョン）' },
-      { src: 'assets/img/poc/07_battle.jpg', caption: 'コマンドバトル：連携技と精鋭魔獣' },
-      { src: 'assets/img/poc/04_status.jpg', caption: 'パーティ・ステータス管理画面' },
+      { src: 'assets/img/poc/hero.jpg', caption: 'キービジュアル：深淵の塔と呪いの公子リュカ' },
+      { src: 'assets/img/poc/01_title.jpg', caption: 'タイトル画面：Prince of Chaos ― 混沌迷宮と呪いの公子 ―' },
+      { src: 'assets/img/poc/story_prologue.jpg', caption: '紙芝居会話劇：序幕・呪いと運命の出会い（全112場面）' },
+      { src: 'assets/img/poc/05_maze.jpg', caption: '地下迷宮探索：一人称視点3Dダンジョン＆スライド見渡し' },
+      { src: 'assets/img/poc/boss.jpg', caption: '魔獣遭遇：深淵回廊の強敵ボス＆精鋭魔獣' },
+      { src: 'assets/img/poc/07_battle.jpg', caption: 'コマンドバトル：隊列・気力・強力な連携技' },
+      { src: 'assets/img/poc/04_status.jpg', caption: 'パーティ・ステータス管理・武具付加効果' },
       { src: 'assets/img/poc/14_inn.jpg', caption: '拠点ナギ：灯火の酒場・鍛冶屋・祈りの宮' }
     ],
     links: [
-      { text: 'Prince of Chaos 公式サイト', url: 'https://lampkeeper2026.github.io/prince-of-chaos/', isExternal: true },
-      { text: 'プライバシーポリシー', url: 'https://lampkeeper2026.github.io/prince-of-chaos-privacy/', isExternal: true }
+      { text: 'Google Play で入手（クローズドテスト）', url: 'https://play.google.com/apps/testing/com.lampkeep.princeofchaos', isExternal: true },
+      { text: 'Prince of Chaos 単体紹介サイト', url: 'https://lampkeeper2026.github.io/prince-of-chaos/', isExternal: true, isSecondary: true },
+      { text: 'プライバシーポリシー', url: 'https://lampkeeper2026.github.io/prince-of-chaos-privacy/', isExternal: true, isSecondary: true }
     ]
   },
   blockdrop: {
@@ -578,8 +583,9 @@ function renderModalContent(appId) {
 
   let linksHtml = '';
   data.links.forEach(link => {
+    const btnClass = link.isSecondary ? 'btn-card-action btn-card-secondary' : 'btn-card-action btn-card-primary';
     linksHtml += `
-      <a href="${link.url}" class="btn-card-action btn-card-primary" ${link.isExternal ? 'target="_blank" rel="noopener"' : ''}>
+      <a href="${link.url}" class="${btnClass}" ${link.isExternal ? 'target="_blank" rel="noopener"' : ''}>
         ${link.text} ↗
       </a>
     `;
