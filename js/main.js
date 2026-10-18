@@ -63,33 +63,34 @@ const APP_DATA = {
     distribution: 'Google Play 申請・内部テスト中 / Webデモ公開',
     specs: [
       { label: 'プラットフォーム', value: 'Android / Web / PC' },
-      { label: '料金体系', value: '基本プレイ無料' },
-      { label: '物理挙動', value: '1988年アーケード完全再現' },
-      { label: 'サウンド', value: 'FM音源風オリジナルテクノ' },
-      { label: 'コントローラー', value: 'Bluetooth / USB / タッチ' },
+      { label: '盤面仕様', value: '12列 × 20行 戦略的ワイド' },
+      { label: '背景描画', value: 'Google Flow 動画ループ (60fps)' },
+      { label: '神聖ピース', value: '聖十字架（★RARE 5マス）' },
+      { label: '料金体系', value: '基本無料 / 買い切り¥600' },
       { label: 'パッケージID', value: 'com.lampkeep.blockdrop1988' }
     ],
     description: `魔導ランプが連なり、混沌の迷宮を照らし出す――！
 1988年クラシック・アーケードの緊迫感とダークファンタジー世界が融合した、本格派レトロ落下ブロックパズル『LampDrop（ランプドロップ）』が登場！
-Studio LampKeepの代表作『Prince of Chaos ― 混沌迷宮と呪いの公子』の耽美な世界観を受け継ぐ、重厚な黒鉄と真鍮のゴシックフレーム、神秘的に揺らめく蒼灯、そして疾走感あふれるチップチューンサウンドがスマートフォンで蘇ります。
-落下するピースは真鍮と硝子で精緻に描かれたアンティークランプ。隣接する同色のランプ同士がアイアンチェーンや真鍮パイプでシームレスに結束し、魔導の光を放ちます。4ライン同時消去時の爽快な「MEGA CLEAR」で迷宮を一気に浄化せよ！`,
+Studio LampKeepの代表作『Prince of Chaos ― 混沌迷宮と呪いの公子』の耽美な世界観を受け継ぎ、Google Flowによって生成された超高精細シネマティック映像がゲームプレイ中の背景として60fps完全シームレスにループ再生！
+さらに12×20の拡大戦場、低確率で降臨する5マスの神聖十字架レリック（★RARE）、ライン消去と連動して太刀筋を放つ左右戦闘カードシステムなど、進化した深淵の戦いが幕を開けます。`,
     features: [
-      '繋がる魔導ランプ（ランタンクラスタ）：同色ランプが鍛造チェーンや真鍮パイプで結束',
-      '1988年アーケード実機準拠の物理エンジン（反時計回り回転・壁蹴りなし・LCG乱数・30Fロック遅延）',
-      'Prince of Chaos 迷宮6大階層（蒼灯の納骨回廊、機巧の地下炉、宙吊りの逆さ塔、混沌の祭壇等）',
-      'Studio LampKeep オリジナル「CHAOS BURST（3分スコアアタック・コンボ倍率）」モード搭載',
-      'FM音源風オリジナルチップチューン（川上泰広氏スタイル再現）＆実機サンプリングSE',
-      'タッチ操作（仮想D-Pad＆大型ボタン）＋Bluetooth/USBゲームパッド完全対応'
+      'Google Flow 生成シネマティック動画背景：6大迷宮の超高精細映像がゲーム中60fpsで完全シームレスループ',
+      '12×20 拡大戦場 ＆ 聖十字架レリック：12列×20行ワイド盤面・5マス神聖十字架（★RARE）降臨＆独自宝石パレット',
+      '左右戦闘カード＆階層ボス進化：王子リュカと迷宮ボスが盤面と連動して死闘を展開・最深層ボスは5形態へ変貌',
+      '生ける蒼炎 6コマ有機サイクル：Nano Banana 2生成の魔導ランプ内部で炎が呼吸・開花を繰り返す',
+      '買い切りプレミアムパス（¥600）：完全広告非表示＋作業用ループMVプレイヤー全開放',
+      'FM音源風オリジナルチップチューン（Flow Music共作）＆全国ハイスコアオンラインランキング'
     ],
     gallery: [
-      { src: 'assets/img/blockdrop/lampdrop_title.png', caption: 'タイトル画面：CLASSIC 1988 & CHAOS BURST' },
-      { src: 'assets/img/blockdrop/lampdrop_gameplay.png', caption: 'プレイ画面：真鍮と黒鉄のゴシックフレーム＆連なる魔導ランプ' },
+      { src: 'assets/img/blockdrop/01_title_video.png', caption: 'タイトル画面：Google Flow動画背景（B1F Azure Crypt）× 揺らぎ蒼炎ロゴ ＆ プレミアムパス解禁' },
+      { src: 'assets/img/blockdrop/02_gameplay_12x20.png', caption: 'プレイ画面（実機）：12×20拡大盤面・神聖十字架（★RARE）・Google Flow動画ループ背景' },
+      { src: 'assets/img/blockdrop/03_gameplay_loop.png', caption: '実機動画連動：立ち込める霧と松明の炎がプレイ中リアルタイムに呼吸' },
       { src: 'assets/img/blockdrop/lampdrop_stacked.png', caption: '盤面：美しく結束するランタンクラスタと4ライン消去MEGA CLEAR' },
-      { src: 'assets/img/blockdrop/02_gameplay.png', caption: '実機Pixel画面：アーケード筐体を模したサイバー操作系' },
-      { src: 'assets/img/blockdrop/05_pause.png', caption: 'ポーズ画面・安心のAndroidシステム戻る対応' }
+      { src: 'assets/img/blockdrop/05_pause.png', caption: 'ポーズ画面・背景透過度（20%/40%/60%/80%/0%）即時切替' }
     ],
     links: [
-      { text: 'プライバシーポリシー', url: 'lampdrop-privacy.html', isExternal: false }
+      { text: 'LampDrop 単体特集サイト', url: 'https://lampkeeper2026.github.io/block-drop-1988/', isExternal: true },
+      { text: 'プライバシーポリシー', url: 'lampdrop-privacy.html', isExternal: false, isSecondary: true }
     ]
   },
   novelreader: {
