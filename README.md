@@ -12,10 +12,10 @@ Studio LampKeep（蒼灯機関）の公式ポータルサイトです。GitHub P
    - **個別ページ**: [https://lampkeeper2026.github.io/prince-of-chaos/](https://lampkeeper2026.github.io/prince-of-chaos/)
    - **ポリシー**: [https://lampkeeper2026.github.io/prince-of-chaos-privacy/](https://lampkeeper2026.github.io/prince-of-chaos-privacy/)
 
-2. **ブロックドロップ 1988：レトロパズル (Block Drop 1988: Retro Fall)**
-   - **ジャンル**: ネオ・レトロアーケード落下ブロックパズル (Android / Web / Desktop)
-   - **特徴**: 1988年伝説的アーケードゲームの物理挙動＆FM音源風オリジナルチップチューン完全再現。3分スコアアタック「CYBER BURST」モード搭載、6大サイバー背景、完全無料・オフライン・広告なし。
-   - **ポリシー**: [blockdrop-privacy.html](blockdrop-privacy.html)
+2. **LampDrop：混沌迷宮の蒼き灯火 (LampDrop: Chaos Labyrinth)**
+   - **ジャンル**: ゴシック・レトロアーケード落下ブロックパズル (Android / Web / Desktop)
+   - **特徴**: 『Prince of Chaos』の美学を継ぐ「繋がる魔導ランプ（ランタンクラスタ）」、1988年伝説的アーケードゲームの物理挙動＆FM音源風オリジナルチップチューン完全再現。3分スコアアタック「CHAOS BURST」モード搭載、深層6大迷宮背景、Bluetoothゲームパッド対応。
+   - **ポリシー**: [lampdrop-privacy.html](lampdrop-privacy.html)
 
 3. **青空文庫＆文書AI朗読 (Aozora & Document AI Reader)**
    - **ジャンル**: AI読書・朗読アクセシビリティツール (Android / Windows PWA)

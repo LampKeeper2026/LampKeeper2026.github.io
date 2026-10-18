@@ -39,35 +39,35 @@ const APP_DATA = {
     ]
   },
   blockdrop: {
-    title: 'ブロックドロップ 1988：レトロパズル',
-    subtitle: 'Block Drop 1988: Retro Fall ― 80年代アーケードの魂が蘇る',
-    category: 'ネオ・レトロアーケード / 落下ブロックパズル',
+    title: 'LampDrop：混沌迷宮の蒼き灯火',
+    subtitle: 'LampDrop: Chaos Labyrinth ― 魔導ランプが連なる本格ゴシック・レトロ落下パズル',
+    category: 'ゴシック・レトロアーケード / 落下ブロックパズル',
     tag: 'Android / Web / Desktop',
     platform: 'Android 8.0+ / Webブラウザ / PC (JavaFX)',
-    price: '完全無料（広告なし・課金なし）',
+    price: '基本プレイ無料（広告あり・ゲーム中非表示）',
     packageId: 'com.lampkeep.blockdrop1988',
     distribution: 'Google Play 申請・内部テスト中 / Webデモ公開',
-    description: `1988年稼働の伝説的アーケードゲームの操作感、物理挙動、そしてFM音源チップチューンサウンドを忠実再現した本格派レトロ落下ブロックパズル！
-セガ実機準拠の左回転のみ（Sega Rotation）、接地遅延（Lock Delay 30F）、出現遅延（ARE 30F）、線形合同法（LCG）乱数生成テーブルを徹底追求。
-さらに、3分間の制限時間内で連続ライン消去のコンボ倍率を叩き出すオリジナル「CYBER BURST」モードや、電脳都市2088・深宇宙・ネオンサーキットなど6大サイバー背景を搭載！
-広告なし・アプリ内課金なし・完全オフライン動作。Bluetooth/USBゲームパッドやアーケードスティックにも完全対応しています。`,
+    description: `魔導ランプが連なり、混沌の迷宮を照らし出す――
+1988年クラシック・アーケードの緊迫感とダークファンタジー世界が融合した、本格派レトロ落下ブロックパズル『LampDrop（ランプドロップ）』が登場！
+Studio LampKeepの代表作『Prince of Chaos ― 混沌迷宮と呪いの公子』の耽美な世界観を受け継ぐ、重厚な黒鉄と真鍮のゴシックフレーム、神秘的に揺らめく蒼灯、そして疾走感あふれるチップチューンサウンドがスマートフォンで蘇ります。
+落下するピースは真鍮と硝子で精緻に描かれたアンティークランプ。隣接する同色のランプ同士がアイアンチェーンや真鍮パイプでシームレスに結束し、魔導の光を放ちます。4ライン同時消去時の爽快な「MEGA CLEAR」で迷宮を一気に浄化せよ！`,
     features: [
-      '1988年アーケード実機準拠の物理エンジン（左回転のみ・壁蹴りなし・DAS・接地ディレイ再現）',
-      'FM音源風オリジナルチップチューン（川上泰広氏サウンドスタイル再現）＆実機サンプリングSE',
-      'Studio LampKeep オリジナル「CYBER BURST（3分スコアアタック）」モード搭載',
-      '電脳都市2088、ディープスペース星雲など進行に応じて変化する6大美麗サイバーワールド',
-      'タッチ操作（仮想D-Pad＆大型ボタン）＋Bluetooth/USBゲームパッド完全対応',
-      '100%完全オフライン・広告なし・課金なし・個人情報非収集'
+      '繋がる魔導ランプ（ランタンクラスタ）：同色ランプが鍛造チェーンや真鍮パイプで結束',
+      '1988年アーケード実機準拠の物理エンジン（反時計回り回転・壁蹴りなし・LCG乱数・30Fロック遅延）',
+      'Prince of Chaos 迷宮6大階層（蒼灯の納骨回廊、機巧の地下炉、宙吊りの逆さ塔、混沌の祭壇等）',
+      'Studio LampKeep オリジナル「CHAOS BURST（3分スコアアタック・コンボ倍率）」モード搭載',
+      'FM音源風オリジナルチップチューン（川上泰広氏スタイル再現）＆実機サンプリングSE',
+      'タッチ操作（仮想D-Pad＆大型ボタン）＋Bluetooth/USBゲームパッド完全対応'
     ],
     gallery: [
-      { src: 'assets/img/blockdrop/01_title.png', caption: 'タイトル画面：CLASSIC 1988 & CYBER BURST' },
-      { src: 'assets/img/blockdrop/02_gameplay.png', caption: 'プレイ画面：アーケード筐体を模したサイバーフレーム' },
-      { src: 'assets/img/blockdrop/03_cyber_title.png', caption: '新モード：3分間スコアアタック CYBER BURST' },
-      { src: 'assets/img/blockdrop/04_cyber_gameplay.png', caption: 'CYBER BURST 実機プレイ：コンボ倍率と4ライン消去MEGA CLEAR' },
+      { src: 'assets/img/blockdrop/lampdrop_title.png', caption: 'タイトル画面：CLASSIC 1988 & CHAOS BURST' },
+      { src: 'assets/img/blockdrop/lampdrop_gameplay.png', caption: 'プレイ画面：真鍮と黒鉄のゴシックフレーム＆連なる魔導ランプ' },
+      { src: 'assets/img/blockdrop/lampdrop_stacked.png', caption: '盤面：美しく結束するランタンクラスタと4ライン消去MEGA CLEAR' },
+      { src: 'assets/img/blockdrop/02_gameplay.png', caption: '実機Pixel画面：アーケード筐体を模したサイバー操作系' },
       { src: 'assets/img/blockdrop/05_pause.png', caption: 'ポーズ画面・安心のAndroidシステム戻る対応' }
     ],
     links: [
-      { text: 'プライバシーポリシー', url: 'blockdrop-privacy.html', isExternal: false }
+      { text: 'プライバシーポリシー', url: 'lampdrop-privacy.html', isExternal: false }
     ]
   },
   novelreader: {
