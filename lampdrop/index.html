@@ -925,52 +925,6 @@
             line-height: 1.65;
         }
 
-        /* Real Device Battle Showcase Grid */
-        .battle-screen-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .battle-screen-item {
-            background: rgba(8, 14, 26, 0.95);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 10px 24px rgba(0,0,0,0.6);
-            transition: transform 0.25s ease, border-color 0.25s ease;
-        }
-
-        .battle-screen-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 16px 36px rgba(0, 210, 255, 0.25);
-        }
-
-        .battle-screen-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .battle-screen-caption {
-            padding: 12px 14px;
-            background: rgba(13, 20, 36, 0.95);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .battle-screen-caption strong {
-            display: block;
-            color: #ffffff;
-            font-size: 0.88rem;
-            margin-bottom: 2px;
-        }
-
-        .battle-screen-caption span {
-            color: var(--text-secondary);
-            font-size: 0.78rem;
-        }
-
         /* ===================================================
            Living Flame Animation Section Styles
            =================================================== */
@@ -1111,9 +1065,6 @@
                 grid-template-columns: 1fr;
             }
             .card-mechanics-grid {
-                grid-template-columns: 1fr;
-            }
-            .battle-screen-grid {
                 grid-template-columns: 1fr;
             }
             .flame-cycle-grid {
@@ -1622,60 +1573,6 @@
                     <p class="mechanic-desc">
                         ブロックが危険域まで積み上がると、主人公リュカが通常から「苦痛に耐え、息を呑む苦悶の表情」へと急変！ カード外周が深紅の警告オーラで激しく脈打ち、プレイヤーのアドレナリンを極限まで引き上げます。
                     </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Real Device Card Battle Showcase -->
-        <div style="text-align: center; margin-bottom: 20px;">
-            <div style="font-size: 0.82rem; font-weight: 700; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase;">REAL-DEVICE BATTLE MOMENTS</div>
-            <h3 style="font-size: 1.3rem; color: #ffffff; font-weight: 700;">手に汗握る、実機バトルハイライト</h3>
-        </div>
-        <div class="battle-screen-grid">
-            <div class="battle-screen-item">
-                <img src="img/card_battle_b1f.png" alt="迷宮探索開始">
-                <div class="battle-screen-caption">
-                    <strong>迷宮探索：運命の第一歩</strong>
-                    <span>初期装備のリュカと基本画面。迷宮の入口の静かな緊張感</span>
-                </div>
-            </div>
-            <div class="battle-screen-item">
-                <img src="img/card_battle_slash.png" alt="蒼炎一閃の太刀筋">
-                <div class="battle-screen-caption">
-                    <strong>蒼炎一閃！ 敵を斬り伏せる快感</strong>
-                    <span>ライン消去と連動する電光石火の居合い斬り</span>
-                </div>
-            </div>
-            <div class="battle-screen-item">
-                <img src="img/card_battle_pinch.png" alt="絶体絶命の危機">
-                <div class="battle-screen-caption">
-                    <strong>絶体絶命！ 緊迫のピンチ警告</strong>
-                    <span>赤く染まる盤面と主人公の鬼気迫る表情</span>
-                </div>
-            </div>
-            <div class="battle-screen-item">
-                <img src="img/screen_gameplay_transparent.png" alt="生ける迷宮世界">
-                <div class="battle-screen-caption">
-                    <strong>生ける迷宮：背景透過の没入感</strong>
-                    <span>盤面の奥で妖しく揺らめく灯火と漂う霧の臨場感</span>
-                </div>
-            </div>
-            <div class="battle-screen-item">
-                <img src="img/screen_gameplay_12x20.png" alt="12x20 拡大盤面での激戦">
-                <div class="battle-screen-caption">
-                    <strong>ワイド戦場：12×20の怒濤大連鎖</strong>
-                    <span>巨大フィールドで繰り広げる高速連鎖バトル</span>
-                </div>
-            </div>
-            <div class="battle-screen-item">
-                <img src="img/screen_cross_falling.png" alt="神聖十字架レリック降臨">
-                <div class="battle-screen-caption">
-                    <strong>奇跡の神聖レリック降臨</strong>
-                    <span>逆境を劇的に覆す5マスピースの衝撃</span>
-                </div>
-            </div>
-        </div>
-        </div>
         </div>
     </section>
 
@@ -2016,71 +1913,23 @@
     <section class="section" id="gallery">
         <div class="section-header">
             <div class="section-tag">GALLERY</div>
-            <h2 class="section-title">実機スクリーンショット</h2>
-            <p style="color: var(--accent-cyan); font-weight: 600; max-width: 760px; margin: 10px auto 0; font-size: 0.95rem;">
-                Android最新実機にて完全ネイティブ60fps動作確認済みのキャプチャです。
+            <h2 class="section-title">スクリーンショット</h2>
+            <p style="color: var(--text-secondary); max-width: 760px; margin: 10px auto 0; font-size: 0.95rem; line-height: 1.6;">
+                深淵の迷宮で繰り広げられる、美しくも緊張感あふれる探索の一幕。
             </p>
         </div>
         <div class="gallery-grid">
             <div class="gallery-item" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
                 <img src="img/device_video_test1.png" alt="タイトル画面 シネマティック動画背景と揺らぎ蒼炎ロゴ">
-                <div class="gallery-caption">タイトル画面（実機）：美麗シネマティック動画背景（B1F Azure Crypt）× 揺らぎ蒼炎ロゴ ＆ プレミアムパス解禁</div>
+                <div class="gallery-caption"><strong>深淵への扉</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">蒼き灯火が揺らめくタイトル画面</span></div>
             </div>
             <div class="gallery-item" style="border: 1px solid rgba(251, 191, 36, 0.45); box-shadow: 0 4px 24px rgba(251, 191, 36, 0.25);">
-                <img src="img/device_video_gameplay2.png" alt="実機プレイ画面 12x20拡大盤面とシネマティック動画ループ背景">
-                <div class="gallery-caption">プレイ画面（実機）：12×20拡大盤面・神聖十字架（★RARE）・シネマティック動画ループ背景</div>
+                <img src="img/device_video_gameplay2.png" alt="迷宮の激闘 シネマティック背景動画とパズルバトル">
+                <div class="gallery-caption"><strong>迷宮の激闘</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">美麗シネマティック映像と連動するパズルバトル</span></div>
             </div>
             <div class="gallery-item" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
-                <img src="img/device_video_gameplay3.png" alt="背景動画リアルタイム連動">
-                <div class="gallery-caption">背景動画連動（実機）：立ち込める霧と松明の炎がプレイ中リアルタイムに呼吸</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/screen_holy_cross.png" alt="神聖十字架（5マスレア出現）と独自パレット">
-                <div class="gallery-caption">神聖レリック：NEXT枠に降臨した5マス『聖十字架（★RARE）』＆独自パレット</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/screen_logo_opening.png" alt="Studio LampKeep オープニング動画">
-                <div class="gallery-caption">起動時：Studio LampKeep 神聖ランタン点火シネマティック</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/screen_gameplay_transparent.png" alt="プレイフィールド背景20%半透明">
-                <div class="gallery-caption">プレイ画面：背景20%透過で背後の迷宮映像が透ける新演出</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/screen_pause_menu.png" alt="ポーズ画面 背景透過度調整">
-                <div class="gallery-caption">ポーズメニュー：背景透過度を即時切替（20%/40%/60%/80%/0%）</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/screen_ambient_scene1.png" alt="作業用ループMV 凱旋の夜明け">
-                <div class="gallery-caption">作業用ループMV：環境シネマティック映像（画面消灯なし無限環境再生）</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/screen_purchase_dialog.png" alt="プレミアムパス購入ダイアログ">
-                <div class="gallery-caption">買い切りプレミアムパス：全機能永久アンロック（¥600 税込）</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/card_battle_b1f.png" alt="迷宮探索開始">
-                <div class="gallery-caption">迷宮探索：新米剣士リュカ vs 立ち塞がる怪異</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/card_battle_slash.png" alt="ライン消去 蒼炎一閃＆クリティカル">
-                <div class="gallery-caption">ライン消去：蒼炎居合い斬り被弾＆CRITICAL 1000!</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/card_battle_pinch.png" alt="ピンチ状態 赤枠警告＆苦悶表情">
-                <div class="gallery-caption">絶体絶命：苦悶の表情＆深紅の警告オーラ</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/card_battle_strong.png" alt="強敵との対峙">
-                <div class="gallery-caption">迷宮の試練：処刑大剣を構えるフロアボス</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/screen_holy_cross.png" alt="奇跡の神聖十字架">
-                <div class="gallery-caption">奇跡の降臨：盤面を照らす神聖十字架（★RARE）</div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/screen_gameplay_12x20.png" alt="12x20拡大盤面での激戦">
-                <div class="gallery-caption">12×20拡大盤面：ワイドフィールドで繰り広げる高速バトル</div>
+                <img src="img/screen_holy_cross.png" alt="奇跡の神聖十字架 盤面を照らす幻のブロック">
+                <div class="gallery-caption"><strong>奇跡の降臨</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">窮地を照らす幻のブロック『神聖十字架』</span></div>
             </div>
         </div>
     </section>
