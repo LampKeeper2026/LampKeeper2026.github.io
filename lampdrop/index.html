@@ -1373,67 +1373,6 @@
             color: var(--text-secondary);
             line-height: 1.65;
         }
-
-        /* Ending MV Showcase */
-        .vocal-mv-box {
-            background: linear-gradient(135deg, rgba(12, 18, 36, 0.95), rgba(8, 12, 24, 0.98));
-            border: 2px solid rgba(0, 210, 255, 0.4);
-            border-radius: 24px;
-            padding: 36px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 210, 255, 0.2);
-            margin-bottom: 40px;
-        }
-
-        .vocal-mv-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 32px;
-            align-items: center;
-        }
-
-        @media (max-width: 900px) {
-            .vocal-mv-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .vocal-mv-video-wrap {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            background: #000;
-        }
-
-        .vocal-mv-video-wrap video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .lyrics-card {
-            background: rgba(5, 10, 20, 0.8);
-            border: 1px solid rgba(251, 191, 36, 0.35);
-            border-radius: 16px;
-            padding: 24px;
-            position: relative;
-        }
-
-        .lyrics-verse {
-            font-size: 0.92rem;
-            line-height: 1.8;
-            color: #e2e8f0;
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-
-        .lyrics-chorus {
-            font-size: 0.98rem;
-            line-height: 1.9;
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
     </style>
 </head>
 <body>
@@ -1453,7 +1392,6 @@
             </a>
             <nav>
                 <a href="https://lampkeeper2026.github.io/" target="_blank" rel="noopener" style="color: var(--accent-gold); font-weight: 600;">✦ 公式ポータル</a>
-                <a href="#vocal-mv" style="color: var(--accent-cyan); font-weight: 700;">🎵 歌姫ボーカルMV</a>
                 <a href="#curses" style="color: var(--accent-crimson); font-weight: 700;">💀 ボス呪い・難易度</a>
                 <a href="#premium" style="color: var(--accent-gold); font-weight: 700;">★ プレミアムパス (作業用MV)</a>
                 <a href="#story">世界観</a>
@@ -1766,10 +1704,10 @@
                 </div>
             </div>
             <div class="battle-screen-item">
-                <img src="img/card_battle_chaos5.png" alt="FINAL 混沌神 第5形態">
+                <img src="img/card_battle_chaos5.png" alt="FINAL 真・混沌神">
                 <div class="battle-screen-caption">
-                    <strong>FINAL FLOOR：真・混沌神 最終決戦</strong>
-                    <span>深淵の神話を打ち砕く第5形態との死闘</span>
+                    <strong>FINAL FLOOR：真・混沌神 決戦</strong>
+                    <span>深淵の神話を打ち砕く最深層の死闘</span>
                 </div>
             </div>
         </div>
@@ -2037,7 +1975,7 @@
                 <div class="feature-icon">🏆</div>
                 <h3 class="feature-title">全国オンラインランキング</h3>
                 <p class="feature-desc">
-                    Google Apps Script (GAS) リアルタイム集計。全国の猛者とスコアを競い、アプリ内でも自順位がダイレクトに同期表示されます。
+                    全国オンラインランキング集計。全国の猛者とスコアを競い、アプリ内でも自順位がダイレクトに同期表示されます。
                 </p>
             </div>
         </div>
@@ -2049,8 +1987,8 @@
             <div class="section-tag">PREMIUM PASS</div>
             <h2 class="section-title">買い切りプレミアムパス ＆ 作業用ループMV</h2>
             <p style="color: var(--text-secondary); max-width: 680px; margin: 12px auto 0; font-size: 1rem;">
-                開発者純利益500円（Google Play 15%手数料差引後）の良心的価格設定【¥600 税込・買い切り】。<br>
-                一度の購入で全広告が永久非表示となり、高品質Flow映像による作業用ループMVプレイヤーが全開放されます。
+                完全買い切り型プレミアムパス【¥600 税込】。<br>
+                月額料金や追加課金は一切なく、一度の購入で全広告が永久非表示となり、高品質Flow映像による作業用ループMVプレイヤーが全開放されます。
             </p>
         </div>
 
@@ -2113,7 +2051,7 @@
             <div class="section-tag">GALLERY</div>
             <h2 class="section-title">実機スクリーンショット</h2>
             <p style="color: var(--accent-cyan); font-weight: 600; max-width: 760px; margin: 10px auto 0; font-size: 0.95rem;">
-                実機（COLOR 8 / Android 14）にて完全ネイティブ60fps動作確認済みの最新キャプチャです。
+                Android最新実機にて完全ネイティブ60fps動作確認済みのキャプチャです。
             </p>
         </div>
         <div class="gallery-grid">
@@ -2147,11 +2085,11 @@
             </div>
             <div class="gallery-item">
                 <img src="img/screen_ambient_scene1.png" alt="作業用ループMV 凱旋の夜明け">
-                <div class="gallery-caption">作業用ループMV：凱旋の夜明け（画面消灯なし無限環境再生）</div>
+                <div class="gallery-caption">作業用ループMV：環境シネマティック映像（画面消灯なし無限環境再生）</div>
             </div>
             <div class="gallery-item">
                 <img src="img/screen_purchase_dialog.png" alt="プレミアムパス購入ダイアログ">
-                <div class="gallery-caption">買い切りプレミアムパス：純利益500円設定（¥600 税込）</div>
+                <div class="gallery-caption">買い切りプレミアムパス：全機能永久アンロック（¥600 税込）</div>
             </div>
             <div class="gallery-item">
                 <img src="img/card_battle_b1f.png" alt="B1F 納骨回廊 探索開始">
@@ -2174,8 +2112,8 @@
                 <div class="gallery-caption">B3F 聖堂：銀甲ルーンナイトリュカ vs 機巧オートマタ</div>
             </div>
             <div class="gallery-item">
-                <img src="img/card_battle_chaos5.png" alt="FINAL 真・混沌神 最終形態">
-                <div class="gallery-caption">最深層：真・混沌神 第5形態との極限決戦</div>
+                <img src="img/card_battle_chaos5.png" alt="FINAL 真・混沌神">
+                <div class="gallery-caption">最深層：真・混沌神との極限決戦</div>
             </div>
         </div>
     </section>
@@ -2239,58 +2177,6 @@
                         <div class="stage-sub">深紅と深紫の混沌渦動が脈動する黒鉄の間</div>
                     </div>
                 </button>
-                <button class="stage-btn" onclick="switchStage(6)">
-                    <span class="stage-badge" style="border-color: rgba(251, 191, 36, 0.6); color: var(--accent-gold);">EPILOGUE</span>
-                    <div class="stage-info">
-                        <div class="stage-name">祝祭の夜明け (Dawn of Valor)</div>
-                        <div class="stage-sub">迷宮崩壊と朝光の救済、空へと昇る蒼き灯火</div>
-                    </div>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vocal Ending MV Section -->
-    <section class="section" id="vocal-mv">
-        <div class="section-header">
-            <div class="section-tag" style="background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.5); color: var(--accent-cyan);">OFFICIAL VOCAL ENDING MV</div>
-            <h2 class="section-title">公式エンディングMV「Out of Darkness」</h2>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--accent-gold); margin-top: 6px; letter-spacing: 0.08em;">
-                VOCAL: AOKA UTA (PRICE OF CHAOS 歌姫・蒼歌 詠) • PRODUCED WITH GOOGLE FLOW & FLOW MUSIC
-            </div>
-            <p style="color: var(--text-secondary); max-width: 720px; margin: 12px auto 0; font-size: 1rem;">
-                深淵の迷宮を制覇せし者へ贈る、全13章・約3分間の超大作シネマティックMV。<br>
-                Google Flow 1080pアップスケール映像と、Flow Musicで生成されたダークゴシック・オペラソプラノの歌声が完全同期。
-            </p>
-        </div>
-
-        <div class="vocal-mv-box">
-            <div class="vocal-mv-grid">
-                <div class="vocal-mv-video-wrap">
-                    <video controls playsinline preload="metadata" poster="img/mv_vocal_prologue.jpg" src="video/ending_mixed.mp4" style="width: 100%; border-radius: 12px;"></video>
-                </div>
-                <div class="lyrics-card">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
-                        <span style="font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--accent-gold); letter-spacing: 0.15em; font-weight: 700;">SONG LYRICS & THEME</span>
-                        <span style="font-size: 0.8rem; background: rgba(0, 210, 255, 0.2); color: var(--accent-cyan); padding: 3px 10px; border-radius: 999px; font-weight: 600;">85 BPM CLIMAX</span>
-                    </div>
-                    <h3 style="font-size: 1.35rem; color: #ffffff; margin-bottom: 16px; font-weight: 700;">
-                        Out of Darkness — 救済の歌
-                    </h3>
-                    <div class="lyrics-verse">
-                        <strong style="color: var(--accent-cyan); display: block; margin-bottom: 4px;">【Verse: 迷宮の帳】</strong>
-                        深き迷宮の果て　解き放たれし蒼き灯火<br>
-                        永き闇を貫く　折れぬ剣の誓い…
-                    </div>
-                    <div class="lyrics-chorus">
-                        <strong style="color: var(--accent-gold); display: block; margin-bottom: 4px;">【Chorus: 歓喜の飛翔】</strong>
-                        混沌の夜を越え　光射す約束の空へ<br>
-                        祈りは永久に　歓喜の歌となれ！
-                    </div>
-                    <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6;">
-                        ✦ <strong>全13章構成</strong>：プロローグ ➔ B6F〜B1F逆走 ➔ 3英雄の凱旋 ➔ 歓喜のクライマックス ➔ スタッフクレジット
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -2330,20 +2216,6 @@
                             <small>2:55 ・ 138 BPM ・ Driving Percussion & Dark Strings</small>
                         </div>
                     </div>
-                    <div class="track-item" onclick="playBgm(3)">
-                        <span class="track-play-icon">▶</span>
-                        <div class="track-meta">
-                            <strong>Game Ending: Dawn of Valor (凱旋の夜明け)</strong>
-                            <small>2:58 ・ Studio WAV ・ 96 BPM ・ 郷愁オルゴール・壮麗ストリングス・凱旋ファンファーレ</small>
-                        </div>
-                    </div>
-                    <div class="track-item" onclick="playBgm(4)">
-                        <span class="track-play-icon">▶</span>
-                        <div class="track-meta">
-                            <strong style="color: var(--accent-gold);">Game Ending Vocal: Out of Darkness (Price of Chaos 歌姫 蒼歌 詠)</strong>
-                            <small>2:40 ・ Studio WAV ・ 85 BPM ・ オペラソプラノ独唱・聖歌隊合唱・荘厳パイプオルガン</small>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="soundtrack-player-box">
@@ -2360,7 +2232,7 @@
             <div class="section-tag">ONLINE LEADERBOARD</div>
             <h2 class="section-title">全国ハイスコアランキング (Hall of Valor)</h2>
             <p class="section-desc" style="color: var(--text-secondary); max-width: 650px; margin: 12px auto 0;">
-                Google Apps Script (GAS) リアルタイム集計。全国のプレイヤーとスコアを競い合い、混沌の深淵の頂点を目指せ！
+                オンラインリアルタイム集計。全国のプレイヤーとスコアを競い合い、混沌の深淵の頂点を目指せ！
             </p>
         </div>
 
@@ -2423,7 +2295,7 @@
                 </tr>
                 <tr>
                     <th>対応プラットフォーム</th>
-                    <td>Android 8.0 以上（Android 14 / Google Pixel 8a 実機検証済）</td>
+                    <td>Android 8.0 以上</td>
                 </tr>
                 <tr>
                     <th>開発・著作権</th>
@@ -2435,11 +2307,11 @@
                 </tr>
                 <tr>
                     <th>背景描画エンジン</th>
-                    <td>Google Flow 生成 6大迷宮シネマティック動画（60fps 完全シームレスループ・ハードウェアアクセラレーション）</td>
+                    <td>6大迷宮シネマティック動画（60fps 完全シームレスループ描画）</td>
                 </tr>
                 <tr>
                     <th>収益モデル</th>
-                    <td>基本プレイ無料（非侵入型広告） / 買い切りプレミアムパス（¥600・完全広告排除＋作業用ループMV開放）</td>
+                    <td>基本プレイ無料 / 買い切りプレミアムパス（¥600 税込・完全広告非表示＋作業用ループMV開放）</td>
                 </tr>
                 <tr>
                     <th>プライバシー</th>
@@ -2553,8 +2425,7 @@
         "video/b3f_shattered_sanctuary.mp4",
         "video/b4f_glass_furnace.mp4",
         "video/b5f_inverted_tower.mp4",
-        "video/b6f_chaos_throne.mp4",
-        "video/ending_mixed.mp4"
+        "video/b6f_chaos_throne.mp4"
     ];
 
     function switchStage(idx) {
@@ -2574,9 +2445,7 @@
     const bgmTracks = [
         { title: "Game Opening: Dark Fantasy Arcade Prelude", src: "audio/bgm_opening_prelude.wav" },
         { title: "BGM 1: Dungeon Crawler 1988 (Original Mix)", src: "audio/bgm_dungeon_crawler_1988.mp3" },
-        { title: "BGM 2: Dungeon Crawler 1988 (Arranged Take)", src: "audio/bgm_dungeon_crawler_1988_take2.mp3" },
-        { title: "Game Ending: Dawn of Valor (凱旋の夜明け)", src: "audio/bgm_ending_triumph.wav" },
-        { title: "Game Ending Vocal: Out of Darkness (Price of Chaos 歌姫 蒼歌 詠)", src: "audio/bgm_ending_vocal.mp3" }
+        { title: "BGM 2: Dungeon Crawler 1988 (Arranged Take)", src: "audio/bgm_dungeon_crawler_1988_take2.mp3" }
     ];
 
     function playBgm(idx) {
@@ -2589,7 +2458,7 @@
         audio.play().catch(e => console.log('Playback handled:', e));
     }
 
-    // Online Leaderboard (GAS API + Fallback)
+    // Online Leaderboard (API + Fallback)
     const GAS_LEADERBOARD_URL = "https://script.google.com/macros/s/AKfycbwYOUR_GAS_DEPLOYMENT_ID/exec";
     let curLeaderboardMode = 'classic';
 

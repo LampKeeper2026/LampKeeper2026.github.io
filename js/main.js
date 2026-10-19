@@ -82,6 +82,11 @@ Studio LampKeepの代表作『Prince of Chaos ― 混沌迷宮と呪いの公子
       'FM音源風オリジナルチップチューン（Flow Music共作）＆全国ハイスコアオンラインランキング'
     ],
     gallery: [
+      { src: 'assets/img/blockdrop/feature_graphic.png', caption: '公式グラフィック：LampDrop 混沌迷宮の蒼き灯火' },
+      { src: 'assets/img/blockdrop/promo_01_title.png', caption: 'ストア紹介：魔導ランプ連結×本格ゴシック・レトロ落下パズル' },
+      { src: 'assets/img/blockdrop/promo_02_battle.png', caption: 'リアルタイム背景バトル：ライン消去で太刀筋を放ちボスを撃破せよ' },
+      { src: 'assets/img/blockdrop/promo_03_modes.png', caption: '多彩なゲームモード：深淵迷宮モード＆1988クラシックアーケード' },
+      { src: 'assets/img/blockdrop/promo_04_mv_bestiary.png', caption: '豪華コンテンツ：全13章主題歌MV＆深淵魔獣図鑑' },
       { src: 'assets/img/blockdrop/battle_title.png', caption: 'タイトル画面：魔導ランプ連結×リアルタイム背景バトル『LampDrop』' },
       { src: 'assets/img/blockdrop/battle_gameplay.png', caption: 'プレイ画面：真鍮フレーム・リアルタイム背景バトル・連なる魔導ランプ' },
       { src: 'assets/img/blockdrop/card_crescent_slash.png', caption: '戦闘演出：ライン消去と連動してリュカの三日月斬りが炸裂' },
