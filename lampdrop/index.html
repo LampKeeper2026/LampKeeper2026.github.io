@@ -1688,12 +1688,22 @@
             <h2 class="section-title" style="margin-top: 12px;">魂を揺さぶる叙事詩 — 混沌を穿つ蒼き灯火</h2>
             <p style="color: var(--text-secondary); max-width: 840px; margin: 14px auto 0; font-size: 1.05rem; line-height: 1.8;">
                 滅びし王国の第三王子リュカと相棒クロが挑む、果てなき混沌迷宮の叙事詩。<br>
-                Flow Music 制作による重厚なシンフォニック・ロック主題歌<strong>『青藍の外套 (Blue Mantle of Chaos)』</strong>に乗せ、<br>
+                Google Flow Music 制作によるダークケルティック・シンフォニック主題歌<strong>『蒼き灯火 (Aoki Tomoshibi) — 混沌迷宮の果てへ —』</strong>に乗せ、<br>
                 専任歌姫<strong>セレナ・カンタービレ・ヴォックス（Serena Cantabile Vox）</strong>が歌い上げる完全新規3分間オープニングストーリーMVをノーカット公開！
             </p>
         </div>
 
         <div class="mv-theater-card">
+            <!-- Language Switcher Tabs -->
+            <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 20px;">
+                <button id="btnMvJa" class="mv-ctrl-btn gold" onclick="switchMvEdition('ja')" style="padding: 10px 24px; font-size: 0.95rem; border-radius: 999px;">
+                    🇯🇵 日本語主題歌 『蒼き灯火』 (3:01)
+                </button>
+                <button id="btnMvEn" class="mv-ctrl-btn" onclick="switchMvEdition('en')" style="padding: 10px 24px; font-size: 0.95rem; border-radius: 999px;">
+                    🇺🇸 English Theme "The Azure Flame" (3:01)
+                </button>
+            </div>
+
             <!-- 16:9 Cinematic Video Player -->
             <div class="mv-player-wrapper">
                 <video id="mainMvPlayer" src="video/opening_mixed.mp4" playsinline controls preload="metadata" poster="img/battle_title.png"></video>
@@ -1711,11 +1721,11 @@
                     <button class="mv-ctrl-btn" onclick="seekMv(0)">
                         <span>⏮</span> 最初から (0:00)
                     </button>
-                    <button class="mv-ctrl-btn" onclick="seekMv(75)">
-                        <span>⚡</span> サビ・蒼炎一閃 (1:15)
+                    <button class="mv-ctrl-btn" onclick="seekMv(51)">
+                        <span>⚡</span> サビ・連なる灯火 (0:51)
                     </button>
-                    <button class="mv-ctrl-btn" onclick="seekMv(150)">
-                        <span>🔥</span> 覚醒のクライマックス (2:30)
+                    <button class="mv-ctrl-btn" onclick="seekMv(140)">
+                        <span>🔥</span> 覚醒のクライマックス (2:20)
                     </button>
                     <button class="mv-ctrl-btn" onclick="fullscreenMv()">
                         <span>⛶</span> フルスクリーン
@@ -1725,7 +1735,7 @@
                     <span class="mv-pill" style="color: var(--accent-cyan); border-color: rgba(0, 210, 255, 0.4);">✦ 1080p Full HD</span>
                     <span class="mv-pill" style="color: var(--accent-gold); border-color: rgba(251, 191, 36, 0.4);">★ Flow Music Hi-Fi</span>
                     <span class="mv-pill">24 fps Cinematic</span>
-                    <span class="mv-pill">Duration: 3:00 (180s)</span>
+                    <span class="mv-pill">Duration: 3:01 (181s)</span>
                 </div>
             </div>
 
@@ -1734,10 +1744,10 @@
                 <!-- Song & Vocal Credits Card -->
                 <div class="mv-song-card">
                     <div class="mv-song-header">
-                        <img src="img/icon.png" alt="Serena Cantabile Vox" class="mv-vocal-avatar">
+                        <img src="img/song_aoki_tomoshibi_jacket.jpg" alt="Aoki Tomoshibi Jacket" class="mv-vocal-avatar" style="border-radius: 8px; border: 1px solid rgba(0, 210, 255, 0.5);">
                         <div>
                             <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; letter-spacing: 0.1em;">Official Theme Song</div>
-                            <h3 class="mv-song-title">青藍の外套 <span style="font-size: 0.9rem; color: var(--text-secondary); font-family: 'Inter', sans-serif;">- Blue Mantle of Chaos -</span></h3>
+                            <h3 class="mv-song-title">蒼き灯火 <span style="font-size: 0.9rem; color: var(--text-secondary); font-family: 'Inter', sans-serif;">- Aoki Tomoshibi -</span></h3>
                             <div class="mv-song-singer">歌唱：セレナ・カンタービレ・ヴォックス（蒼歌 詠）</div>
                         </div>
                     </div>
@@ -1753,7 +1763,7 @@
                         </tr>
                         <tr>
                             <td>楽曲構成</td>
-                            <td>BPM 84 / Key: D minor / 3分00秒 フル尺音源</td>
+                            <td>Dark Celtic Ballad / Key: D minor / 3分01秒 フル尺音源</td>
                         </tr>
                         <tr>
                             <td>世界観連動</td>
@@ -1764,11 +1774,11 @@
                     <div class="mv-song-story">
                         <p style="margin-bottom: 10px;">
                             <strong>【楽曲について】</strong><br>
-                            亡国の哀愁を帯びたアコースティックギターのアルペジオから幕を開け、闇を裂くストリングスと重厚なロックビートが交錯。サビではセレナの伸びやかで力強いハイトーンヴォーカルが炸裂し、ブロックを積むプレイヤーの闘志を限界まで引き上げます。
+                            静寂のケルティックハープと哀愁の独奏チェロから幕を開け、冷たい石畳を踏みしめる王子の足音と共に、切なくも力強い歌姫セレナの日本語ヴォーカルが響き渡ります。「真鍮のランタン」「積み重なる石」「連なる灯火」「外さない梯子」など、LampDropの世界観とエンディング主題歌の魂を受け継いだ完全オリジナル叙事詩。
                         </p>
                         <p>
                             <strong>【オープニング映像の構成】</strong><br>
-                            リュカの誓い、相棒クロの機転、B1F骸骨騎士との鍔迫り合い、4段消去（TETRIS）による蒼炎居合い斬りの爆発、聖十字架の奇跡、そして最深層の覚醒まで——ゲーム本編のドラマを余すところなく凝縮した必見の3分間です。
+                            全14シークエンス・完全クロスフェード構成。ルーカスの旅立ち、相棒黒猫クロの導き、各迷宮階層（納骨堂、緋色水路、砕かれし聖堂、硝子炉心、反転回廊、混沌の玉座）の神秘的景観を網羅した、没入感あふれる3分間のダークファンタジー・シネマティックです。
                         </p>
                     </div>
                 </div>
@@ -1782,62 +1792,72 @@
                     <div class="mv-chapter-list" id="mvChapterList">
                         <button class="mv-chapter-item active" onclick="seekMv(0)" data-time="0">
                             <span class="mv-ch-time">0:00</span>
-                            <span class="mv-ch-title">【序曲】混沌迷宮への誘い</span>
+                            <span class="mv-ch-title">【PROLOGUE】蒼き灯火 — 混沌迷宮の目覚め</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(15)" data-time="15">
-                            <span class="mv-ch-time">0:15</span>
-                            <span class="mv-ch-title">【王子の誓い】亡国のリュカと蒼き灯火</span>
+                        <button class="mv-chapter-item" onclick="seekMv(14)" data-time="14">
+                            <span class="mv-ch-time">0:14</span>
+                            <span class="mv-ch-title">【HERO】青藍の外套 — 裏門の旅立ち</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(30)" data-time="30">
-                            <span class="mv-ch-time">0:30</span>
-                            <span class="mv-ch-title">【相棒】金眼の黒猫クロとの邂逅</span>
+                        <button class="mv-chapter-item" onclick="seekMv(27)" data-time="27">
+                            <span class="mv-ch-time">0:27</span>
+                            <span class="mv-ch-title">【COMPANION】小さき灯火 — 黒猫クロの導き</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(45)" data-time="45">
-                            <span class="mv-ch-time">0:45</span>
-                            <span class="mv-ch-title">【深淵の胎動】B1F 納骨回廊への進軍</span>
+                        <button class="mv-chapter-item" onclick="seekMv(40)" data-time="40">
+                            <span class="mv-ch-time">0:40</span>
+                            <span class="mv-ch-title">【DESTINY】紫紺の脈動 — 奈落への誓い</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(60)" data-time="60">
-                            <span class="mv-ch-time">1:00</span>
-                            <span class="mv-ch-title">【死霊の咆哮】骸骨騎士との鍔迫り合い</span>
+                        <button class="mv-chapter-item" onclick="seekMv(51)" data-time="51">
+                            <span class="mv-ch-time">0:51</span>
+                            <span class="mv-ch-title">【CHORUS 1】積み重なる石 — 連なる灯火</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(75)" data-time="75">
-                            <span class="mv-ch-time">1:15</span>
-                            <span class="mv-ch-title">【蒼炎一閃】四段消去・斬撃爆発（サビ）</span>
+                        <button class="mv-chapter-item" onclick="seekMv(64)" data-time="64">
+                            <span class="mv-ch-time">1:04</span>
+                            <span class="mv-ch-title">【RESOLVE】消えゆく迷路に 蒼き光を</span>
+                            <span class="mv-ch-icon">▶</span>
+                        </button>
+                        <button class="mv-chapter-item" onclick="seekMv(77)" data-time="77">
+                            <span class="mv-ch-time">1:17</span>
+                            <span class="mv-ch-title">【B2F】緋色の回廊 — 血脈の激流</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
                         <button class="mv-chapter-item" onclick="seekMv(90)" data-time="90">
                             <span class="mv-ch-time">1:30</span>
-                            <span class="mv-ch-title">【迷宮の深層】B2F 蒼碧回廊の神秘</span>
+                            <span class="mv-ch-title">【B3F】崩壊聖域 — 祈りとステンドグラス</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(105)" data-time="105">
-                            <span class="mv-ch-time">1:45</span>
-                            <span class="mv-ch-title">【魔導の共鳴】聖十字架の奇跡と灯火の輪</span>
+                        <button class="mv-chapter-item" onclick="seekMv(103)" data-time="103">
+                            <span class="mv-ch-time">1:43</span>
+                            <span class="mv-ch-title">【CHORUS 2】二千年の闇 — 扉を開く歩み</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(120)" data-time="120">
-                            <span class="mv-ch-time">2:00</span>
-                            <span class="mv-ch-title">【絶望の淵】ピンチの咆哮と王子の苦悶</span>
+                        <button class="mv-chapter-item" onclick="seekMv(116)" data-time="116">
+                            <span class="mv-ch-time">1:56</span>
+                            <span class="mv-ch-title">【BRIDGE】反転回廊 — 待たせたな</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(135)" data-time="135">
-                            <span class="mv-ch-time">2:15</span>
-                            <span class="mv-ch-title">【死闘の極限】暗闇を照らす決意</span>
+                        <button class="mv-chapter-item" onclick="seekMv(128)" data-time="128">
+                            <span class="mv-ch-time">2:08</span>
+                            <span class="mv-ch-title">【BURST】真鍮の連鎖 — 道を穿つ灯火</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(150)" data-time="150">
-                            <span class="mv-ch-time">2:30</span>
-                            <span class="mv-ch-title">【救済の光】覚醒の蒼炎が闇を討ち払う</span>
+                        <button class="mv-chapter-item" onclick="seekMv(140)" data-time="140">
+                            <span class="mv-ch-time">2:20</span>
+                            <span class="mv-ch-title">【CLIMAX】混沌の玉座 — 蒼き灯火は消えはしない</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
-                        <button class="mv-chapter-item" onclick="seekMv(165)" data-time="165">
-                            <span class="mv-ch-time">2:45</span>
-                            <span class="mv-ch-title">【終幕の調べ】混沌の深淵で灯る永遠のランプ</span>
+                        <button class="mv-chapter-item" onclick="seekMv(154)" data-time="154">
+                            <span class="mv-ch-time">2:34</span>
+                            <span class="mv-ch-title">【OUTRO】朝を迎える梯子 — 永遠の灯火</span>
+                            <span class="mv-ch-icon">▶</span>
+                        </button>
+                        <button class="mv-chapter-item" onclick="seekMv(167)" data-time="167">
+                            <span class="mv-ch-time">2:47</span>
+                            <span class="mv-ch-title">【FINALE】LampDrop — ゲームスタート！</span>
                             <span class="mv-ch-icon">▶</span>
                         </button>
                     </div>
@@ -2270,9 +2290,16 @@
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">指先に吸い付く快感</h3>
+                <h3 class="feature-title">アーケード直系：着地猶予＆隙間ねじ込み</h3>
                 <p class="feature-desc">
-                    思考の速さでブロックが滑り込む、極上の操作レスポンス。1988年レトロアーケード黄金期直系の剃刀のようなキレ味を体感せよ！
+                    1988年セガ＆TGMの魂を宿す<strong>0.5秒ロックディレイ（着地猶予）</strong>と<strong>隙間ねじ込み（回転入れ・壁床キック）</strong>を完全実装。思考速度でピースが滑り込む極上のキレ味を体感せよ！
+                </p>
+            </div>
+            <div class="feature-card" style="border: 1px solid rgba(0, 210, 140, 0.4); background: linear-gradient(135deg, rgba(14, 28, 36, 0.95), rgba(8, 18, 24, 0.95));">
+                <div class="feature-icon">📖</div>
+                <h3 class="feature-title" style="color: #4ade80;">親切インゲーム解説：遊び方・攻略ガイド</h3>
+                <p class="feature-desc">
+                    基本操作から呪いの解法【破呪】、ボス戦のコツまでゲーム内でいつでも確認可能。初心者も安心して迷宮の深淵へ挑めます。
                 </p>
             </div>
             <div class="feature-card" style="border: 1px solid rgba(255, 215, 0, 0.4); background: linear-gradient(135deg, rgba(20, 26, 46, 0.95), rgba(10, 16, 32, 0.95));">
@@ -2365,18 +2392,22 @@
                 深淵の迷宮で繰り広げられる、美しくも緊張感あふれる探索の一幕。
             </p>
         </div>
-        <div class="gallery-grid">
+        <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
             <div class="gallery-item" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
-                <img src="img/device_video_test1.png" alt="タイトル画面 シネマティック動画背景と揺らぎ蒼炎ロゴ">
+                <img src="store_promo/promo_01_title.png" alt="タイトル画面 シネマティック動画背景と揺らぎ蒼炎ロゴ">
                 <div class="gallery-caption"><strong>深淵への扉</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">蒼き灯火が揺らめくタイトル画面</span></div>
             </div>
             <div class="gallery-item" style="border: 1px solid rgba(251, 191, 36, 0.45); box-shadow: 0 4px 24px rgba(251, 191, 36, 0.25);">
-                <img src="img/device_video_gameplay2.png" alt="迷宮の激闘 シネマティック背景動画とパズルバトル">
+                <img src="store_promo/promo_02_battle.png" alt="迷宮の激闘 シネマティック背景動画とパズルバトル">
                 <div class="gallery-caption"><strong>迷宮の激闘</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">美麗シネマティック映像と連動するパズルバトル</span></div>
             </div>
+            <div class="gallery-item" style="border: 1px solid rgba(0, 210, 140, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 140, 0.25);">
+                <img src="store_promo/promo_03_howto.png" alt="遊び方＆ダンジョン攻略ガイド">
+                <div class="gallery-caption"><strong>遊び方・攻略ガイド</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">初心者から上級者まで安心の親切インゲーム解説</span></div>
+            </div>
             <div class="gallery-item" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
-                <img src="img/screen_holy_cross.png" alt="奇跡の神聖十字架 盤面を照らす幻のブロック">
-                <div class="gallery-caption"><strong>奇跡の降臨</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">窮地を照らす幻のブロック『神聖十字架』</span></div>
+                <img src="store_promo/promo_04_mv_bestiary.png" alt="奇跡の神聖十字架＆豪華コンテンツ">
+                <div class="gallery-caption"><strong>豪華コンテンツ</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">全13章主題歌MVシアター＆深淵魔獣図鑑</span></div>
             </div>
         </div>
     </section>
@@ -2637,6 +2668,28 @@
     // ===================================================
     const mvVideo = document.getElementById('mainMvPlayer');
     const mvSoundBtn = document.getElementById('mvSoundBtn');
+
+    function switchMvEdition(lang) {
+        if (!mvVideo) return;
+        const btnJa = document.getElementById('btnMvJa');
+        const btnEn = document.getElementById('btnMvEn');
+        const isPaused = mvVideo.paused;
+        const curTime = mvVideo.currentTime;
+
+        if (lang === 'en') {
+            mvVideo.src = 'video/opening_mixed_en.mp4';
+            if (btnJa) btnJa.classList.remove('gold');
+            if (btnEn) btnEn.classList.add('gold');
+        } else {
+            mvVideo.src = 'video/opening_mixed.mp4';
+            if (btnJa) btnJa.classList.add('gold');
+            if (btnEn) btnEn.classList.remove('gold');
+        }
+        mvVideo.currentTime = curTime;
+        if (!isPaused) {
+            mvVideo.play().catch(e => console.log('Resume play on switch:', e));
+        }
+    }
 
     function playMvVideo() {
         if (!mvVideo) return;
