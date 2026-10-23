@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>青空文庫＆小説AI朗読 (Aozora & Document AI Reader) - 公式特設サイト | Studio LampKeep</title>
+  
+  <meta name="description" content="AIが名作文学や所持文書の文脈を読み解き、複数声優でドラマCDのようにドラマチックに朗読する次世代オーディオリーダー『青空文庫＆小説AI朗読』公式特設サイト。全機能取扱説明書PDF、Webマニュアル、Google Playクローズドテスト情報。">
+  <meta name="keywords" content="青空文庫＆小説AI朗読, 小説AI朗読, Aozora & Document AI Reader, VOICEVOX, なろう朗読, 青空文庫朗読, オーディオブック, Studio LampKeep, 蒼灯機関">
+  
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="青空文庫＆小説AI朗読 - 公式特設サイト | Studio LampKeep">
+  <meta property="og:description" content="AI複数声優オート配役 × 感情音声合成 × 多言語翻訳プレイヤー。文学名作や文書が、声優ドラマのように色づく。">
+  <meta property="og:url" content="https://lampkeeper2026.github.io/novel-ai-reader/">
+  <meta property="og:image" content="../assets/img/novelreader/feature_graphic.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-deep: #090d16;
+      --bg-surface: rgba(15, 23, 42, 0.75);
+      --bg-card: rgba(30, 41, 59, 0.6);
+      --border-subtle: rgba(148, 163, 184, 0.15);
+      --border-glow: rgba(16, 185, 129, 0.3);
+      --accent-emerald: #10b981;
+      --accent-emerald-glow: #34d399;
+      --accent-blue: #3b82f6;
+      --accent-gold: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --max-w: 1140px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.75;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(9, 13, 22, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #10b981, #2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    .brand-icon img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+    }
+    .brand-text-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .brand-text-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover {
+      color: var(--accent-emerald-glow);
+    }
+    .btn-header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-header-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Container */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 70px 0 60px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-emerald-glow);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 2.7rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+    .hero-title span.grad {
+      background: linear-gradient(135deg, #ffffff 20%, #6ee7b7 60%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .btn-action-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+      transition: all 0.2s;
+    }
+    .btn-action-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.45);
+    }
+    .btn-action-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .btn-action-secondary:hover {
+      background: rgba(51, 65, 85, 0.9);
+      border-color: rgba(148, 163, 184, 0.3);
+      transform: translateY(-2px);
+    }
+    .btn-action-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1.5px solid rgba(245, 158, 11, 0.4);
+      color: #fde68a;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .btn-action-pdf:hover {
+      background: rgba(245, 158, 11, 0.22);
+      border-color: #f59e0b;
+      transform: translateY(-2px);
+    }
+    .hero-meta-strip {
+      display: flex;
+      gap: 20px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 20px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .hero-meta-item strong {
+      color: var(--text-main);
+    }
+
+    /* Hero Visual Mockup */
+    .hero-visual {
+      position: relative;
+      text-align: center;
+    }
+    .hero-visual-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(37, 99, 235, 0.15) 50%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: 0;
+    }
+    .hero-mockup-frame {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(16, 185, 129, 0.2);
+    }
+    .hero-mockup-frame img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Sections */
+    .section {
+      padding: 70px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 50px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-emerald);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px 24px;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3), 0 0 20px rgba(16, 185, 129, 0.15);
+    }
+    .feature-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--accent-emerald-glow);
+    }
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Gallery Showcase */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      transition: all 0.2s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-emerald);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+    }
+    .gallery-item img {
+      width: 100%;
+      display: block;
+    }
+    .gallery-caption {
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    /* Manual Showcase Banner */
+    .manual-banner {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1.5px solid rgba(245, 158, 11, 0.35);
+      border-radius: 20px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 158, 11, 0.1);
+    }
+    .manual-banner-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fef3c7;
+      margin-bottom: 12px;
+    }
+    .manual-banner-desc {
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .manual-toc-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .toc-tag {
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      font-size: 0.76rem;
+      color: #e2e8f0;
+    }
+    .manual-banner-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 220px;
+    }
+
+    /* Specifications Table */
+    .spec-table-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 30px;
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .spec-table th, .spec-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.9rem;
+    }
+    .spec-table th {
+      background: rgba(15, 23, 42, 0.6);
+      width: 28%;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-align: left;
+    }
+    .spec-table td {
+      color: var(--text-main);
+    }
+    .spec-table tr:last-child th, .spec-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 0 30px;
+      background: rgba(9, 13, 22, 0.95);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-nav {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .footer-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover {
+      color: var(--accent-emerald);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .manual-banner {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="brand-link">
+        <div class="brand-icon">
+          <img src="../assets/img/novelreader/icon.png" alt="Aozora Reader Icon">
+        </div>
+        <div>
+          <div class="brand-text-title">青空文庫＆小説AI朗読</div>
+          <div class="brand-text-sub">Studio LampKeep (蒼灯機関) 公式特設サイト</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#features" class="nav-link">機能特徴</a></li>
+          <li><a href="#gallery" class="nav-link">画面構成</a></li>
+          <li><a href="#manual" class="nav-link">公式取扱説明書</a></li>
+          <li><a href="#specs" class="nav-link">製品仕様</a></li>
+          <li><a href="../index.html" class="nav-link">ポータルへ戻る ↗</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://play.google.com/apps/testing/com.surei.naroureader" target="_blank" rel="noopener" class="btn-header-cta">
+        <span>▶</span> Playテスト参加
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Left: Copy & Actions -->
+        <div>
+          <div class="hero-badge">
+            <span>✦</span> VERSION 1.6.5 · GOOGLE PLAY クローズドテスト配備中
+          </div>
+          <h1 class="hero-title">
+            名作文学が、ドラマのように<br>
+            <span class="grad">色づき、息づく。</span>
+          </h1>
+          <p class="hero-lead">
+            青空文庫の日本文学名作やWeb小説、PDF・テキスト文書を、AIが瞬時に文脈・感情・口調を解析。
+            登場人物ごとに声優ボイスを自動配役し、ドラマCDのように情感豊かに朗読する次世代AIオーディオリーダーです。
+          </p>
+
+          <div class="hero-actions">
+            <a href="https://play.google.com/apps/testing/com.surei.naroureader" target="_blank" rel="noopener" class="btn-action-primary">
+              <span>▶</span> Google Play テスト版に参加
+            </a>
+            <a href="小説AI朗読_全機能取扱説明書_完全マニュアル.pdf" download class="btn-action-pdf">
+              <span>📄</span> 取扱説明書 (PDF 10P) を入手
+            </a>
+            <a href="manual.html" target="_blank" class="btn-action-secondary">
+              <span>📖</span> Webマニュアルを読む
+            </a>
+          </div>
+
+          <div class="hero-meta-strip">
+            <div class="hero-meta-item">
+              <strong>プラットフォーム:</strong> Android 8.0+ / Web PWA
+            </div>
+            <div class="hero-meta-item">
+              <strong>音声エンジン:</strong> VOICEVOX Native × OS標準TTS
+            </div>
+            <div class="hero-meta-item">
+              <strong>安心設計:</strong> 完全オフライン・プライバシー保護
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Mockup Frame -->
+        <div class="hero-visual">
+          <div class="hero-visual-glow"></div>
+          <div class="hero-mockup-frame">
+            <img src="../assets/img/novelreader/03_player.png" alt="朗読プレイヤー画面">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Technologies</span>
+        <h2 class="section-title">6つの革新的テクノロジー</h2>
+        <p class="section-desc">
+          単なる機械的なテキスト読み上げとは一線を画す、圧倒的な没入感と使いやすさを追求したコア機能群。
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">🎭</div>
+          <h3>AI登場人物解析 ＆ 複数声優オート配役</h3>
+          <p>地の文と会話文を厳密に分離し、一人称・口調・文脈から発話者と感情を自動特定。ずんだもん、四国めたん等のVOICEVOX NativeとOS標準TTSが織りなす立体朗読を実現。</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">📖</div>
+          <h3>黄金比プレイヤー ＆ セリフ追従UI</h3>
+          <p>画面を人間工学に基づき3分割（操作・本文・情報）。朗読中の文がグローイングバーで発光し、音声に合わせて滑らかに自動縦スクロール。読書に完全に没入できます。</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">🎧</div>
+          <h3>完全画面OFFバックグラウンド ＆ 車載連携</h3>
+          <p>Android Foreground Serviceに完全準拠。画面をオフにしてポケットに入れたまま朗読を継続。Bluetoothイヤホン操作や車のステアリングスイッチでの次話・前話操作に対応。</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">🌐</div>
+          <h3>世界初・多言語リアルタイム翻訳 ＆ 朗読</h3>
+          <p>日本語の名作文学を、英語・中国語・韓国語・スペイン語・フランス語等へリアルタイム翻訳。各言語のネイティブ音声合成で読み上げ、ハイレベルな語学学習にも最適。</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">🎨</div>
+          <h3>4大カラーテーマ ＆ 大型ボタン「カーモード」</h3>
+          <p>WCAG AAA準拠の紙白（Paper）、茶紙（Sepia）、夜間（Dark）、漆黒（OLED）を用意。運転中や移動時でも誤操作を防ぐ超大型ボタンUI「カーモード」もワンタップ切り替え。</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">📦</div>
+          <h3>完全機内モード対応 ＆ オフライン保存</h3>
+          <p>事前にWi-Fiで一括ダウンロードすれば、地下鉄や飛行機など電波の届かない環境でも通信ゼロで高音質再生。ミリ秒単位の「自動しおり（Resume）」で前回の続きから即座に再開。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Screenshots</span>
+        <h2 class="section-title">洗練を極めたインターフェース</h2>
+        <p class="section-desc">
+          暗所から直射日光下まで、どんな環境でも目に優しく快適に読書・操作できるエルゴノミックデザイン。
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="../assets/img/novelreader/01_home_screen.png" alt="ホーム・作品検索">
+          <div class="gallery-caption">ホーム・作品検索画面</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/img/novelreader/02_ai_reanalyze_modal.png" alt="AI配役解析">
+          <div class="gallery-caption">AI配役・ボイス設定画面</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/img/novelreader/ui_docked_dark.png" alt="ドッキング進捗 (Dark)">
+          <div class="gallery-caption">ミニプレイヤー ＆ ドッキング進捗</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/img/novelreader/ui_docked_paper.png" alt="紙白 (Paper) テーマ">
+          <div class="gallery-caption">紙白 (Paper) テーマ画面</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manual Download Section -->
+  <section id="manual" class="section">
+    <div class="container">
+      <div class="manual-banner">
+        <div>
+          <span style="display:inline-block; padding:4px 12px; background:rgba(245, 158, 11, 0.2); border:1px solid #f59e0b; border-radius:20px; font-size:0.78rem; font-weight:700; color:#fbbf24; margin-bottom:12px;">OFFICIAL MANUAL</span>
+          <h2 class="manual-banner-title">公式取扱説明書・全機能完全ガイド (PDF)</h2>
+          <p class="manual-banner-desc">
+            全11章・10ページにわたり、基本操作から複数声優オート配役、スリープタイマー、車載Bluetooth操作、多言語翻訳、オフライン保存、タッチジェスチャー一覧までを網羅した公式製品マニュアルです。
+          </p>
+          <div class="manual-toc-tags">
+            <span class="toc-tag">第1章: アーキテクチャ</span>
+            <span class="toc-tag">第2章: 青空文庫ライブラリ</span>
+            <span class="toc-tag">第3章: 外部文書・OCR</span>
+            <span class="toc-tag">第4章: AI配役システム</span>
+            <span class="toc-tag">第5章: 黄金比プレイヤー</span>
+            <span class="toc-tag">第6章: ミニプレイヤー</span>
+            <span class="toc-tag">第7章: 車載・Bluetooth</span>
+            <span class="toc-tag">第8章: 多言語翻訳</span>
+            <span class="toc-tag">第9章: 4大テーマ</span>
+            <span class="toc-tag">第10章: オフライン保存</span>
+            <span class="toc-tag">付録: ジェスチャー表 &amp; FAQ</span>
+          </div>
+        </div>
+
+        <div class="manual-banner-actions">
+          <a href="小説AI朗読_全機能取扱説明書_完全マニュアル.pdf" download class="btn-action-pdf" style="text-align:center; justify-content:center;">
+            <span>📥</span> PDF版をダウンロード (約3MB)
+          </a>
+          <a href="manual.html" target="_blank" class="btn-action-secondary" style="text-align:center; justify-content:center;">
+            <span>📖</span> Webブラウザで開く ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Specifications -->
+  <section id="specs" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Specifications</span>
+        <h2 class="section-title">製品仕様・対応環境</h2>
+      </div>
+
+      <div class="spec-table-box">
+        <table class="spec-table">
+          <tbody>
+            <tr>
+              <th>アプリ正式名称</th>
+              <td>青空文庫＆小説AI朗読 ― 複数声優オート配役プレイヤー (Aozora &amp; Document AI Reader)</td>
+            </tr>
+            <tr>
+              <th>バージョン</th>
+              <td>Version 1.6.5 (Build 36)</td>
+            </tr>
+            <tr>
+              <th>対象プラットフォーム</th>
+              <td>Android 8.0 (Oreo) 以上 / Windows 10/11 (Web PWA)</td>
+            </tr>
+            <tr>
+              <th>パッケージ識別子</th>
+              <td><code>com.surei.naroureader</code></td>
+            </tr>
+            <tr>
+              <th>音声合成エンジン</th>
+              <td>VOICEVOX Native（ずんだもん等完全内包） × OS標準ネイティブTTS</td>
+            </tr>
+            <tr>
+              <th>対応コンテンツ形式</th>
+              <td>青空文庫（内包名作＋1.8万作検索）、Web小説（なろう/カクヨム/ハーメルン等のURL/Nコード）、テキスト (.txt)、PDF、Word (.docx)、画像OCR</td>
+            </tr>
+            <tr>
+              <th>多言語翻訳エンジン</th>
+              <td>日本語 → 英語、中国語（簡体/繁体）、韓国語、スペイン語、フランス語、ポルトガル語、ドイツ語、ロシア語等</td>
+            </tr>
+            <tr>
+              <th>配布状況</th>
+              <td>Google Play クローズドテスト (Alpha Track) 配備中 / 一般公開準備中</td>
+            </tr>
+            <tr>
+              <th>プライバシー・安全性</th>
+              <td>個人情報の外部送信なし、完全オンデバイスキャッシュ、Google Playデータセーフティ準拠</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <strong>Studio LampKeep (蒼灯機関)</strong> ― Indie Game &amp; Smart App Development Studio
+          <div style="font-size:0.75rem; margin-top:4px; color:#64748b;">© 2026 Studio LampKeep. All rights reserved.</div>
+        </div>
+
+        <ul class="footer-nav">
+          <li><a href="../index.html">ポータルTOP</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="terms.html">利用規約</a></li>
+          <li><a href="https://github.com/LampKeeper2026" target="_blank" rel="noopener">GitHub ↗</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
