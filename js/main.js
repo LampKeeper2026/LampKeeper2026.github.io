@@ -63,8 +63,8 @@ const APP_DATA = {
     distribution: 'Google Play クローズドテスト (Alpha Track) 配備中 / 公開準備中',
     specs: [
       { label: 'プラットフォーム', value: 'Android 8.0+ / Web' },
-      { label: '最新バージョン', value: 'v1.0.14 (Build 15)' },
-      { label: '操作性', value: '1988アーケード直系（初級1.0秒着地猶予＆特大ポーズメニュー）' },
+      { label: '最新バージョン', value: 'v1.0.15 (Build 16)' },
+      { label: '操作性', value: '1988直系（初級1.0秒着地猶予・NEXT+1 2手先表示・特大ポーズ）' },
       { label: '難易度設計', value: '初級(超ゆったり・神配牌・1行破呪) / 中級 / 混沌' },
       { label: 'プレイフィールド', value: '12×20 ワイド戦場（神聖十字架★RARE 10%）' },
       { label: 'ビジュアル演出', value: '6大迷宮シネマティック動画背景' },

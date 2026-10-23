@@ -3,86 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プライバシーポリシー - LampDrop (ランプドロップ)</title>
+    <title>プライバシーポリシー (Privacy Policy) - LampDrop | Studio LampKeep</title>
+    <meta name="description" content="Studio LampKeepが開発するAndroid向けパズルゲーム『LampDrop (ランプドロップ：混沌迷宮の蒼き灯火)』のプライバシーポリシーです。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #080c14;
+            --card-bg: rgba(18, 25, 42, 0.85);
+            --card-border: rgba(0, 210, 255, 0.25);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-cyan: #00d2ff;
+            --accent-gold: #ffd24b;
+            --accent-blue: #1e3a8a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            color: #222;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background-color: #fafafa;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 10% 40%, rgba(30, 58, 138, 0.1) 0%, transparent 50%);
+            color: var(--text-main);
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            padding: 40px 20px;
+            min-height: 100vh;
         }
+
         .container {
-            background: #ffffff;
-            padding: 36px 32px;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            max-width: 860px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 48px 40px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 210, 255, 0.05);
+            backdrop-filter: blur(12px);
         }
-        h1 { color: #0a1020; border-bottom: 2px solid #00e5ff; padding-bottom: 12px; }
-        h2 { color: #1a2440; margin-top: 28px; }
-        p, li { color: #444; }
-        .badge {
+
+        .header {
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-back:hover {
+            color: #ffffff;
+            transform: translateX(-4px);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+        }
+
+        .updated-badge {
             display: inline-block;
-            background: #e0f8ff;
-            color: #007799;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.9em;
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
-        footer { margin-top: 40px; font-size: 0.85em; color: #888; text-align: center; }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+            margin-top: 36px;
+            margin-bottom: 14px;
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 12px;
+        }
+
+        p {
+            color: var(--text-main);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        ul {
+            margin-left: 24px;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #ffffff;
+        }
+
+        a {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        a:hover {
+            color: #ffffff;
+        }
+
+        .en-section {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.15);
+        }
+
+        .footer {
+            margin-top: 48px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 28px 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <p style="margin-bottom: 20px;"><a href="index.html" style="color: #007799; text-decoration: none; font-weight: bold;">← Studio LampKeep トップページへ戻る</a></p>
-        <h1>プライバシーポリシー (Privacy Policy)</h1>
-        <p><span class="badge">最終更新日: 2026年10月18日</span></p>
 
-        <p>本プライバシーポリシーは、Android向けアプリケーション<strong>「LampDrop（ランプドロップ：混沌迷宮の蒼き灯火）」（英語名: LampDrop: Chaos Labyrinth）</strong>（以下「本アプリ」）における利用者情報の取り扱いについて説明するものです。</p>
+<div class="container">
+    <div class="header">
+        <a href="index.html" class="nav-back">← LampDrop 公式トップへ戻る</a>
+        <h1>プライバシーポリシー<br><span style="font-size: 1.25rem; font-family: 'Inter', sans-serif; font-weight: normal; color: var(--text-muted);">Privacy Policy</span></h1>
+        <span class="updated-badge">最終更新日: 2026年10月18日</span>
+    </div>
 
-        <h2>1. 個人情報の収集および利用について</h2>
-        <p>本アプリは、<strong>利用者の個人情報、端末情報、位置情報、その他いかなるプライバシーデータも収集・保存・送信・共有いたしません。</strong></p>
+    <p>本プライバシーポリシーは、<strong>Studio LampKeep</strong>（以下「当方」）が開発・配信するAndroid向けゲームアプリケーション<strong>『LampDrop（ランプドロップ：混沌迷宮の蒼き灯火）』（英語表記: LampDrop: Chaos Labyrinth）</strong>（以下「本アプリ」）における、利用者情報の取り扱い方針を定めるものです。</p>
 
-        <h2>2. アプリが要求する権限について</h2>
-        <p>本アプリは、広告配信およびバイブレーション機能のためにインターネット接続（INTERNET、ACCESS_NETWORK_STATE）およびVIBRATE権限を使用します。連絡先、ストレージ、カメラ等の個人データにアクセスする権限は要求いたしません。</p>
+    <h2>1. 個人情報の収集および利用について</h2>
+    <p>本アプリは、<strong>利用者の氏名、メールアドレス、電話番号、住所、連絡先データ、位置情報、その他いかなる個人情報も収集・保存・送信いたしません。</strong> ユーザー登録やログイン等の手続きを要求することなく、オフラインでもプレイ可能です。</p>
 
-        <h2>3. 広告配信およびサードパーティ製SDKについて</h2>
-        <p>本アプリでは、広告配信のためにGoogleが提供する広告配信サービス<strong>Google AdMob（Google Mobile Ads SDK）</strong>を使用しています。Googleは、広告配信および不正対策等の目的で広告識別子（Google Advertising ID）等の端末情報を自動的に取得する場合があります。詳細については、Googleのプライバシーポリシーをご確認ください：</p>
-        <p><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google 広告におけるプライバシーと利用規約</a></p>
+    <h2>2. アプリが要求する権限と利用目的</h2>
+    <p>本アプリでは、以下の必要最小限の権限のみを要求します：</p>
+    <ul>
+        <li><strong>インターネット接続（INTERNET / ACCESS_NETWORK_STATE）</strong>: 広告配信およびネットワーク接続状態の確認のために使用します。</li>
+        <li><strong>バイブレーション制御（VIBRATE）</strong>: ブロック着地時やライン消去時の触覚フィードバック（ハプティクス演出）のためにのみ使用します。端末設定でオフにすることも可能です。</li>
+    </ul>
+    <p>カメラ、マイク、外部ストレージ、連絡先、通話履歴等の機密情報へのアクセスは一切行いません。</p>
 
-        <h2>4. お子様のプライバシーについて</h2>
-        <p>本アプリはあらゆる年齢層の皆様に安心して楽しんでいただけるよう設計されており、13歳未満のお子様から個人情報を故意に収集することは決してありません。</p>
+    <h2>3. 広告配信および第三者SDKについて</h2>
+    <p>本アプリでは、開発・運営継続のための無料提供モデルとして、Googleが提供する広告配信プラットフォーム<strong>Google AdMob（Google Mobile Ads SDK）</strong>を利用しています。</p>
+    <p>Googleは、広告の配信、パーソナライズ、不正防止およびパフォーマンス計測を目的として、広告識別子（Google Advertising ID）等の端末情報を自動的に取得・処理する場合があります。Googleにおけるデータの取り扱いおよびオプトアウト方法の詳細については、以下のGoogle公式規約をご確認ください：</p>
+    <ul>
+        <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google 広告ポリシーと利用規約</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー</a></li>
+    </ul>
 
-        <h2>5. プライバシーポリシーの改定</h2>
-        <p>本ポリシーの内容は、必要に応じて改定されることがあります。改定が行われた場合は、本ページにて最新の内容を公開いたします。</p>
+    <h2>4. お子様のプライバシー保護（COPPA / ファミリーポリシー対応）</h2>
+    <p>本アプリは、あらゆる年齢層の皆様に安心してご利用いただけるよう配慮して設計されています。13歳未満のお子様から個人情報を故意に収集することは決してありません。</p>
 
-        <h2>6. お問い合わせ</h2>
-        <p>本プライバシーポリシーに関するご質問やご意見がございましたら、アプリの配信ページに記載のお問い合わせ先までご連絡ください。</p>
+    <h2>5. プライバシーポリシーの改定</h2>
+    <p>法令の変更やサービス内容の更新に伴い、本ポリシーの内容を改定する場合があります。改定した場合は、本Webサイトにて速やかに最新版を公表いたします。</p>
 
-        <hr style="margin: 36px 0; border: none; border-top: 1px solid #eee;">
+    <h2>6. お問い合わせ先</h2>
+    <p>本プライバシーポリシーまたは本アプリに関するご質問、ご要望がございましたら、公式ポータルサイトまたはGoogle Playストアの配信者情報に記載のお問い合わせ先までご連絡ください。</p>
+    <p>開発者: <strong>Studio LampKeep</strong><br>
+    公式サイト: <a href="https://lampkeeper2026.github.io/" target="_blank" rel="noopener">Studio LampKeep Official Portal</a></p>
 
-        <h1>Privacy Policy (English)</h1>
-        <p>This Privacy Policy applies to the Android game application <strong>"LampDrop: Chaos Labyrinth"</strong> ("the App").</p>
+    <!-- English Section -->
+    <div class="en-section">
+        <h1 style="font-size: 1.6rem;">Privacy Policy (English)</h1>
+        <p style="margin-top: 10px;">This Privacy Policy applies to the Android game application <strong>"LampDrop: Chaos Labyrinth"</strong> (the "App"), developed and published by <strong>Studio LampKeep</strong>.</p>
 
-        <h2>1. Information Collection and Use</h2>
-        <p>The developer does NOT collect, store, transmit, or sell any personally identifiable user data.</p>
+        <h2>1. Information Collection and Storage</h2>
+        <p>Studio LampKeep does <strong>NOT collect, store, transmit, or sell</strong> any personally identifiable user data (such as names, emails, addresses, contact lists, GPS location, or device files).</p>
 
-        <h2>2. Permissions</h2>
-        <p>The App requests standard network permissions (INTERNET, ACCESS_NETWORK_STATE) solely for advertising delivery and VIBRATE for haptic feedback. No sensitive personal permissions (camera, location, contacts, or storage) are requested.</p>
+        <h2>2. Permissions Requested</h2>
+        <p>The App requests standard Android permissions strictly for app functionality:</p>
+        <ul>
+            <li><strong>INTERNET & ACCESS_NETWORK_STATE</strong>: Used solely for loading non-intrusive advertisements via Google AdMob and checking network availability.</li>
+            <li><strong>VIBRATE</strong>: Used strictly for in-game tactile haptic feedback during piece locking and line clears.</li>
+        </ul>
 
         <h2>3. Third-Party Advertising (Google AdMob)</h2>
-        <p>The App uses <strong>Google AdMob</strong> to display non-intrusive advertisements. Google Mobile Ads SDK may collect and process device identifiers (such as Google Advertising ID / AAID) and performance data for advertising and fraud prevention purposes. For more details on how Google processes data, please visit:</p>
-        <p><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Privacy & Terms for Advertising</a></p>
+        <p>The App uses <strong>Google AdMob</strong> to display advertisements. The Google Mobile Ads SDK may automatically collect and process pseudonymous identifiers (such as the Google Advertising ID) and telemetry to serve ads, detect fraud, and provide analytics. For more information on how Google processes user data, please consult:</p>
+        <ul>
+            <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Advertising Policies & Terms</a></li>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+        </ul>
 
         <h2>4. Children's Privacy</h2>
-        <p>The App complies with applicable child privacy laws and Google Play Families Policy. We do not knowingly collect personal data from children under 13.</p>
+        <p>The App complies with the Children's Online Privacy Protection Act (COPPA) and Google Play Families Policy. We do not knowingly collect any personal information from children under 13.</p>
 
-        <footer>
-            &copy; 2026 Studio LampKeep. All Rights Reserved.
-        </footer>
+        <h2>5. Contact Us</h2>
+        <p>If you have any questions or feedback regarding this Privacy Policy, please contact us via our official portal:<br>
+        <a href="https://lampkeeper2026.github.io/" target="_blank" rel="noopener">https://lampkeeper2026.github.io/</a></p>
     </div>
+
+    <div class="footer">
+        &copy; 2026 Studio LampKeep. All Rights Reserved.
+    </div>
+</div>
+
 </body>
 </html>

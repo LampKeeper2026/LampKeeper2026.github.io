@@ -6,18 +6,62 @@
     <title>LampDrop (ランプドロップ) - 混沌迷宮の蒼き灯火 | Studio LampKeep 公式サイト</title>
     <meta name="description" content="Studio LampKeepが贈る、ダークファンタジー×レトロアーケードパズル『LampDrop（ランプドロップ）』公式サイト。魔法ランプ連結ギミック、リアルタイム背景バトル演出、60fps完全ネイティブ動作。">
     <meta name="keywords" content="LampDrop, ランプドロップ, Studio LampKeep, テトリスライク, パズルゲーム, Android, Prince of Chaos">
-    
+
     <!-- Open Graph / Meta -->
+    <link rel="canonical" href="https://lampkeeper2026.github.io/lampdrop/index.html">
+    <link rel="icon" type="image/png" href="img/icon.png">
+    <link rel="apple-touch-icon" href="img/icon.png">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="LampDrop - 混沌迷宮の蒼き灯火 | Studio LampKeep">
-    <meta property="og:description" content="魔導ランプを繋ぎ、深淵の怪異を斬り伏せろ！1988年アーケードの魂を宿したダークファンタジー・パズル。">
-    <meta property="og:image" content="img/battle_title.png">
-    
+    <meta property="og:site_name" content="Studio LampKeep (蒼灯機関)">
+    <meta property="og:url" content="https://lampkeeper2026.github.io/lampdrop/index.html">
+    <meta property="og:title" content="LampDrop - 混沌迷宮の蒼き灯火 | Studio LampKeep 公式サイト">
+    <meta property="og:description" content="魔導ランプを繋ぎ、深淵の怪異を斬り伏せろ！1988年アーケードの魂を宿した中世ゴシック・ダークファンタジー高速パズル（v1.0.15 最新版）。">
+    <meta property="og:image" content="https://lampkeeper2026.github.io/lampdrop/store_promo/feature_graphic.png">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LampDrop - 混沌迷宮の蒼き灯火 | Studio LampKeep">
+    <meta name="twitter:description" content="一列消せば、敵を両断！1988年アーケード直系の操作感×リアルタイム剣戟バトル×主題歌MV。初級(EASY)1.0秒着地猶予＆1行破呪搭載！">
+    <meta name="twitter:image" content="https://lampkeeper2026.github.io/lampdrop/store_promo/feature_graphic.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["VideoGame", "SoftwareApplication"],
+      "name": "LampDrop - 混沌迷宮の蒼き灯火 (Block Drop 1988)",
+      "alternateName": ["LampDrop: Chaos Labyrinth", "ランプドロップ"],
+      "operatingSystem": "Android 8.0+",
+      "applicationCategory": "GameApplication",
+      "genre": ["Action Puzzle", "Dark Fantasy", "Arcade"],
+      "softwareVersion": "1.0.15",
+      "url": "https://lampkeeper2026.github.io/lampdrop/index.html",
+      "image": "https://lampkeeper2026.github.io/lampdrop/store_promo/feature_graphic.png",
+      "screenshot": [
+        "https://lampkeeper2026.github.io/lampdrop/store_promo/promo_01_title.png",
+        "https://lampkeeper2026.github.io/lampdrop/store_promo/promo_02_battle.png",
+        "https://lampkeeper2026.github.io/lampdrop/store_promo/promo_03_howto.png",
+        "https://lampkeeper2026.github.io/lampdrop/store_promo/promo_04_mv_bestiary.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Studio LampKeep (蒼灯機関)",
+        "url": "https://lampkeeper2026.github.io/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY",
+        "description": "Free to play with optional one-time Premium Pass (¥600 JPY)"
+      }
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --bg-deep: #050811;
@@ -1599,8 +1643,482 @@
             .mv-theater-card {
                 padding: 20px 16px;
             }
-            .mv-details-grid {
+        /* ===================================================
+           Boss Encounter & Vanish Cinematics Section Styles
+           =================================================== */
+        .boss-cine-hero {
+            background: linear-gradient(180deg, rgba(13, 20, 36, 0.95) 0%, rgba(8, 12, 22, 0.98) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 210, 255, 0.15);
+            margin-bottom: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .boss-cine-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f43f5e, #00d2ff, #fbbf24);
+        }
+
+        .boss-cine-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .boss-cine-card {
+            background: rgba(8, 14, 28, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .boss-cine-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 18px 40px rgba(0, 210, 255, 0.25);
+        }
+
+        .boss-cine-card.chaos-card:hover {
+            border-color: var(--accent-crimson);
+            box-shadow: 0 18px 40px rgba(244, 63, 94, 0.35);
+        }
+
+        .boss-cine-media {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            background: #02040a;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .boss-cine-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .boss-cine-card:hover .boss-cine-media img {
+            transform: scale(1.05);
+        }
+
+        .boss-cine-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(5, 8, 17, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            color: var(--accent-cyan);
+        }
+
+        .boss-cine-body {
+            padding: 22px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .boss-cine-title {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .boss-cine-epithet {
+            font-size: 0.82rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .cine-phase-box {
+            background: rgba(13, 20, 36, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            font-size: 0.82rem;
+            line-height: 1.55;
+        }
+
+        .cine-phase-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+        }
+
+        .tag-spawn {
+            color: var(--accent-cyan);
+        }
+
+        .tag-vanish {
+            color: #fb7185;
+        }
+
+        @media (max-width: 900px) {
+            .boss-cine-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===================================================
+           Enhanced Gothic Brass Frame, Language Toggle & New Sections
+           =================================================== */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-switch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(0, 210, 255, 0.15));
+            border: 1px solid rgba(251, 191, 36, 0.55);
+            color: var(--accent-gold);
+            font-size: 0.82rem;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            box-shadow: 0 0 14px rgba(251, 191, 36, 0.22);
+        }
+
+        .lang-switch-btn:hover {
+            background: rgba(251, 191, 36, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.45);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: rgba(0, 210, 255, 0.12);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            color: var(--accent-cyan);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        nav a {
+            margin-left: 0;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1080px) {
+            .mobile-nav-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                background: rgba(5, 8, 17, 0.98);
+                border-top: 1px solid rgba(0, 210, 255, 0.2);
+                padding: 16px 0 8px;
+                margin-top: 12px;
+                gap: 12px;
+            }
+            nav.open {
+                display: flex;
+            }
+            .nav-inner {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* What's New / Patch Notes Banner */
+        .whats-new-box {
+            max-width: var(--max-w);
+            margin: 0 auto 24px;
+            padding: 0 24px;
+        }
+
+        .whats-new-card {
+            background: linear-gradient(135deg, rgba(13, 22, 42, 0.94), rgba(8, 13, 26, 0.98));
+            border: 1px solid rgba(251, 191, 36, 0.45);
+            border-radius: 20px;
+            padding: 28px 32px;
+            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.75), 0 0 28px rgba(251, 191, 36, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whats-new-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan), var(--accent-crimson));
+        }
+
+        .whats-new-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .whats-new-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+            gap: 16px;
+        }
+
+        .patch-item {
+            background: rgba(5, 8, 17, 0.78);
+            border: 1px solid rgba(0, 210, 255, 0.24);
+            border-radius: 12px;
+            padding: 16px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .patch-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-gold);
+        }
+
+        .patch-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 210, 255, 0.35);
+            margin-bottom: 8px;
+        }
+
+        .patch-tag.gold {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--accent-gold);
+            border-color: rgba(251, 191, 36, 0.4);
+        }
+
+        .patch-tag.green {
+            background: rgba(74, 222, 128, 0.15);
+            color: #4ade80;
+            border-color: rgba(74, 222, 128, 0.4);
+        }
+
+        /* Game Modes Showcase */
+        .modes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 28px;
+        }
+
+        .mode-card {
+            background: linear-gradient(160deg, rgba(13, 20, 36, 0.94), rgba(7, 11, 22, 0.98));
+            border: 1px solid rgba(0, 210, 255, 0.38);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mode-card.burst-mode {
+            border-color: rgba(251, 191, 36, 0.45);
+        }
+
+        .mode-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            padding: 4px 12px;
+            border-radius: 999px;
+            width: fit-content;
+            margin-bottom: 14px;
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+        }
+
+        .mode-card.burst-mode .mode-badge {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--accent-gold);
+            border-color: rgba(251, 191, 36, 0.45);
+        }
+
+        /* Bestiary Interactive Section */
+        .bestiary-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 22px;
+            padding: 32px;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.7);
+        }
+
+        .bestiary-filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 24px;
+            justify-content: center;
+        }
+
+        .bestiary-tab {
+            background: rgba(8, 14, 26, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .bestiary-tab:hover, .bestiary-tab.active {
+            background: rgba(0, 210, 255, 0.18);
+            border-color: var(--accent-cyan);
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(0, 210, 255, 0.28);
+        }
+
+        .bestiary-roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 18px;
+        }
+
+        .monster-entry {
+            background: rgba(7, 12, 24, 0.92);
+            border: 1px solid rgba(0, 210, 255, 0.22);
+            border-radius: 14px;
+            padding: 18px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .monster-entry:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+        }
+
+        .monster-entry.final-form {
+            border-color: rgba(244, 63, 94, 0.38);
+        }
+
+        /* Lightbox Modal */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 5, 12, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .lightbox-overlay.open {
+            display: flex;
+        }
+
+        .lightbox-box {
+            max-width: 960px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .lightbox-box img {
+            max-height: 82vh;
+            max-width: 100%;
+            border-radius: 14px;
+            border: 2px solid var(--accent-cyan);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 210, 255, 0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -16px;
+            right: -8px;
+            background: rgba(244, 63, 94, 0.9);
+            color: #fff;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+        }
+
+        .gallery-item {
+            cursor: zoom-in;
+        }
+
+        @media (max-width: 900px) {
+            .modes-grid {
+                grid-template-columns: 1fr;
+            }
+            .whats-new-card {
+                padding: 22px 18px;
+            }
+            .bestiary-card {
+                padding: 20px 16px;
             }
         }
     </style>
@@ -1620,49 +2138,61 @@
                     <div class="brand-studio">Studio LampKeep</div>
                 </div>
             </a>
-            <nav>
-                <a href="https://lampkeeper2026.github.io/" target="_blank" rel="noopener" style="color: var(--accent-gold); font-weight: 600;">✦ 公式ポータル</a>
-                <a href="#opening-mv" style="color: var(--accent-gold); font-weight: 700;">🎬 オープニングMV</a>
-                <a href="#story">世界観</a>
-                <a href="#cards" style="color: var(--accent-cyan); font-weight: 700;">⚔️ 剣戟バトル</a>
-                <a href="#flame-anim">🔥 蒼き灯火</a>
-                <a href="#curses" style="color: var(--accent-crimson); font-weight: 700;">💀 深淵の罠と呪縛</a>
-                <a href="#features">魅惑の特徴</a>
-                <a href="#premium" style="color: var(--accent-gold); font-weight: 700;">★ プレミアムパス (作業用MV)</a>
-                <a href="#gallery">画面写真</a>
-                <a href="#dungeons">迷宮シネマティック</a>
-                <a href="#soundtrack">BGM試聴</a>
-                <a href="#leaderboard" style="color: var(--accent-gold); font-weight: 700;">🏆 全国ランキング</a>
-                <a href="#specs">製品情報</a>
-                <a href="https://lampkeeper2026.github.io/lampdrop-privacy.html" style="color: var(--accent-cyan); font-weight: 600;">プライバシーポリシー</a>
+            <div class="nav-controls">
+                <button id="langToggleBtn" class="lang-switch-btn" onclick="togglePageLanguage()" aria-label="Switch Language">
+                    🌐 EN / 日本語
+                </button>
+                <button class="mobile-nav-toggle" onclick="document.getElementById('mainNav').classList.toggle('open')" aria-label="Toggle Menu">
+                    ☰
+                </button>
+            </div>
+            <nav id="mainNav">
+                <a href="https://lampkeeper2026.github.io/" target="_blank" rel="noopener" style="color: var(--accent-gold); font-weight: 600;" data-ja="✦ 公式ポータル" data-en="✦ Official Portal">✦ 公式ポータル</a>
+                <a href="#whats-new" style="color: #4ade80; font-weight: 700;" data-ja="🆕 最新情報 v1.0.15" data-en="🆕 What's New v1.0.15">🆕 最新情報 v1.0.15</a>
+                <a href="#opening-mv" style="color: var(--accent-gold); font-weight: 700;" data-ja="🎬 主題歌MV" data-en="🎬 Theme MV">🎬 主題歌MV</a>
+                <a href="#modes" style="color: var(--accent-cyan); font-weight: 700;" data-ja="🕹️ ゲームモード" data-en="🕹️ Game Modes">🕹️ ゲームモード</a>
+                <a href="#cards" style="color: var(--accent-cyan); font-weight: 700;" data-ja="⚔️ 剣戟バトル" data-en="⚔️ Sword Combat">⚔️ 剣戟バトル</a>
+                <a href="#boss-cinematics" style="color: #fb7185; font-weight: 700;" data-ja="⚡ 降臨＆消滅" data-en="⚡ Boss Cutscenes">⚡ 降臨＆消滅</a>
+                <a href="#bestiary" style="color: #c084fc; font-weight: 700;" data-ja="📖 魔獣図鑑" data-en="📖 Bestiary">📖 魔獣図鑑</a>
+                <a href="#curses" style="color: var(--accent-crimson); font-weight: 700;" data-ja="💀 破呪＆難易度" data-en="💀 Curses & Easy Mode">💀 破呪＆難易度</a>
+                <a href="#features" data-ja="魅惑の特徴" data-en="Features">魅惑の特徴</a>
+                <a href="#premium" style="color: var(--accent-gold); font-weight: 700;" data-ja="★ プレミアム" data-en="★ Premium Pass">★ プレミアム</a>
+                <a href="#gallery" data-ja="画面写真" data-en="Gallery">画面写真</a>
+                <a href="#soundtrack" data-ja="BGM試聴" data-en="Soundtrack">BGM試聴</a>
+                <a href="#leaderboard" style="color: var(--accent-gold); font-weight: 700;" data-ja="🏆 ランキング" data-en="🏆 Leaderboard">🏆 ランキング</a>
+                <a href="#specs" data-ja="製品情報" data-en="Specs">製品情報</a>
+                <a href="https://lampkeeper2026.github.io/lampdrop-privacy.html" style="color: var(--accent-cyan); font-weight: 600;" data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
-            <div class="hero-tag">
-                <span>✦</span> 最新アップデート：初級(EASY)超大幅緩和 ＆ 1秒着地猶予 ＆ 特大ポーズメニュー搭載！
+            <div class="hero-tag" data-ja="✦ 最新 v1.0.15：NEXT+1（2手先予知）＆ ボス降臨・消滅演出 ＆ 初級(EASY)1秒着地猶予・1行破呪！" data-en="✦ Latest v1.0.15: NEXT+1 Dual Preview, Boss Cutscenes, & Comfort EASY Mode (1.0s Lock Delay & 1-Line Purge)!">
+                <span>✦</span> 最新 v1.0.15：NEXT+1（2手先予知）＆ ボス降臨・消滅演出 ＆ 初級(EASY)1秒着地猶予・1行破呪！
             </div>
             <h1 class="hero-title" style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
                 <img src="img/title_logo_anim.gif" alt="LAMP DROP" style="max-width: 380px; width: 100%; height: auto; filter: drop-shadow(0 0 28px rgba(0, 210, 255, 0.75)); margin-bottom: 4px;">
                 <span style="font-size: 2.2rem; font-weight: 900; letter-spacing: 0.1em; background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LAMP DROP</span>
             </h1>
-            <div class="hero-subtitle">暗闇を切り裂く、蒼き刃と光の連鎖――</div>
-            <p class="hero-desc">
+            <div class="hero-subtitle" data-ja="暗闇を切り裂く、蒼き刃と光の連鎖――" data-en="Cleave the Darkness with Azure Blades and Chains of Light—">暗闇を切り裂く、蒼き刃と光の連鎖――</div>
+            <p class="hero-desc" data-ja="一列消せば、敵を両断。ブロックを積むたび、心拍数が跳ね上がる！<br>1988年アーケードパズルの魂が息づく爽快感に、重厚なダークファンタジーの死闘が融合。<br><strong>息を呑む美麗シネマティック迷宮</strong>を舞台に、<strong>広大な12×20の戦場</strong>、<strong>2手先を読むNEXT+1予知</strong>、<strong>奇跡の聖十字架</strong>が降臨する。<br>初心者でも安心の<strong>超ゆったり重力・1.0秒着地猶予・1ライン破呪・神配牌システム</strong>を完全装備！" data-en="Clear a line to cleave your foes in two! Every block you stack sends your pulse racing.<br>The tactile thrill of 1988 arcade falling-block puzzles fuses with dark gothic fantasy swordplay.<br>Set across <strong>6 living cinematic dungeon floors + EX Abyss</strong> on a <strong>wide 12×20 tactical grid</strong> with <strong>NEXT &amp; NEXT+1 foresight</strong> and the <strong>miracle Holy Cross</strong>.<br>Enjoy our beginner-friendly <strong>EASY Mode (1.0s Lock Delay, 1-Line Holy Purge, &amp; Godly Piece Distribution)</strong> or brave the ultimate Chaos!">
                 一列消せば、敵を両断。ブロックを積むたび、心拍数が跳ね上がる！<br>
                 1988年アーケードパズルの魂が息づく爽快感に、重厚なダークファンタジーの死闘が融合。<br>
-                <strong>息を呑む美麗シネマティック迷宮</strong>を舞台に、<strong>広大な12×20の戦場</strong>と<strong>奇跡の聖十字架</strong>が降臨する。<br>
-                初心者でも安心の<strong>超ゆったり重力・1秒着地猶予・神配牌システム</strong>を搭載！ いま、蒼炎を手に迷宮へ飛び込め！
+                <strong>息を呑む美麗シネマティック迷宮</strong>を舞台に、<strong>広大な12×20の戦場</strong>、<strong>2手先を読むNEXT+1予知</strong>、<strong>奇跡の聖十字架</strong>が降臨する。<br>
+                初心者でも安心の<strong>超ゆったり重力・1.0秒着地猶予・1ライン破呪・神配牌システム</strong>を完全装備！
             </p>
             <div class="cta-group">
                 <a href="https://play.google.com/apps/testing/com.lampkeep.blockdrop1988" target="_blank" rel="noopener" class="btn-primary" style="background: linear-gradient(135deg, #00d2ff, #0284c7); box-shadow: 0 0 24px rgba(0, 210, 255, 0.5);">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a2.023 2.023 0 0 1-.22-.387C3.14 21.24 3 20.485 3 19.5V4.5c0-.985.14-1.74.39-2.299.066-.145.14-.275.219-.387zm1.414-1.414l11.493 6.635-2.85 2.85L3.844.609C4.24.417 4.67.4 5.023.4zm11.493 17.065L5.023 23.6c-.353 0-.783-.017-1.179-.209l9.819-9.819 2.85 2.85zm1.196-1.196l3.774-2.179c1.19-.687 1.19-1.81 0-2.497L17.725 9.71l-2.73 2.73 2.73 2.73z"/></svg>
-                    Google Play テスト版に参加 (Alpha)
+                    <span data-ja="Google Play テスト版に参加 (Alpha)" data-en="Join Google Play Closed Test (Alpha)">Google Play テスト版に参加 (Alpha)</span>
                 </a>
-                <a href="#cards" class="btn-secondary">
-                    冒険の魅力を体感する
+                <a href="#whats-new" class="btn-secondary" data-ja="🆕 v1.0.15 最新アプデを見る" data-en="🆕 See v1.0.15 Update Notes">
+                    🆕 v1.0.15 最新アプデを見る
+                </a>
+                <a href="#opening-mv" class="btn-secondary" style="border-color: rgba(251, 191, 36, 0.45); color: var(--accent-gold);" data-ja="🎬 主題歌3分MVを再生" data-en="🎬 Watch 3-Min Theme MV">
+                    🎬 主題歌3分MVを再生
                 </a>
             </div>
         </div>
@@ -1670,7 +2200,7 @@
             <div class="preview-frame">
                 <video id="heroVideo" autoplay loop muted playsinline src="video/opening_mixed.mp4" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
                 <div class="preview-badge" style="position: absolute; bottom: 14px; left: 14px; background: rgba(5, 8, 17, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 8px; padding: 6px 14px; font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
-                    <span>✦</span> 起動オープニングシネマティック
+                    <span>✦</span> <span data-ja="起動オープニングシネマティック" data-en="Opening Story Cinematic">起動オープニングシネマティック</span>
                 </div>
                 <button id="heroSoundBtn" onclick="toggleHeroSound()" style="position: absolute; bottom: 14px; right: 14px; background: rgba(5, 8, 17, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; color: var(--accent-gold); font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); transition: all 0.2s ease;">
                     🔊 音声ON
@@ -1678,6 +2208,41 @@
             </div>
         </div>
     </section>
+
+    <!-- What's New / Latest Patch Notes (v1.0.15) -->
+    <div class="whats-new-box" id="whats-new">
+        <div class="whats-new-card">
+            <div class="whats-new-header">
+                <div>
+                    <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-gold); letter-spacing: 0.14em; text-transform: uppercase;" data-ja="✦ WHAT'S NEW — LATEST RELEASE HIGHLIGHTS" data-en="✦ WHAT'S NEW — LATEST RELEASE HIGHLIGHTS">✦ WHAT'S NEW — LATEST RELEASE HIGHLIGHTS</span>
+                    <h2 style="font-family: 'Cinzel', 'Noto Sans JP', serif; font-size: 1.5rem; color: #ffffff; margin-top: 4px;" data-ja="最新アップデート v1.0.15 (Build 16) パッチノート" data-en="Latest Update v1.0.15 (Build 16) Patch Highlights">最新アップデート v1.0.15 (Build 16) パッチノート</h2>
+                </div>
+                <span style="background: rgba(74, 222, 128, 0.15); border: 1px solid rgba(74, 222, 128, 0.45); color: #4ade80; font-size: 0.8rem; font-weight: 800; padding: 5px 14px; border-radius: 999px;" data-ja="✓ Google Play Alpha 配信中" data-en="✓ Live on Google Play Alpha">✓ Google Play Alpha 配信中</span>
+            </div>
+            <div class="whats-new-grid">
+                <div class="patch-item">
+                    <span class="patch-tag gold" data-ja="NEW 戦術予知" data-en="NEW FORESIGHT">NEW 戦術予知</span>
+                    <h3 style="font-size: 1rem; color: #fff; margin-bottom: 6px;" data-ja="NEXT ＆ NEXT+1（2手先表示）" data-en="NEXT & NEXT+1 Dual Piece Preview">NEXT ＆ NEXT+1（2手先表示）</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;" data-ja="次のブロック（NEXT）に加え、さらにその次（NEXT+1）の魔導ランプまで常時表示！ 2手先を見据えた高度な連鎖構築と棒待ち戦略が可能になりました。" data-en="See both the upcoming piece (NEXT) and the following piece (NEXT+1) at all times! Plan two moves ahead for deeper chain setups and tactical I-piece saves.">次のブロック（NEXT）に加え、さらにその次（NEXT+1）の魔導ランプまで常時表示！ 2手先を見据えた高度な連鎖構築と棒待ち戦略が可能になりました。</p>
+                </div>
+                <div class="patch-item">
+                    <span class="patch-tag" data-ja="NEW 演出強化" data-en="NEW CINEMATICS">NEW 演出強化</span>
+                    <h3 style="font-size: 1rem; color: #fff; margin-bottom: 6px;" data-ja="全6大ボス 降臨＆浄化消滅カットイン" data-en="6 Boss Encounter & Vanish Cutscenes">全6大ボス 降臨＆浄化消滅カットイン</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;" data-ja="八芒星魔導陣が回転するボス降臨カットインと、撃破時の純白ホーリーフラッシュ＆黄金の魂魄スパーク蒸発エフェクトを60fpsゼロ遅延で実装。" data-en="60fps zero-latency octagram summoning cut-ins when floor bosses appear, plus blinding Holy Flash & golden soul-spark evaporation upon defeat.">八芒星魔導陣が回転するボス降臨カットインと、撃破時の純白ホーリーフラッシュ＆黄金の魂魄スパーク蒸発エフェクトを60fpsゼロ遅延で実装。</p>
+                </div>
+                <div class="patch-item">
+                    <span class="patch-tag green" data-ja="EASY 快適設計" data-en="COMFORT EASY MODE">EASY 快適設計</span>
+                    <h3 style="font-size: 1rem; color: #fff; margin-bottom: 6px;" data-ja="1.0秒着地猶予 ＆ 1ライン即破呪" data-en="1.0s Lock Delay & 1-Line Holy Purge">1.0秒着地猶予 ＆ 1ライン即破呪</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;" data-ja="初級(EASY)は着地猶予1.0秒(60F)・移動回転30回リセット・時間経過レベル上昇なし・棒率34%(3回救済)・1列消去で全呪いを即座に破呪！" data-en="EASY Mode grants a full 1.0s lock delay (30 resets), disables timer level-ups, boosts I-piece rate to 34% (max 3 drought), and purges all curses with just 1 line!">初級(EASY)は着地猶予1.0秒(60F)・移動回転30回リセット・時間経過レベル上昇なし・棒率34%(3回救済)・1列消去で全呪いを即座に破呪！</p>
+                </div>
+                <div class="patch-item">
+                    <span class="patch-tag" data-ja="UI 快適化" data-en="UX UPGRADE">UI 快適化</span>
+                    <h3 style="font-size: 1rem; color: #fff; margin-bottom: 6px;" data-ja="片手操作対応・特大ポーズメニュー" data-en="Thumb-Friendly Mega Pause Menu">片手操作対応・特大ポーズメニュー</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;" data-ja="ポーズダイアログ幅を+56%拡大、ボタン高さを約1.6倍に大型化。遊び方ガイド・背景透過度切替・難易度変更へ迷わずワンタップでアクセス。" data-en="Pause menu width expanded by +56% with 1.6x taller gothic brass buttons for effortless one-handed access to How-To-Play, transparency, and difficulty settings.">ポーズダイアログ幅を+56%拡大、ボタン高さを約1.6倍に大型化。遊び方ガイド・背景透過度切替・難易度変更へ迷わずワンタップでアクセス。</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Official Opening Story MV Section -->
     <section class="section" id="opening-mv" style="padding-top: 40px;">
@@ -1744,7 +2309,7 @@
                 <!-- Song & Vocal Credits Card -->
                 <div class="mv-song-card">
                     <div class="mv-song-header">
-                        <img src="img/song_aoki_tomoshibi_jacket.jpg" alt="Aoki Tomoshibi Jacket" class="mv-vocal-avatar" style="border-radius: 8px; border: 1px solid rgba(0, 210, 255, 0.5);">
+                        <img id="mvJacketImg" src="img/song_aoki_tomoshibi_jacket.jpg" alt="Aoki Tomoshibi Jacket" class="mv-vocal-avatar" style="border-radius: 8px; border: 1px solid rgba(0, 210, 255, 0.5);">
                         <div>
                             <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; letter-spacing: 0.1em;">Official Theme Song</div>
                             <h3 class="mv-song-title">蒼き灯火 <span style="font-size: 0.9rem; color: var(--text-secondary); font-family: 'Inter', sans-serif;">- Aoki Tomoshibi -</span></h3>
@@ -1949,6 +2514,62 @@
         </div>
     </section>
 
+    <!-- Two Arcade Game Modes & NEXT+1 Tactical System -->
+    <section class="section" id="modes">
+        <div class="section-header">
+            <div class="section-tag" data-ja="TWO ARCADE MODES & TACTICAL FORESIGHT" data-en="TWO ARCADE MODES & TACTICAL FORESIGHT">TWO ARCADE MODES & TACTICAL FORESIGHT</div>
+            <h2 class="section-title" data-ja="2大ゲームモード ＆ 全6階層＋EX深淵ダンジョン" data-en="Two Signature Game Modes & 6 Floors + EX Abyss">2大ゲームモード ＆ 全6階層＋EX深淵ダンジョン</h2>
+            <p style="color: var(--text-secondary); max-width: 800px; margin: 12px auto 0; font-size: 1rem; line-height: 1.7;" data-ja="1988年の正統派アーケード攻略を味わう『CLASSIC 1988』と、3分間の極限コンボラッシュに挑む『CHAOS BURST』。<br>さらに最新アップデートで実装された<strong>NEXT ＆ NEXT+1（2手先プレビュー）</strong>が、あなたの戦略を新たな次元へと引き上げます。" data-en="Choose between the authentic dungeon-crawling progression of CLASSIC 1988 or the 3-minute high-voltage score attack of CHAOS BURST—enhanced with our new NEXT &amp; NEXT+1 dual preview system.">
+                1988年の正統派アーケード攻略を味わう『CLASSIC 1988』と、3分間の極限コンボラッシュに挑む『CHAOS BURST』。<br>
+                さらに最新アップデートで実装された<strong>NEXT ＆ NEXT+1（2手先プレビュー）</strong>が、あなたの戦略を新たな次元へと引き上げます。
+            </p>
+        </div>
+
+        <div class="modes-grid">
+            <!-- Mode 1: CLASSIC 1988 -->
+            <div class="mode-card">
+                <span class="mode-badge" data-ja="⚔️ MODE 01 : CLASSIC 1988 (迷宮踏破モード)" data-en="⚔️ MODE 01 : CLASSIC 1988 (DUNGEON CAMPAIGN)">⚔️ MODE 01 : CLASSIC 1988 (迷宮踏破モード)</span>
+                <h3 style="font-family: 'Cinzel', 'Noto Sans JP', serif; font-size: 1.45rem; color: #fff; margin-bottom: 10px;" data-ja="全6階層（B1F〜B6F）＋ 果てなき【EX深淵回廊】" data-en="6 Dungeon Floors (B1F–B6F) + Endless EX Abyss">全6階層（B1F〜B6F）＋ 果てなき【EX深淵回廊】</h3>
+                <p style="color: var(--text-secondary); font-size: 0.94rem; line-height: 1.7; margin-bottom: 18px;" data-ja="1988年アーケード黄金期の重力・ロックディレイ・壁床キックを受け継ぐ王道攻略モード。B1F「蒼灯の納骨回廊」からB6F「混沌の祭壇」まで全15体の守護ボスを撃破せよ！ Lv.60（B6F真・混沌神）を制覇した勇者には、さらなる極限領域<strong>『EXダンジョン（EX-1〜）』</strong>と感動の日本語ヴォーカルエンディングMVが解放されます。" data-en="The flagship 1988 arcade progression mode. Descend from B1F Azure Crypt to B6F Throne of Chaos, defeating 15 unique bosses. Conquer Lv.60 True Chaos Deity to unlock the endless EX Abyss stages (EX-1+) and the full-length vocal ending MV!">
+                    1988年アーケード黄金期の重力・ロックディレイ・壁床キックを受け継ぐ王道攻略モード。B1F「蒼灯の納骨回廊」からB6F「混沌の祭壇」まで全15体の守護ボスを撃破せよ！ Lv.60（B6F真・混沌神）を制覇した勇者には、さらなる極限領域<strong>『EXダンジョン（EX-1〜）』</strong>と感動の日本語ヴォーカルエンディングMVが解放されます。
+                </p>
+                <div style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.8rem; font-weight: 700;">
+                    <span style="background: rgba(0,210,255,0.12); border: 1px solid rgba(0,210,255,0.35); color: var(--accent-cyan); padding: 4px 10px; border-radius: 6px;" data-ja="✦ 全6階層＋EX無限階層" data-en="✦ 6 Floors + Endless EX">✦ 全6階層＋EX無限階層</span>
+                    <span style="background: rgba(0,210,255,0.12); border: 1px solid rgba(0,210,255,0.35); color: var(--accent-cyan); padding: 4px 10px; border-radius: 6px;" data-ja="✦ 初級 / 中級 / 混沌 3難易度" data-en="✦ Easy / Normal / Chaos">✦ 初級 / 中級 / 混沌 3難易度</span>
+                    <span style="background: rgba(0,210,255,0.12); border: 1px solid rgba(0,210,255,0.35); color: var(--accent-cyan); padding: 4px 10px; border-radius: 6px;" data-ja="✦ オンライン全国ランキング対応" data-en="✦ Online Leaderboard">✦ オンライン全国ランキング対応</span>
+                </div>
+            </div>
+
+            <!-- Mode 2: CHAOS BURST -->
+            <div class="mode-card burst-mode">
+                <span class="mode-badge" data-ja="🔥 MODE 02 : CHAOS BURST (3分間コンボアタック)" data-en="🔥 MODE 02 : CHAOS BURST (3-MIN TIME ATTACK)">🔥 MODE 02 : CHAOS BURST (3分間コンボアタック)</span>
+                <h3 style="font-family: 'Cinzel', 'Noto Sans JP', serif; font-size: 1.45rem; color: #fff; margin-bottom: 10px;" data-ja="180秒にすべてを懸けろ！ 怒濤のスコア＆倍率ラッシュ" data-en="180 Seconds of Pure Adrenaline & Combo Multipliers">180秒にすべてを懸けろ！ 怒濤のスコア＆倍率ラッシュ</h3>
+                <p style="color: var(--text-secondary); font-size: 0.94rem; line-height: 1.7; margin-bottom: 18px;" data-ja="スキマ時間にも熱狂できる<strong>3分間（180秒）限定の超高速スコアアタックモード</strong>！ 連続ライン消去でコンボ倍率ゲージを跳ね上げ、神聖十字架（Holy Cross）と4段同時消去（MEGA CLEAR）を連発してハイスコアを叩き出せ！ 専用リーダーボードで全国のスピードランナーと頂点を競えます。" data-en="A high-voltage 3-minute (180s) score attack designed for quick, explosive sessions! Chain consecutive line clears to skyrocket your combo multiplier, unleash Holy Crosses and 4-line MEGA CLEARs, and compete on the dedicated Chaos Burst leaderboard.">
+                    スキマ時間にも熱狂できる<strong>3分間（180秒）限定の超高速スコアアタックモード</strong>！ 連続ライン消去でコンボ倍率ゲージを跳ね上げ、神聖十字架（Holy Cross）と4段同時消去（MEGA CLEAR）を連発してハイスコアを叩き出せ！ 専用リーダーボードで全国のスピードランナーと頂点を競えます。
+                </p>
+                <div style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.8rem; font-weight: 700;">
+                    <span style="background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.35); color: var(--accent-gold); padding: 4px 10px; border-radius: 6px;" data-ja="★ 3分間（180秒）短期決戦" data-en="★ 180-Second Blitz">★ 3分間（180秒）短期決戦</span>
+                    <span style="background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.35); color: var(--accent-gold); padding: 4px 10px; border-radius: 6px;" data-ja="★ 高速コンボ倍率ボーナス" data-en="★ Combo Multiplier Rush">★ 高速コンボ倍率ボーナス</span>
+                    <span style="background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.35); color: var(--accent-gold); padding: 4px 10px; border-radius: 6px;" data-ja="★ BURST専用全国ランキング" data-en="★ Dedicated Burst Ranking">★ BURST専用全国ランキング</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promo Banner for Modes & NEXT+1 -->
+        <div style="background: rgba(13, 20, 36, 0.88); border: 1px solid rgba(0, 210, 255, 0.35); border-radius: 18px; padding: 24px 28px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center;">
+            <div>
+                <div style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; margin-bottom: 6px;" data-ja="✦ NEW IN v1.0.15 — DUAL NEXT PREVIEW SYSTEM" data-en="✦ NEW IN v1.0.15 — DUAL NEXT PREVIEW SYSTEM">✦ NEW IN v1.0.15 — DUAL NEXT PREVIEW SYSTEM</div>
+                <h3 style="font-size: 1.28rem; color: #fff; margin-bottom: 10px;" data-ja="NEXT ＆ NEXT+1 — 2手先を見通す魔導予知ウィンドウ" data-en="NEXT & NEXT+1 — Two-Step Arcane Foresight Window">NEXT ＆ NEXT+1 — 2手先を見通す魔導予知ウィンドウ</h3>
+                <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7;" data-ja="上部の真鍮ステータスバーに<strong>「NEXT（次のブロック）」と「NEXT+1（さらに次のブロック）」を並べて表示</strong>するデュアルプレビューを搭載。現在のピースをどこに置くべきか、2手先まで計算した美しい平積みと4ライン消去（破呪）が思いのままに決まります。" data-en="Our gothic brass HUD now displays both NEXT and NEXT+1 side-by-side. Plan your placements two pieces ahead for cleaner stacking, clutch twist-ins, and devastating 4-line Holy Purges.">
+                    上部の真鍮ステータスバーに<strong>「NEXT（次のブロック）」と「NEXT+1（さらに次のブロック）」を並べて表示</strong>するデュアルプレビューを搭載。現在のピースをどこに置くべきか、2手先まで計算した美しい平積みと4ライン消去（破呪）が思いのままに決まります。
+                </p>
+            </div>
+            <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(251, 191, 36, 0.4); background: #000; cursor: zoom-in;" onclick="openLightbox('store_promo/promo_03_modes.png', 'CLASSIC 1988 & CHAOS BURST Modes')">
+                <img src="store_promo/promo_03_modes.png" alt="Game Modes & Tactical Preview" style="width: 100%; height: auto; display: block;">
+            </div>
+        </div>
+    </section>
+
     <!-- Dual Combat Cards Section -->
     <section class="section" id="cards">
         <div class="section-header">
@@ -2037,9 +2658,11 @@
                     <div class="mechanic-title">
                         <span style="color: var(--accent-crimson);">⚠️</span> 絶体絶命！ 赤く染まる盤面と主人公の緊迫した叫び
                     </div>
-                    <p class="mechanic-desc">
+                    <p class="mechanic-desc" data-ja="ブロックが危険域まで積み上がると、主人公リュカが通常から「苦痛に耐え、息を呑む苦悶の表情」へと急変！ カード外周が深紅の警告オーラで激しく脈打ち、プレイヤーのアドレナリンを極限まで引き上げます。" data-en="When blocks stack into the danger zone, Prince Lucas's expression shifts into tense determination as a crimson warning aura pulses around the frame, pushing your adrenaline to the limit!">
                         ブロックが危険域まで積み上がると、主人公リュカが通常から「苦痛に耐え、息を呑む苦悶の表情」へと急変！ カード外周が深紅の警告オーラで激しく脈打ち、プレイヤーのアドレナリンを極限まで引き上げます。
                     </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2127,6 +2750,200 @@
                     <h4><span>🌌</span> 世界全体が呼吸する一体感</h4>
                     <p>操作中のピースだけでなく、盤面に積み上げたランプも、迷宮の背景も、世界全体がひとつの生命のように共鳴して妖しい光を放ちます。</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Epic Boss Encounter & Vanish Cinematics Section -->
+    <section class="section" id="boss-cinematics">
+        <div class="section-header">
+            <div class="section-tag" style="background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.5); color: #fb7185; display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 999px;">
+                <span>✦</span> FLOW MUSIC × IN-GAME ENGINE CINEMATICS
+            </div>
+            <h2 class="section-title" style="margin-top: 12px;">全6大ボス 降臨と消滅シネマティック — 魂魄を焦がす深淵の死闘</h2>
+            <p style="color: var(--text-secondary); max-width: 840px; margin: 14px auto 0; font-size: 1.02rem; line-height: 1.8;">
+                Google Flow Music の AI Producer Studio で紡がれたダークシンフォニック楽曲<strong>『Break The Dark』</strong>と、1988年アーケードパズルの魂が完全融合。<br>
+                迷宮の支配者が姿を現す<strong>【八芒星の魔導陣＆暗黒カットイン】</strong>、そしてHPゼロで霧散する<strong>【神聖浄化フラッシュ＆黄金の魂魄蒸発】</strong>を完全実装！
+            </p>
+        </div>
+
+        <div class="boss-cine-hero">
+            <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; align-items: center;">
+                <div>
+                    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 210, 255, 0.15); border: 1px solid rgba(0, 210, 255, 0.4); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 12px;">
+                        <span>✦</span> CUTSCENE SYSTEM HIGHLIGHTS
+                    </div>
+                    <h3 style="font-family: 'Cinzel', 'Noto Sans JP', serif; font-size: 1.6rem; color: #ffffff; margin-bottom: 12px;">
+                        ゼロ遅延・60fps Canvas描画による圧倒的演出美
+                    </h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 18px;">
+                        ボス戦開幕の合図とともに、盤面全体が暗黒ヴィネットで深淵の闇へと沈み込み、黄金とシアンに輝く八芒星の召喚陣が回転。中央に降臨するボスの二つ名が壮大にカットインします。<br>
+                        そして激闘の果てにボスのHPを削り切ると、画面全体を灼く純白の神聖浄化閃光（Holy Flash）とともに、黄金と蒼炎の魂魄スパークが天へと舞い上がり、迷宮の闇が完全に浄化されます。
+                    </p>
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <div style="background: rgba(8, 14, 26, 0.85); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: 10px; padding: 10px 16px;">
+                            <div style="color: var(--accent-cyan); font-weight: 700; font-size: 0.82rem;">降臨 (ENCOUNTER)</div>
+                            <div style="color: #ffffff; font-size: 0.88rem; font-weight: 600;">8芒星召喚陣 ＆ 1.35xズームイン</div>
+                        </div>
+                        <div style="background: rgba(8, 14, 26, 0.85); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 10px; padding: 10px 16px;">
+                            <div style="color: var(--accent-gold); font-weight: 700; font-size: 0.82rem;">消滅 (PURGE & VANISH)</div>
+                            <div style="color: #ffffff; font-size: 0.88rem; font-weight: 600;">白光閃光 ＆ 魂魄スパーク蒸発</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-radius: 16px; overflow: hidden; border: 2px solid rgba(0, 210, 255, 0.4); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8); background: #000;">
+                    <img src="img/card_battle_knight.png" alt="Boss Encounter Preview" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+
+            <!-- 6 Bosses Showcase Grid -->
+            <div class="boss-cine-grid">
+                <!-- B1F -->
+                <div class="boss-cine-card">
+                    <div class="boss-cine-media">
+                        <span class="boss-cine-badge">B1F BOSS</span>
+                        <img src="img/card_battle_b1f.png" alt="Skeleton Knight">
+                    </div>
+                    <div class="boss-cine-body">
+                        <div class="boss-cine-title">スケルトンナイト (Skeleton Knight)</div>
+                        <div class="boss-cine-epithet">【納骨回廊の守護騎士】</div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-spawn">⚡ 降臨カットイン</div>
+                            <div>冷酷な骨灰が舞い上がり、青碧の八芒星陣とともに白銀の大剣を構えて出現。</div>
+                        </div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-vanish">✨ 破呪・消滅</div>
+                            <div>聖なる光条に貫かれ、白骨が蒼炎の魂魄となって霧散。「迷宮の闇は浄化された」プレートが静かに輝く。</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B2F -->
+                <div class="boss-cine-card">
+                    <div class="boss-cine-media">
+                        <span class="boss-cine-badge">B2F BOSS</span>
+                        <img src="img/card_battle_slash.png" alt="Blood Queen">
+                    </div>
+                    <div class="boss-cine-body">
+                        <div class="boss-cine-title">ブラッドクイーン (Blood Queen)</div>
+                        <div class="boss-cine-epithet">【緋の水底の吸血女王】</div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-spawn">⚡ 降臨カットイン</div>
+                            <div>血塗られた水路が沸き立ち、緋色のコウモリの大群とともに深淵より妖艶に浮上。</div>
+                        </div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-vanish">✨ 破呪・消滅</div>
+                            <div>聖水と浄化の閃光に灼かれ、血脈の霧となって夜空へと昇華・完全消散。</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B3F -->
+                <div class="boss-cine-card">
+                    <div class="boss-cine-media">
+                        <span class="boss-cine-badge">B3F BOSS</span>
+                        <img src="img/card_visual_revamp.png" alt="Forge Colossus">
+                    </div>
+                    <div class="boss-cine-body">
+                        <div class="boss-cine-title">フォージコロッサス (Forge Colossus)</div>
+                        <div class="boss-cine-epithet">【聖印の超重巨像】</div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-spawn">⚡ 降臨カットイン</div>
+                            <div>破砕された神殿の石柱を粉砕し、超重の金剛巨体が激しい火花を散らして起動。</div>
+                        </div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-vanish">✨ 破呪・消滅</div>
+                            <div>核の古代魔導炉が過負荷で白光臨界を迎え、静かに粉塵となって崩落・霧散。</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B4F -->
+                <div class="boss-cine-card">
+                    <div class="boss-cine-media">
+                        <span class="boss-cine-badge">B4F BOSS</span>
+                        <img src="img/card_battle_strong.png" alt="Void Lich">
+                    </div>
+                    <div class="boss-cine-body">
+                        <div class="boss-cine-title">ヴォイドリッチ (Void Lich)</div>
+                        <div class="boss-cine-epithet">【時空を歪める不死魔導】</div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-spawn">⚡ 降臨カットイン</div>
+                            <div>歪曲する虚無の時空裂け目より、冥府の魔導骸骨が禁忌の呪文を紡ぎながら浮遊出現。</div>
+                        </div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-vanish">✨ 破呪・消滅</div>
+                            <div>神聖破呪の光条により時空歪曲が封印され、虚無の彼方へと吸い込まれ消滅。</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B5F -->
+                <div class="boss-cine-card">
+                    <div class="boss-cine-media">
+                        <span class="boss-cine-badge">B5F BOSS</span>
+                        <img src="img/card_battle_drake.png" alt="Eclipse Lord">
+                    </div>
+                    <div class="boss-cine-body">
+                        <div class="boss-cine-title">エクリプスロード (Eclipse Lord)</div>
+                        <div class="boss-cine-epithet">【日蝕を統べる漆黒覇者】</div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-spawn">⚡ 降臨カットイン</div>
+                            <div>反転した魔塔の漆黒日蝕の只中、黒炎の翼を広げた竜騎士の覇者が降臨。</div>
+                        </div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-vanish">✨ 破呪・消滅</div>
+                            <div>暁の蒼炎が日蝕を切り裂き、純白の光芒とともに夜明けの天空へと昇華。</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B6F -->
+                <div class="boss-cine-card chaos-card">
+                    <div class="boss-cine-media">
+                        <span class="boss-cine-badge" style="border-color: var(--accent-crimson); color: var(--accent-crimson);">B6F FINAL BOSS</span>
+                        <img src="img/card_battle_chaos5.png" alt="Chaos God">
+                    </div>
+                    <div class="boss-cine-body">
+                        <div class="boss-cine-title">真・混沌神ケイオス (Chaos God)</div>
+                        <div class="boss-cine-epithet" style="color: var(--accent-crimson);">【深淵の真なる混沌神】</div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-spawn" style="color: var(--accent-crimson);">⚡ 降臨カットイン</div>
+                            <div>全宇宙の暗黒が凝縮した混沌の玉座より、最終形態の神性怨嗟が実体化。</div>
+                        </div>
+                        <div class="cine-phase-box">
+                            <div class="cine-phase-tag tag-vanish" style="color: var(--accent-gold);">✨ 破呪・消滅</div>
+                            <div>全列同時消去の奇跡の連鎖により混沌核が完全粉砕。迷宮の呪縛がすべて解き放たれる。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abyssal Bestiary (Monster Encyclopedia) Section -->
+    <section class="section" id="bestiary">
+        <div class="section-header">
+            <div class="section-tag" style="color: #c084fc;" data-ja="ABYSSAL BESTIARY — 15 GUARDIANS OF CHAOS" data-en="ABYSSAL BESTIARY — 15 GUARDIANS OF CHAOS">ABYSSAL BESTIARY — 15 GUARDIANS OF CHAOS</div>
+            <h2 class="section-title" data-ja="深淵魔獣図鑑（Bestiary）— 全6階層・全15体の守護者" data-en="Abyssal Bestiary — All 15 Dungeon Bosses Across 6 Floors">深淵魔獣図鑑（Bestiary）— 全6階層・全15体の守護者</h2>
+            <p style="color: var(--text-secondary); max-width: 800px; margin: 12px auto 0; font-size: 1rem; line-height: 1.7;" data-ja="各階層の前半（Lv.0〜6）に立ち塞がる<strong>中ボス（MID-BOSS）</strong>、階層終盤（Lv.7〜9）に降臨する<strong>階層守護者（STRONG-BOSS）</strong>、そしてB6F「混沌の祭壇」で5段階の変貌を遂げる<strong>最終神ケイオス（全5形態）</strong>。<br>撃破した魔獣はゲーム内の「深淵魔獣図鑑」に記録され、設定伝承・HP・固有呪詛スキルをいつでも閲覧できます。" data-en="Every floor from B1F to B5F is guarded by a Mid-Boss (Lv.0–6) and a Floor Guardian Strong-Boss (Lv.7–9), culminating in the 5-phase transformation of Chaos on B6F. Defeated foes are recorded in the in-game Bestiary with full lore and skill data.">
+                各階層の前半（Lv.0〜6）に立ち塞がる<strong>中ボス（MID-BOSS）</strong>、階層終盤（Lv.7〜9）に降臨する<strong>階層守護者（STRONG-BOSS）</strong>、そしてB6F「混沌の祭壇」で5段階の変貌を遂げる<strong>最終神ケイオス（全5形態）</strong>。<br>
+                撃破した魔獣はゲーム内の「深淵魔獣図鑑」に記録され、設定伝承・HP・固有呪詛スキルをいつでも閲覧できます。
+            </p>
+        </div>
+
+        <div class="bestiary-card">
+            <div class="bestiary-filter-bar" id="bestiaryFilterBar">
+                <button class="bestiary-tab active" onclick="filterBestiary('all')" data-ja="すべて表示 (全15体)" data-en="All Bosses (15)">すべて表示 (全15体)</button>
+                <button class="bestiary-tab" onclick="filterBestiary('B1F')" data-ja="B1F 納骨回廊" data-en="B1F Azure Crypt">B1F 納骨回廊</button>
+                <button class="bestiary-tab" onclick="filterBestiary('B2F')" data-ja="B2F 緋の水路" data-en="B2F Scarlet Aqueduct">B2F 緋の水路</button>
+                <button class="bestiary-tab" onclick="filterBestiary('B3F')" data-ja="B3F 聖印廃墟" data-en="B3F Shattered Sanctuary">B3F 聖印廃墟</button>
+                <button class="bestiary-tab" onclick="filterBestiary('B4F')" data-ja="B4F 機巧地下炉" data-en="B4F Glass Furnace">B4F 機巧地下炉</button>
+                <button class="bestiary-tab" onclick="filterBestiary('B5F')" data-ja="B5F 逆さ塔" data-en="B5F Inverted Tower">B5F 逆さ塔</button>
+                <button class="bestiary-tab" onclick="filterBestiary('B6F')" data-ja="B6F 混沌の祭壇 (全5形態)" data-en="B6F Throne of Chaos (5 Forms)">B6F 混沌の祭壇 (全5形態)</button>
+            </div>
+            <div class="bestiary-roster-grid" id="bestiaryRosterGrid">
+                <!-- Populated dynamically by JS -->
             </div>
         </div>
     </section>
@@ -2401,19 +3218,19 @@
             </p>
         </div>
         <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-            <div class="gallery-item" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
+            <div class="gallery-item" onclick="openLightbox('store_promo/promo_01_title.png', '深淵への扉 — Title Screen')" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
                 <img src="store_promo/promo_01_title.png" alt="タイトル画面 シネマティック動画背景と揺らぎ蒼炎ロゴ">
                 <div class="gallery-caption"><strong>深淵への扉</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">蒼き灯火が揺らめくタイトル画面</span></div>
             </div>
-            <div class="gallery-item" style="border: 1px solid rgba(251, 191, 36, 0.45); box-shadow: 0 4px 24px rgba(251, 191, 36, 0.25);">
+            <div class="gallery-item" onclick="openLightbox('store_promo/promo_02_battle.png', '迷宮の激闘 — Real-Time Swordplay Battle')" style="border: 1px solid rgba(251, 191, 36, 0.45); box-shadow: 0 4px 24px rgba(251, 191, 36, 0.25);">
                 <img src="store_promo/promo_02_battle.png" alt="迷宮の激闘 シネマティック背景動画とパズルバトル">
                 <div class="gallery-caption"><strong>迷宮の激闘</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">美麗シネマティック映像と連動するパズルバトル</span></div>
             </div>
-            <div class="gallery-item" style="border: 1px solid rgba(0, 210, 140, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 140, 0.25);">
+            <div class="gallery-item" onclick="openLightbox('store_promo/promo_03_howto.png', '遊び方・攻略ガイド — In-Game How to Play')" style="border: 1px solid rgba(0, 210, 140, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 140, 0.25);">
                 <img src="store_promo/promo_03_howto.png" alt="遊び方＆ダンジョン攻略ガイド">
                 <div class="gallery-caption"><strong>遊び方・攻略ガイド</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">初心者から上級者まで安心の親切インゲーム解説</span></div>
             </div>
-            <div class="gallery-item" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
+            <div class="gallery-item" onclick="openLightbox('store_promo/promo_04_mv_bestiary.png', '豪華コンテンツ — Theme MV & Bestiary')" style="border: 1px solid rgba(0, 210, 255, 0.45); box-shadow: 0 4px 24px rgba(0, 210, 255, 0.25);">
                 <img src="store_promo/promo_04_mv_bestiary.png" alt="奇跡の神聖十字架＆豪華コンテンツ">
                 <div class="gallery-caption"><strong>豪華コンテンツ</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">全13章主題歌MVシアター＆深淵魔獣図鑑</span></div>
             </div>
@@ -2481,22 +3298,43 @@
                     <div class="track-item active" onclick="playBgm(0)">
                         <span class="track-play-icon">▶</span>
                         <div class="track-meta">
-                            <strong>Game Opening: Dark Fantasy Arcade Prelude</strong>
-                            <small>Studio WAV ・ 130 BPM ・ 鐘の音・荘厳パイプオルガン・ファンファーレ</small>
+                            <strong data-ja="Game Opening: Dark Fantasy Arcade Prelude" data-en="Game Opening: Dark Fantasy Arcade Prelude">Game Opening: Dark Fantasy Arcade Prelude</strong>
+                            <small data-ja="Studio WAV ・ 130 BPM ・ 鐘の音・荘厳パイプオルガン・ファンファーレ" data-en="Studio WAV ・ 130 BPM ・ Cathedral Tolls, Pipe Organ & Fanfare">Studio WAV ・ 130 BPM ・ 鐘の音・荘厳パイプオルガン・ファンファーレ</small>
                         </div>
                     </div>
                     <div class="track-item" onclick="playBgm(1)">
                         <span class="track-play-icon">▶</span>
                         <div class="track-meta">
-                            <strong>BGM 1: Dungeon Crawler 1988 (Original Mix)</strong>
-                            <small>2:41 ・ 138 BPM ・ Gothic Organ & Synth Bass</small>
+                            <strong data-ja="BGM 1: Dungeon Crawler 1988 (Original Mix)" data-en="BGM 1: Dungeon Crawler 1988 (Original Mix)">BGM 1: Dungeon Crawler 1988 (Original Mix)</strong>
+                            <small data-ja="2:41 ・ 138 BPM ・ ゴシックオルガン＆16bit FMシンセベース" data-en="2:41 ・ 138 BPM ・ Gothic Organ & 16-bit FM Synth Bass">2:41 ・ 138 BPM ・ ゴシックオルガン＆16bit FMシンセベース</small>
                         </div>
                     </div>
                     <div class="track-item" onclick="playBgm(2)">
                         <span class="track-play-icon">▶</span>
                         <div class="track-meta">
-                            <strong>BGM 2: Dungeon Crawler 1988 (Arranged Take)</strong>
-                            <small>2:55 ・ 138 BPM ・ Driving Percussion & Dark Strings</small>
+                            <strong data-ja="BGM 2: Dungeon Crawler 1988 (Arranged Take)" data-en="BGM 2: Dungeon Crawler 1988 (Arranged Take)">BGM 2: Dungeon Crawler 1988 (Arranged Take)</strong>
+                            <small data-ja="2:55 ・ 138 BPM ・ 疾走パーカッション＆ダークストリングス" data-en="2:55 ・ 138 BPM ・ Driving Percussion & Dark Strings">2:55 ・ 138 BPM ・ 疾走パーカッション＆ダークストリングス</small>
+                        </div>
+                    </div>
+                    <div class="track-item" onclick="playBgm(3)">
+                        <span class="track-play-icon">▶</span>
+                        <div class="track-meta">
+                            <strong data-ja="主題歌（日本語版）：『蒼き灯火 - Aoki Tomoshibi -』" data-en="Opening Vocal (JP): 'Aoki Tomoshibi (The Azure Flame)'">主題歌（日本語版）：『蒼き灯火 - Aoki Tomoshibi -』</strong>
+                            <small data-ja="3:01 ・ Vocal: セレナ・カンタービレ・ヴォックス（蒼歌 詠）" data-en="3:01 ・ Vocal: Serena Cantabile Vox (Dark Celtic Symphonic)">3:01 ・ Vocal: セレナ・カンタービレ・ヴォックス（蒼歌 詠）</small>
+                        </div>
+                    </div>
+                    <div class="track-item" onclick="playBgm(4)">
+                        <span class="track-play-icon">▶</span>
+                        <div class="track-meta">
+                            <strong data-ja="主題歌（英語版）：'The Azure Flame'" data-en="Opening Vocal (EN): 'The Azure Flame'">主題歌（英語版）：'The Azure Flame'</strong>
+                            <small data-ja="3:01 ・ English Full Vocal Edition ・ Serena Cantabile Vox" data-en="3:01 ・ English Full Vocal Edition ・ Serena Cantabile Vox">3:01 ・ English Full Vocal Edition ・ Serena Cantabile Vox</small>
+                        </div>
+                    </div>
+                    <div class="track-item" onclick="playBgm(5)">
+                        <span class="track-play-icon">▶</span>
+                        <div class="track-meta">
+                            <strong data-ja="エンディング主題歌：『凱旋の夜明け - Triumph of Dawn -』" data-en="Ending Vocal Theme: 'Triumph of Dawn'">エンディング主題歌：『凱旋の夜明け - Triumph of Dawn -』</strong>
+                            <small data-ja="全6階層制覇エンディングヴォーカル曲（日本語フル尺）" data-en="Full-Length Ending Vocal Ballad (Unlocked on B6F Clear)">全6階層制覇エンディングヴォーカル曲（日本語フル尺）</small>
                         </div>
                     </div>
                 </div>
@@ -2573,8 +3411,16 @@
                     <td>LampDrop（ランプドロップ：混沌迷宮の蒼き灯火）</td>
                 </tr>
                 <tr>
-                    <th>最新バージョン</th>
-                    <td>v1.0.14 (Build 15)</td>
+                    <th data-ja="最新バージョン" data-en="Latest Version">最新バージョン</th>
+                    <td data-ja="v1.0.15 (Build 16) — NEXT+1（2手先表示）・全6大ボス降臨＆消滅演出・EASY快適設計搭載" data-en="v1.0.15 (Build 16) — NEXT+1 Dual Preview, Boss Cutscenes & Comfort EASY Mode">v1.0.15 (Build 16) — NEXT+1（2手先表示）・全6大ボス降臨＆消滅演出・EASY快適設計搭載</td>
+                </tr>
+                <tr>
+                    <th data-ja="ゲームモード" data-en="Game Modes">ゲームモード</th>
+                    <td data-ja="CLASSIC 1988（全6階層 B1F〜B6F＋EX深淵ダンジョン） / CHAOS BURST（3分間コンボアタック）" data-en="CLASSIC 1988 (6 Floors B1F–B6F + Endless EX Abyss) / CHAOS BURST (3-Min Combo Attack)">CLASSIC 1988（全6階層 B1F〜B6F＋EX深淵ダンジョン） / CHAOS BURST（3分間コンボアタック）</td>
+                </tr>
+                <tr>
+                    <th data-ja="収録モンスター・楽曲" data-en="Bestiary & Music">収録モンスター・楽曲</th>
+                    <td data-ja="深淵魔獣図鑑 全15体（各階層中ボス＆守護者＋最終神5形態） / 主題歌MV（日英）＆アーケードBGM完備" data-en="15 Bestiary Bosses (Mid-Bosses, Floor Guardians & 5 Chaos Forms) / Bilingual Vocal MVs & Arcade OST">深淵魔獣図鑑 全15体（各階層中ボス＆守護者＋最終神5形態） / 主題歌MV（日英）＆アーケードBGM完備</td>
                 </tr>
                 <tr>
                     <th>配信状況</th>
@@ -2643,6 +3489,15 @@
     </footer>
 </div>
 
+<!-- Lightbox Modal for Gallery & Promo Previews -->
+<div id="lightboxOverlay" class="lightbox-overlay" onclick="if(event.target===this)closeLightbox()">
+    <div class="lightbox-box">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">×</button>
+        <img id="lightboxImg" src="store_promo/promo_01_title.png" alt="Preview">
+        <div id="lightboxCaption" style="color: #fff; font-weight: 700; margin-top: 12px; font-size: 0.95rem;"></div>
+    </div>
+</div>
+
 <script>
     // Ambient floating embers & mana particles
     const canvas = document.getElementById('embersCanvas');
@@ -2681,8 +3536,8 @@
             }
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = p.isCyan 
-                ? `rgba(0, 210, 255, ${p.alpha})` 
+            ctx.fillStyle = p.isCyan
+                ? `rgba(0, 210, 255, ${p.alpha})`
                 : `rgba(251, 191, 36, ${p.alpha * 0.8})`;
             ctx.shadowBlur = 10;
             ctx.shadowColor = p.isCyan ? '#00d2ff' : '#fbbf24';
@@ -2705,14 +3560,17 @@
         const isPaused = mvVideo.paused;
         const curTime = mvVideo.currentTime;
 
+        const jacketImg = document.getElementById('mvJacketImg');
         if (lang === 'en') {
             mvVideo.src = 'video/opening_mixed_en.mp4';
             if (btnJa) btnJa.classList.remove('gold');
             if (btnEn) btnEn.classList.add('gold');
+            if (jacketImg) jacketImg.src = 'img/song_azure_flame_en_jacket.jpg';
         } else {
             mvVideo.src = 'video/opening_mixed.mp4';
             if (btnJa) btnJa.classList.add('gold');
             if (btnEn) btnEn.classList.remove('gold');
+            if (jacketImg) jacketImg.src = 'img/song_aoki_tomoshibi_jacket.jpg';
         }
         mvVideo.currentTime = curTime;
         if (!isPaused) {
@@ -2822,11 +3680,14 @@
         v.play().catch(e => console.log('Autoplay handled:', e));
     }
 
-    // Soundtrack Player
+    // Soundtrack Player (6 Tracks: Arcade OST + Bilingual Vocal Themes)
     const bgmTracks = [
         { title: "Game Opening: Dark Fantasy Arcade Prelude", src: "audio/bgm_opening_prelude.wav" },
         { title: "BGM 1: Dungeon Crawler 1988 (Original Mix)", src: "audio/bgm_dungeon_crawler_1988.mp3" },
-        { title: "BGM 2: Dungeon Crawler 1988 (Arranged Take)", src: "audio/bgm_dungeon_crawler_1988_take2.mp3" }
+        { title: "BGM 2: Dungeon Crawler 1988 (Arranged Take)", src: "audio/bgm_dungeon_crawler_1988_take2.mp3" },
+        { title: "Opening Vocal (JP): 蒼き灯火 - Aoki Tomoshibi -", src: "audio/bgm_opening_vocal_aoki_tomoshibi.m4a" },
+        { title: "Opening Vocal (EN): The Azure Flame", src: "audio/bgm_opening_vocal_en.m4a" },
+        { title: "Ending Vocal (JP): 凱旋の夜明け - Triumph of Dawn -", src: "audio/bgm_ending_ja.mp3" }
     ];
 
     function playBgm(idx) {
@@ -2922,6 +3783,200 @@
 
     // Initialize leaderboard on load
     renderLeaderboard(defaultHallOfFame.classic);
+
+    // ===================================================
+    // Abyssal Bestiary (15 Monsters Data & Filter)
+    // ===================================================
+    const BESTIARY_DATA = [
+        { floor: "B1F", roleJa: "MID-BOSS (Lv.1〜6)", roleEn: "MID-BOSS (Lv.1–6)", nameJa: "スケルトンスカウト", nameEn: "SKELETON SCOUT", hp: "HP: 700", skillJa: "骨刃の奇襲 / 加速の微風", skillEn: "Bone Ambush / Haste Gust", descJa: "納骨堂の入口を徘徊する骸骨の尖兵。青白く揺らめく灯火の瘴気によって動かされている。", descEn: "Undead vanguard prowling the crypt entrance, animated by pale lantern miasma." },
+        { floor: "B1F", roleJa: "STRONG-BOSS (Lv.7〜9)", roleEn: "STRONG-BOSS (Lv.7–9)", nameJa: "スケルトンナイト", nameEn: "SKELETON KNIGHT", hp: "HP: 1,000", skillJa: "【黒霧の帳】(Abyssal Mist)", skillEn: "[Abyssal Mist] & Heavy Slash", descJa: "重厚な黒鉄の鎧に身を包んだ納骨堂の守護騎士。かつて王国最強と謳われた聖騎士の骸。", descEn: "Armored guardian of the Azure Crypt. Once the kingdom's mightiest paladin." },
+        { floor: "B2F", roleJa: "MID-BOSS (Lv.10〜16)", roleEn: "MID-BOSS (Lv.10–16)", nameJa: "スカーレットサーペント", nameEn: "SCARLET SERPENT", hp: "HP: 700", skillJa: "【血霧の罠】(Blood Mist)", skillEn: "[Blood Mist] Venomous Fog", descJa: "緋色に染まる地下水脈を泳ぐ大蛇。毒々しい霧を吐き出して盤面の視認性を奪う。", descEn: "Giant serpent swimming through crimson aqueducts, exhaling blinding crimson fog." },
+        { floor: "B2F", roleJa: "STRONG-BOSS (Lv.17〜19)", roleEn: "STRONG-BOSS (Lv.17–19)", nameJa: "ブラッドクイーン", nameEn: "BLOOD QUEEN", hp: "HP: 1,000", skillJa: "【血鎖の呪縛】(Crimson Chain Seal)", skillEn: "[Crimson Chain Seal] & Surge", descJa: "緋の水脈の深奥に君臨する妖艶なる吸血女王。紅蓮の鎖でラインを封鎖する。", descEn: "Vampiric queen reigning over the Scarlet Aqueduct, binding rows in crimson chains." },
+        { floor: "B3F", roleJa: "MID-BOSS (Lv.20〜26)", roleEn: "MID-BOSS (Lv.20–26)", nameJa: "スチームオートマタ", nameEn: "STEAM AUTOMATON", hp: "HP: 700", skillJa: "蒸気噴射 / 回転妨害", skillEn: "Steam Blast / Timing Jam", descJa: "古代神殿の自律警備機巧。数千年を経た今も神域を侵す者に鉄拳を下す。", descEn: "Ancient clockwork sentinel still guarding the sanctuary ruins after millennia." },
+        { floor: "B3F", roleJa: "STRONG-BOSS (Lv.27〜29)", roleEn: "STRONG-BOSS (Lv.27–29)", nameJa: "フォージコロッサス", nameEn: "FORGE COLOSSUS", hp: "HP: 1,000", skillJa: "【時空の歪み】(Chrono Warp)", skillEn: "[Chrono Warp] & Cursed Seal", descJa: "神殿の溶鉱炉で鍛え上げられた聖印の超重巨像。重力とラインを同時に狂わせる。", descEn: "Titanic colossus forged in sacred flames, warping drop gravity with molten fury." },
+        { floor: "B4F", roleJa: "MID-BOSS (Lv.30〜36)", roleEn: "MID-BOSS (Lv.30–36)", nameJa: "シャドウレイス", nameEn: "SHADOW WRAITH", hp: "HP: 700", skillJa: "【虚無の目眩まし】(Blind Curse)", skillEn: "[Blind Curse] Shadow Veil", descJa: "鉄棺の研究室から漏れ出た錬金術師たちの怨念集合体。NEXT予知を闇で覆い隠す。", descEn: "Amalgam of alchemists' grudges that shrouds the NEXT preview window in darkness." },
+        { floor: "B4F", roleJa: "STRONG-BOSS (Lv.37〜39)", roleEn: "STRONG-BOSS (Lv.37–39)", nameJa: "ヴォイドリッチ", nameEn: "VOID LICH", hp: "HP: 1,000", skillJa: "【暗黒の目隠し】(Abyssal Blindfold)", skillEn: "[Abyssal Blindfold] & Void Maelstrom", descJa: "魂を混沌に売り渡した不死の大魔導士。時空を歪める黒魔術で迷宮の重力を操る。", descEn: "Immortal arch-lich who bends spacetime and seals your arcane foresight." },
+        { floor: "B5F", roleJa: "MID-BOSS (Lv.40〜46)", roleEn: "MID-BOSS (Lv.40–46)", nameJa: "アストラルドレイク", nameEn: "ASTRAL DRAKE", hp: "HP: 700", skillJa: "星辰の咆哮 / 複合暗黒霧", skillEn: "Starlight Roar / Dual Mist", descJa: "逆さ塔を舞う星霊の龍。深霧の拡散とNEXT不可視を交互に仕掛ける。", descEn: "Celestial drake soaring through the Inverted Tower, alternating mist and blindfolds." },
+        { floor: "B5F", roleJa: "STRONG-BOSS (Lv.47〜49)", roleEn: "STRONG-BOSS (Lv.47–49)", nameJa: "エクリプスロード", nameEn: "ECLIPSE LORD", hp: "HP: 1,000", skillJa: "【虚空の牢獄 / 重力断層】", skillEn: "[Void Prison / Temporal Fault]", descJa: "混沌の天球を統べる日蝕の支配者。複合呪詛を同時展開し祭壇への扉を閉ざす。", descEn: "Sovereign of the black eclipse who unleashes dual compound curses simultaneously." },
+        { floor: "B6F", roleJa: "FINAL BOSS 形態I (Lv.50〜51)", roleEn: "FINAL BOSS FORM I (Lv.50–51)", nameJa: "ケイオス・形態I【封印核】", nameEn: "CHAOS I [SEALED CORE]", hp: "HP: 1,000", skillJa: "混沌の鼓動 / 初動の呪縛", skillEn: "Pulse of Chaos / Primal Bind", descJa: "零のアビスの祭壇中央に鎮座する封印の核。太古の英傑たちが封じた混沌の神の卵。", descEn: "The primordial sealed core pulsating at the center of the Throne of Chaos.", isFinal: true },
+        { floor: "B6F", roleJa: "FINAL BOSS 形態II (Lv.52〜53)", roleEn: "FINAL BOSS FORM II (Lv.52–53)", nameJa: "ケイオス・形態II【冥界魔獣】", nameEn: "CHAOS II [NETHER DEMON]", hp: "HP: 1,000", skillJa: "獄炎の咆哮 / 激痛の加速霧", skillEn: "Hellfire Roar / Surging Mist", descJa: "砕けた核から溢れ出た瘴気が形を成した凶悪な冥界凶獣。", descEn: "Ferocious nether beast born from the shattered core's overflowing miasma.", isFinal: true },
+        { floor: "B6F", roleJa: "FINAL BOSS 形態III (Lv.54〜55)", roleEn: "FINAL BOSS FORM III (Lv.54–55)", nameJa: "ケイオス・形態III【虚空熾天使】", nameEn: "CHAOS III [VOID SERAPH]", hp: "HP: 1,000", skillJa: "神罰の黒翼 / 二重封印鎖", skillEn: "Black Wings / Dual Chain Seal", descJa: "漆黒の翼を広げた虚無の熾天使。神聖なる鎖を複数ラインに巻き付ける。", descEn: "Six-winged seraph of the void who binds multiple rows in dark chains.", isFinal: true },
+        { floor: "B6F", roleJa: "FINAL BOSS 形態IV (Lv.56〜57)", roleEn: "FINAL BOSS FORM IV (Lv.56–57)", nameJa: "ケイオス・形態IV【宇宙主宰者】", nameEn: "CHAOS IV [COSMIC SOVEREIGN]", hp: "HP: 1,000", skillJa: "星崩の審判 / 混沌の嵐", skillEn: "Starfall Judgment / Chaos Storm", descJa: "星々の配列すら歪める宇宙的絶対者。次元の裂け目から無数の呪詛を召喚する。", descEn: "Cosmic ruler who warps stellar alignments and summons relentless dimensional storms.", isFinal: true },
+        { floor: "B6F", roleJa: "FINAL BOSS 最終形態 (Lv.58〜60)", roleEn: "FINAL BOSS FORM V (Lv.58–60)", nameJa: "ケイオス・形態V【真・混沌神】", nameEn: "CHAOS V [TRUE DEITY]", hp: "HP: 1,000", skillJa: "【大禍の降臨】(Chaos Cataclysm)", skillEn: "[Chaos Cataclysm] All-Curse Finale", descJa: "零のアビスに降臨した真なる混沌神。この神を打ち倒し、迷宮の光を取り戻せ！", descEn: "The awakened True Deity of Chaos. Shatter its cataclysm with Holy Purge to reclaim the dawn!", isFinal: true }
+    ];
+
+    let curBestiaryFloor = 'all';
+    let curPageLang = 'ja';
+
+    function renderBestiary() {
+        const grid = document.getElementById('bestiaryRosterGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        const list = curBestiaryFloor === 'all'
+            ? BESTIARY_DATA
+            : BESTIARY_DATA.filter(m => m.floor === curBestiaryFloor);
+
+        list.forEach(m => {
+            const div = document.createElement('div');
+            div.className = 'monster-entry' + (m.isFinal ? ' final-form' : '');
+            const isEn = curPageLang === 'en';
+            const badgeColor = m.isFinal ? 'var(--accent-crimson)' : 'var(--accent-cyan)';
+            div.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                    <span style="font-family:'Cinzel',serif; font-size:0.75rem; font-weight:800; padding:2px 8px; border-radius:6px; background:rgba(0,210,255,0.14); color:${badgeColor}; border:1px solid ${badgeColor};">${m.floor}</span>
+                    <span style="font-size:0.75rem; color:var(--accent-gold); font-weight:700;">${isEn ? m.roleEn : m.roleJa} ・ ${m.hp}</span>
+                </div>
+                <div style="font-size:1.05rem; font-weight:800; color:#fff;">${isEn ? m.nameEn : m.nameJa} <small style="color:var(--text-secondary); font-weight:500; font-size:0.78rem;">${isEn ? m.nameJa : m.nameEn}</small></div>
+                <div style="font-size:0.8rem; color:#fca5a5; background:rgba(244,63,94,0.1); border-left:3px solid var(--accent-crimson); padding:5px 10px; border-radius:0 6px 6px 0; font-weight:600;">⚡ ${isEn ? m.skillEn : m.skillJa}</div>
+                <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.55; margin-top:2px;">${isEn ? m.descEn : m.descJa}</p>
+            `;
+            grid.appendChild(div);
+        });
+    }
+
+    function filterBestiary(floor) {
+        curBestiaryFloor = floor;
+        const tabs = document.querySelectorAll('#bestiaryFilterBar .bestiary-tab');
+        tabs.forEach(btn => {
+            const onclickAttr = btn.getAttribute('onclick') || '';
+            btn.classList.toggle('active', onclickAttr.includes(`'${floor}'`));
+        });
+        renderBestiary();
+    }
+
+    // ===================================================
+    // Lightbox Modal for Screenshots
+    // ===================================================
+    function openLightbox(src, caption) {
+        const overlay = document.getElementById('lightboxOverlay');
+        const img = document.getElementById('lightboxImg');
+        const cap = document.getElementById('lightboxCaption');
+        if (!overlay || !img) return;
+        img.src = src;
+        if (cap) cap.textContent = caption || '';
+        overlay.classList.add('open');
+    }
+
+    function closeLightbox() {
+        const overlay = document.getElementById('lightboxOverlay');
+        if (overlay) overlay.classList.remove('open');
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ===================================================
+    // Bilingual Page Switcher (JA / EN)
+    // ===================================================
+    const SECTION_I18N = [
+        // Opening MV
+        { sel: '#opening-mv .section-title', ja: '魂を揺さぶる叙事詩 — 混沌を穿つ蒼き灯火', en: 'A Soul-Stirring Epic — The Azure Flame Piercing Chaos' },
+        { sel: '#opening-mv .section-header p', ja: '滅びし王国の第三王子リュカと相棒クロが挑む、果てなき混沌迷宮の叙事詩。<br>Google Flow Music 制作によるダークケルティック・シンフォニック主題歌<strong>『蒼き灯火 (Aoki Tomoshibi) — 混沌迷宮の果てへ —』</strong>に乗せ、<br>専任歌姫<strong>セレナ・カンタービレ・ヴォックス（Serena Cantabile Vox）</strong>が歌い上げる完全新規3分間オープニングストーリーMVをノーカット公開！', en: 'The epic chronicle of Third Prince Lucas and his familiar Kuro braving the endless Chaos Labyrinth.<br>Set to the dark Celtic symphonic theme <strong>"Aoki Tomoshibi (The Azure Flame)"</strong> crafted with Google Flow Music,<br>watch the full uncut 3-minute opening story MV sung by resident diva <strong>Serena Cantabile Vox</strong> in Japanese or English!' },
+        { sel: '.mv-song-singer', ja: '歌唱：セレナ・カンタービレ・ヴォックス（蒼歌 詠）', en: 'Vocals: Serena Cantabile Vox (Diva of Chaos)' },
+        { sel: '.mv-chapters-title span', ja: '🎬 ストーリーチャプター', en: '🎬 Story Chapters' },
+        { sel: '.mv-chapters-title small', ja: 'クリックで該当シーンへジャンプ', en: 'Click to jump to scene' },
+        // Story & Characters
+        { sel: '#story .section-title', ja: '混沌の迷宮と蒼炎の剣士', en: 'The Chaos Labyrinth & The Azure Swordsman' },
+        { sel: '#story .story-text h3', ja: '深淵に沈みし王国を照らせ', en: 'Illuminate the Kingdom Sunk in the Abyss' },
+        { sel: '#story .story-text p:nth-of-type(1)', ja: '古の儀式によって闇の底へと没した「混沌の迷宮（Prince of Chaos）」。迷宮の奥底には、世界を蝕む異形の魔物たちが蠢いていた。', en: 'Cast into the depths of darkness by an ancient ritual, the Chaos Labyrinth teems with monstrous aberrations that corrode the world.' },
+        { sel: '#story .story-text p:nth-of-type(2)', ja: '亡国の第三王子<strong>リュカ</strong>は、相棒の黒猫<strong>クロ</strong>と共に、魔導の光を放つ古代のランプを手に深淵へと踏み込む。', en: 'Third Prince <strong>Lucas</strong> of the fallen kingdom steps into the abyss alongside his black cat companion <strong>Kuro</strong>, wielding an ancient arcane lantern.' },
+        { sel: '#story .story-text p:nth-of-type(3)', ja: '光を繋ぎ、闇の回廊を封鎖して一筋の活路を切り拓け——。', en: 'Connect the flames, seal the corridors of darkness, and carve a path toward the dawn—' },
+        { sel: '.characters-grid .char-card:nth-of-type(1) .char-subtitle', ja: '第三王子 / 蒼炎剣士', en: 'Third Prince / Azure Flame Swordsman' },
+        { sel: '.characters-grid .char-card:nth-of-type(1) .char-desc', ja: '滅びし王国の第三王子。古代の魔導ランプから引き出された蒼炎を剣に宿し、迷宮の闇を切り裂く。', en: 'Third Prince of the fallen kingdom. Channels the azure flame of ancient lanterns into his blade to cleave the darkness.' },
+        { sel: '.characters-grid .char-card:nth-of-type(1) .char-skill', ja: '<strong>固有戦技「蒼炎一閃」</strong><br>ライン消去時に鋭い居合い斬りを放ち、敵モンスターのHPを削る。', en: '<strong>Signature Skill: Azure Flash</strong><br>Unleashes a razor-sharp sword slash on every line clear, carving down enemy boss HP.' },
+        { sel: '.characters-grid .char-card:nth-of-type(2) .char-subtitle', ja: '相棒 / 金眼の使い魔黒猫', en: 'Familiar / Golden-Eyed Black Cat' },
+        { sel: '.characters-grid .char-card:nth-of-type(2) .char-desc', ja: '王子の足元に寄り添う謎多き黒猫。暗闇で黄金に光る瞳で魔導フィラメントの結節点を感知する。', en: 'A mysterious black cat at the prince\'s side. Its golden eyes perceive arcane filament nodes and upcoming pieces.' },
+        { sel: '.characters-grid .char-card:nth-of-type(2) .char-skill', ja: '<strong>魔力共鳴「フィラメント感知」</strong><br>ブロック設置時にマナの火花を散らし、隣接ランプとの連結をサポート。', en: '<strong>Arcane Resonance: Filament Sense</strong><br>Scatters mana sparks upon piece lock and supports adjacent lantern links.' },
+        { sel: '.characters-grid .char-card:nth-of-type(3) .char-subtitle', ja: '納骨回廊の守護者 / B1Fボス', en: 'Guardian of the Azure Crypt / B1F Boss' },
+        { sel: '.characters-grid .char-card:nth-of-type(3) .char-desc', ja: '古の黒鉄甲冑を纏い、蒼き怨嗟の炎を眼窩に灯した不死戦士。巨大な処刑剣で侵入者を阻む。', en: 'An undead knight clad in black iron armor with azure fire burning in its sockets, barring intruders with a massive executioner\'s blade.' },
+        { sel: '.characters-grid .char-card:nth-of-type(3) .char-skill', ja: '<strong>怨嗟の一撃「重装斬撃」</strong><br>プレイヤーの積みが高くなると威圧感が増し、落下速度にプレッシャーを与える。', en: '<strong>Grudge Strike: Heavy Cleave</strong><br>Casts Abyssal Mist and applies heavy gravity pressure as your stack rises.' },
+        // Dual Combat Cards
+        { sel: '#cards .section-title', ja: 'ラインを消して敵を斬り伏せろ！ 盤上と連動する白熱の剣戟バトル', en: 'Clear Lines to Slash Your Foes! Real-Time Board-Synced Swordplay' },
+        { sel: '#cards .section-header p', ja: 'パズルを揃えた瞬間、蒼き剣閃が敵を切り裂く！<br>あなたの一手一手が、リアルタイムの死闘となって盤面両脇で激突します。<br>ピンチになれば主人公が苦悶に歪み、怒濤の4ライン同時消去を決めれば特大クリティカルで巨悪を粉砕する！<br>パズルの快感と、RPGバトルの興奮が最高潮にシンクロする極限の緊張感を体感せよ。', en: 'The moment you complete a line, an azure sword flash cleaves your enemy!<br>Every move you make unfolds as a real-time duel flanking the playfield.<br>When your stack nears the top, Lucas grimaces in peril; land a 4-line clear to unleash a massive critical strike!' },
+        { sel: '.cards-overview-grid .card-system-box:nth-of-type(1) .card-box-title', ja: '深淵を切り拓き、真の力を覚醒させよ', en: 'Carve Through the Abyss & Awaken True Power' },
+        { sel: '.cards-overview-grid .card-system-box:nth-of-type(1) .card-box-desc', ja: '迷宮の奥底へと潜るにつれ、主人公リュカは過酷な試練を乗り越えて新たな姿へと覚醒！ 窮地を越えるたび、その剣戟は凄みを増していく。', en: 'As you descend deeper into the labyrinth, Prince Lucas overcomes trials and awakens into new forms!' },
+        { sel: '.cards-overview-grid .card-system-box:nth-of-type(2) .card-box-title', ja: '暗闇の奥底に蠢く、名も無き脅威', en: 'Nameless Terrors Lurking in the Deep' },
+        { sel: '.cards-overview-grid .card-system-box:nth-of-type(2) .card-box-desc', ja: 'フロアを降りるごとに、人間の知覚を絶した凶悪な守護者たちが立ち塞がる。己のパズル力と直感で、この強敵たちを打ち破れ！', en: 'Each floor is guarded by fierce Mid-Bosses and Floor Guardians culminating in the 5-form Chaos Deity.' },
+        { sel: '.card-mechanics-grid .mechanic-card:nth-of-type(1) .mechanic-title', ja: '<span style="color: var(--accent-cyan);">✦</span> 快感！ 4ライン同時消去で炸裂するド派手な一撃必殺', en: '<span style="color: var(--accent-cyan);">✦</span> Explosive 4-Line Critical Slash ("CRITICAL 1000!")' },
+        { sel: '.card-mechanics-grid .mechanic-card:nth-of-type(1) .mechanic-desc', ja: 'ラインを消すと即座に敵カード上に鋭い蒼炎の太刀筋エフェクトが走り、敵カードが被弾ショックで激しく振動！「CRITICAL 1000!」の数字が舞い上がり、ボスのHPバーを一気に削り取る最高の爽快感！', en: 'Clearing lines triggers an immediate azure slash across the enemy card with hit-shake and floating damage numbers ("CRITICAL 1000!"), chunking down boss HP!' },
+        { sel: '.card-mechanics-grid .mechanic-card:nth-of-type(2) .mechanic-title', ja: '<span style="color: var(--accent-crimson);">⚠️</span> 絶体絶命！ 赤く染まる盤面と主人公の緊迫した叫び', en: '<span style="color: var(--accent-crimson);">⚠️</span> High-Tension Pinch Aura & Dynamic Expressions' },
+        // Living Flame
+        { sel: '#flame-anim .section-title', ja: '暗闇を照らす蒼き灯火 — 妖しく脈動する生きた魔導ランプ', en: 'Mystical Blue Flame — Living Arcane Lanterns Pulsing in the Dark' },
+        { sel: '#flame-anim .section-header p', ja: 'ただの四角いブロックではない。あなたの指先で操るのは、命を宿して妖しく呼吸する古代の魔導ランタン。<br>漆黒の迷宮を照らし出す蒼炎は、静かに力を蓄え、花びらのように妖艶に開花し、幻想的な揺らぎを湛える。<br>重厚な中世ゴシックの美術品のような輝きが、パズルを遊ぶたびあなたの目を奪い、深淵の世界へ強く引き込みます。', en: 'More than mere blocks—you command ancient arcane lanterns that breathe with living blue fire across a 6-stage animation cycle, connecting via wrought-iron conduits.' },
+        // Boss Cinematics
+        { sel: '#boss-cinematics .section-title', ja: '全6大ボス 降臨と消滅シネマティック — 魂魄を焦がす深淵の死闘', en: 'All 6 Floor Bosses: Encounter & Vanish Cinematics' },
+        { sel: '#boss-cinematics .section-header p', ja: 'Google Flow Music の AI Producer Studio で紡がれたダークシンフォニック楽曲<strong>『Break The Dark』</strong>と、1988年アーケードパズルの魂が完全融合。<br>迷宮の支配者が姿を現す<strong>【八芒星の魔導陣＆暗黒カットイン】</strong>、そしてHPゼロで霧散する<strong>【神聖浄化フラッシュ＆黄金の魂魄蒸発】</strong>を完全実装！', en: 'Powered by our 60fps native Canvas engine: witness the rotating octagram summoning circle when a boss appears, and the blinding Holy Flash & golden soul-spark evaporation when defeated!' },
+        // Curses & EASY Mode
+        { sel: '#curses .section-title', ja: '牙を剥く迷宮の罠 — ライン消去の【破呪】で闇を切り裂け！', en: 'Deadly Dungeon Curses — Shatter the Darkness with Holy Purge!' },
+        { sel: '#curses .section-header p', ja: 'ただブロックを積むだけでは生き残れない！<br>深淵に潜む強ボスたちが、視界を奪い、重力を乱し、次の一手を封じる凶悪な呪縛を放つ。<br>ピンチをチャンスに変えるのはあなたの腕前。ライン消去で【破呪（Holy Purge）】を発動すれば、神聖な閃光がすべての呪縛を一瞬で消し飛ばす圧倒的逆転劇が幕を開ける！', en: 'Floor bosses cast 4 core curses plus high-floor dual/triple combinations (Mist, Chrono Warp, Blindfold, Chain Seal). Trigger Holy Purge by clearing lines (just 1 line in EASY Mode!) to shatter all active curses in an instant!' },
+        // Features
+        { sel: '#features .section-title', ja: 'あなたを虜にする、魅惑のゲーム体験', en: 'Captivating Gameplay Highlights' },
+        // Premium Pass
+        { sel: '#premium .section-title', ja: '買い切りプレミアムパス ＆ 作業用ループMV', en: 'One-Time Premium Pass & Ambient Loop MV Player' },
+        { sel: '#premium .section-header p', ja: '完全買い切り型プレミアムパス【¥600 税込】。<br>月額料金や追加課金は一切なく、一度の購入で全広告が永久非表示となり、高品質なシネマティック映像による作業用ループMVプレイヤーが全開放されます。', en: 'One-time purchase Premium Pass (¥600 JPY). No subscriptions—permanently removes all ads, unlocks all 5 ambient loop MV scenes with Keep-Screen-On, and enables translucent playfield customization.' },
+        // Gallery
+        { sel: '#gallery .section-title', ja: 'スクリーンショット', en: 'Screenshots & Promo Gallery' },
+        { sel: '#gallery .section-header p', ja: '深淵の迷宮で繰り広げられる、美しくも緊張感あふれる探索の一幕。（画像クリックで拡大表示）', en: 'Scenes of intense gothic puzzle battles in the Chaos Labyrinth. (Click any image to enlarge)' },
+        // Dungeons
+        { sel: '#dungeons .section-title', ja: '深淵へと誘う、息づく幻影迷宮', en: 'Living Cinematic Labyrinth Worlds' },
+        // Soundtrack
+        { sel: '#soundtrack .section-title', ja: '1988 レトロアーケード ＆ 主題歌サウンドトラック', en: '1988 Retro Arcade & Vocal Theme Soundtrack' },
+        // Leaderboard
+        { sel: '#leaderboard .section-title', ja: '全国ハイスコアランキング (Hall of Valor)', en: 'Global Online Leaderboard (Hall of Valor)' },
+        { sel: '#leaderboard .section-desc', ja: 'オンラインリアルタイム集計。全国のプレイヤーとスコアを競い合い、混沌の深淵の頂点を目指せ！', en: 'Real-time online rankings for both CLASSIC 1988 and CHAOS BURST (3-Min) modes!' },
+        { sel: '#tabClassic', ja: 'CLASSIC 迷宮モード', en: 'CLASSIC 1988 Mode' },
+        { sel: '#tabBurst', ja: 'CHAOS BURST (3分)', en: 'CHAOS BURST (3-Min)' },
+        // Specs
+        { sel: '#specs .section-title', ja: '製品情報', en: 'Product Specifications' }
+    ];
+
+    function applyPageLanguage(lang) {
+        curPageLang = (lang === 'en') ? 'en' : 'ja';
+        document.documentElement.lang = curPageLang;
+        const btn = document.getElementById('langToggleBtn');
+        if (btn) {
+            btn.innerHTML = curPageLang === 'en' ? '🌐 日本語へ切替 (JP)' : '🌐 English / 日本語';
+        }
+
+        // 1. Elements with explicit data-ja / data-en
+        document.querySelectorAll('[data-ja][data-en]').forEach(el => {
+            const val = el.getAttribute(curPageLang === 'en' ? 'data-en' : 'data-ja');
+            if (val !== null) {
+                el.innerHTML = val;
+            }
+        });
+
+        // 2. Section headers dictionary
+        SECTION_I18N.forEach(item => {
+            const el = document.querySelector(item.sel);
+            if (el) {
+                el.innerHTML = curPageLang === 'en' ? item.en : item.ja;
+            }
+        });
+
+        // 3. Re-render Bestiary in selected language
+        renderBestiary();
+
+        try {
+            localStorage.setItem('lampdrop_web_lang', curPageLang);
+        } catch (e) {}
+    }
+
+    function togglePageLanguage() {
+        applyPageLanguage(curPageLang === 'ja' ? 'en' : 'ja');
+    }
+
+    // Initialize Bestiary & Language on load
+    renderBestiary();
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const savedLang = urlParams.get('lang') || localStorage.getItem('lampdrop_web_lang');
+        if (savedLang === 'en') {
+            applyPageLanguage('en');
+        }
+    } catch (e) {}
+
 </script>
 
 </body>
