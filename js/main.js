@@ -106,51 +106,50 @@ const APP_DATA = {
     ]
   },
   novelreader: {
-    title: '青空文庫＆小説AI朗読',
-    subtitle: 'Aozora & Document AI Reader ― 名作文学やWeb小説を声優ドラマのように朗読',
-    category: 'AI複数声優オート配役 × 感情音声合成 × 多言語翻訳プレイヤー',
+    title: '青空文庫＆文書AI朗読',
+    subtitle: 'Aozora & Document AI Reader ― 複数声優で聴く小説・PDF',
+    category: 'AI複数声優オート配役 × 古典現代語超訳 × 7ヶ国語AI翻訳プレイヤー',
     tag: 'Android 8.0+ / Windows PWA',
     platform: 'Android 8.0+ / Windows 10/11 (Web PWA)',
-    price: '完全無料（オープン＆アクセシビリティ指向）',
-    packageId: 'com.surei.naroureader',
-    distribution: 'Google Play クローズドテスト (Alpha Track) 配備中 / 公開準備中',
+    price: '基本無料（広告非表示・AI翻訳・BG無制限プレミアム対応）',
+    packageId: 'com.lampkeep.novel.aireader',
+    distribution: 'Google Play ストア公開中',
     specs: [
       { label: 'プラットフォーム', value: 'Android 8.0+ / Windows PWA' },
-      { label: '最新バージョン', value: 'v1.6.5 (Build 36)' },
-      { label: '料金体系', value: '基本無料 / 広告非表示プレミアム' },
+      { label: '最新バージョン', value: 'v1.7.3 (Build 44)' },
+      { label: '料金体系', value: '基本無料 / プレミアム買い切りアップグレード' },
       { label: '音声合成エンジン', value: 'VOICEVOX Native × OS標準TTS' },
-      { label: '多言語翻訳', value: '英・中・韓・西・仏・独・葡等 リアルタイム翻訳朗読' },
-      { label: 'バックグラウンド', value: '画面OFF完全再生 (FGS / リワード3時間解放)' },
-      { label: '車載・操作性', value: 'Bluetooth / ステアリングスイッチ / カーモード' },
-      { label: 'パッケージID', value: 'com.surei.naroureader' }
+      { label: '超訳・多言語翻訳', value: '古典の現代語超訳 ＆ 主要7ヶ国語（日・英・中・韓・西・仏・葡）翻訳朗読' },
+      { label: 'バックグラウンド', value: '画面OFF連続再生 (FGS / リワード3時間解放)' },
+      { label: '車載・操作性', value: 'Bluetooth / ステアリングスイッチ / 大型カーモード' },
+      { label: 'パッケージID', value: 'com.lampkeep.novel.aireader' }
     ],
-    description: `青空文庫の日本文学名作や各種Web小説（なろう/カクヨム/ハーメルン等）、お手持ちの所持文書（PDF・TXT・DOCX・画像OCR）を、AIがリアルタイムに文脈・感情解析！
-地の文と会話文を厳密に分離判別し、VOICEVOX Native（ずんだもん、四国めたん等）やOS標準TTSがキャラクターごとに声分けしてドラマCDのように臨場感豊かに朗読する次世代AIオーディオリーダーです。
-世界初となる「多言語リアルタイムAI翻訳＆ネイティブ朗読機能」や、WCAG AAA準拠の4大プレミアムカラーテーマ（紙白・茶紙・夜間・漆黒）、運転用の超大型ボタン「カーモード」、完全機内モード対応のオフライン保存など、あらゆる読書シーンを豊かにする機能が凝縮されています。`,
+    description: `青空文庫の日本文学名作1万8千作品（136名作初期収録）やお手持ちの所持文書（PDF・TXT・DOCX・画像OCR）を、AIがリアルタイムに文脈・感情解析！
+地の文と登場人物のセリフを厳密に分離判別し、VOICEVOX Native（ずんだもん、四国めたん、青山龍星等）やOS標準TTSがキャラクターごとに声分けしてドラマCDのように臨場感豊かに朗読する次世代AIオーディオブックアプリです。
+明治・大正の古典がスラスラわかる「現代語超訳」＆「7ヶ国語AI翻訳朗読機能」、目に優しい4大カラーテーマ（紙白・セピア・ダーク・OLED）、運転用の超大型ボタン「カーモード」、完全機内モード対応のオフライン保存など、あらゆる読書シーンを豊かにする機能が凝縮されています。`,
     features: [
       '文脈・感情をAIが自動推論しキャラクターごとに最適配役する「複数声優オート配役システム」',
       '表現力豊かな感情音声「VOICEVOX Native」完全内包 ＆ OS標準ネイティブTTSとのハイブリッド融合',
-      '世界初・日本語小説を英語・中国語・韓国語等へ即時AI翻訳し各国語ネイティブ音声で読み上げる「多言語朗読機能」',
-      '画面OFF・他アプリ使用中も途切れない完全バックグラウンド再生 ＆ 車のステアリングスイッチ操作対応',
-      'WCAG AAA準拠の4大カラーテーマ（紙白 Paper、茶紙 Sepia、夜間 Dark、漆黒 OLED）＆ 読書タイポグラフィ調整',
-      '運転中や片手操作でも迷わない超大型ボタン「カーモード（ドライブモード）」搭載',
-      '他画面閲覧中も途切れない「ミニプレイヤー」＆ 幅がミリ単位で吸着ドッキングする「音声生成進捗バー」',
-      '完全機内モード対応：電波の届かない飛行機や地下鉄でも通信ゼロで高音質再生できるオフライン一括保存'
+      '古典がスラスラわかる「現代語超訳」＆ 日本語から英・中・韓・西・仏・葡へ即時AI翻訳してネイティブ朗読する「7言語翻訳機能」',
+      '青空文庫1万8千作品対応（136名作プリセット収録）＆ 人気順・文字数フィルタで読みたい名作が1秒で見つかる',
+      'お手持ちのPDF・TXT・Word文書の自動章分割取り込み ＆ スキャン画像のAI文字起こし（OCR）対応',
+      '画面OFF・ポケット内でも途切れない完全バックグラウンド再生 ＆ 大型ボタン「カーモード」搭載',
+      '目に優しい4大高コントラストテーマ（Paper / Sepia / Dark / OLED）＆ 本文タッチスライドによるスムーズスクロール',
+      '完全機内モード対応のオフライン本棚・睡眠タイマー・環境音BGMミキサー・個人データ収集ゼロの安心設計'
     ],
     gallery: [
-      { src: 'assets/img/novelreader/feature_graphic.png', caption: '公式グラフィック：青空文庫＆小説AI朗読' },
-      { src: 'assets/img/novelreader/01_home_screen.png', caption: 'ホーム画面：続きから聴くHeroカード・作品検索・青空文庫' },
-      { src: 'assets/img/novelreader/02_ai_reanalyze_modal.png', caption: 'AI配役設定：キャラクター別ボイス・感情・ピッチ・話速・エコー調整' },
-      { src: 'assets/img/novelreader/03_player_screen.png', caption: '黄金比プレイヤー：文節ごとのセリフ追従発光ハイライト＆自動スクロール' },
-      { src: 'assets/img/novelreader/ui_docked_dark.png', caption: 'ミニプレイヤー ＆ ドッキング進捗バー（夜間 Dark テーマ）' },
-      { src: 'assets/img/novelreader/ui_docked_paper.png', caption: '洗練された読書インターフェース（紙白 Paper テーマ）' },
-      { src: 'assets/img/novelreader/05_downloads_screen.png', caption: 'オフライン保存：一括ダウンロード＆ストレージ容量管理' },
-      { src: 'assets/img/novelreader/06_settings_screen.png', caption: '設定画面：AIエンジン切替・音響エフェクト・読書環境設定' }
+      { src: 'assets/img/novelreader/feature_graphic.png', caption: '公式グラフィック：名作文学が、声優ドラマになる。' },
+      { src: 'assets/img/novelreader/promo_01.png', caption: '複数声優オート配役：地の文と登場人物をAIが判別し声分け朗読' },
+      { src: 'assets/img/novelreader/promo_02.png', caption: '青空文庫1.8万作＆136名作収録：人気順・文字数フィルタ・1タップ再生' },
+      { src: 'assets/img/novelreader/promo_03.png', caption: 'AI登場人物解析＆音響調整：キャラ別の声色・ピッチ・話速・エコー設定' },
+      { src: 'assets/img/novelreader/promo_04.png', caption: '現代語超訳＆7ヶ国語AI翻訳：古典を現代語や英語・中国語等へ翻訳朗読' },
+      { src: 'assets/img/novelreader/promo_05.png', caption: '画面OFF再生＆大型カーモード：ドライブや通勤でも見ずに安全操作' },
+      { src: 'assets/img/novelreader/promo_06.png', caption: 'PDF/Word/TXT文書流し込み＆4大テーマ：手持ち資料もオーディオブック化' }
     ],
     links: [
-      { text: '青空文庫＆小説AI朗読 特設公式サイト', url: 'novel-ai-reader/index.html', isExternal: false },
+      { text: 'Google Play ストアで入手', url: 'https://play.google.com/store/apps/details?id=com.lampkeep.novel.aireader', isExternal: true },
+      { text: '青空文庫＆文書AI朗読 特設公式サイト', url: 'novel-ai-reader/index.html', isExternal: false },
       { text: '公式取扱説明書・全機能ガイド (PDF 10P)', url: 'novel-ai-reader/小説AI朗読_全機能取扱説明書_完全マニュアル.pdf', isExternal: false },
-      { text: 'Google Play テスト版に参加 (Alpha)', url: 'https://play.google.com/apps/testing/com.surei.naroureader', isExternal: true },
       { text: 'プライバシーポリシー', url: 'novel-ai-reader/privacy.html', isExternal: false, isSecondary: true }
     ]
   }
